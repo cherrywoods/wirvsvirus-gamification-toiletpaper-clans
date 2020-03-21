@@ -1,20 +1,23 @@
 import {createBottomTabNavigator} from 'react-navigation-tabs';
+import React from 'react';
+import { Icon } from 'react-native-vector-icons/MaterialCommunityIcons';
+import { TouchableOpacity } from 'react-native';
 
-import HomeScreen from '_scenes/home';
 import MyTeamScreen from '_scenes/myteam';
 
 const TabNavigatorConfig = {
-  initialRouteName: 'Home',
+  initialRouteName: 'MyTeam',
   header: null,
   headerMode: 'none',
 };
 
 const RouteConfigs = {
-  Home:{
-    screen:HomeScreen,
-  },
   MyTeam:{
     screen:MyTeamScreen,
+    navigationOptions: {
+      title: 'My Team',
+      header: null,
+    },
   }
 };
 
