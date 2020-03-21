@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView, Text, TouchableHighlight} from 'react-native';
+import {TeamScoreView} from '_components';
 
 const LoginScreen = ({navigation}) => (
   <SafeAreaView>
@@ -8,6 +9,7 @@ const LoginScreen = ({navigation}) => (
     <TouchableHighlight onPress={() => navigation.navigate('Home')}>
       <Text>Go to home</Text>
     </TouchableHighlight>
+    
   </SafeAreaView>
 );
 
