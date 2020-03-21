@@ -12,10 +12,13 @@ var firebaseConfig = {
     measurementId: "G-SCVEE4EEG5"
   };
 
+export function initFirebase() {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
-}
+  }
 
-firebase.database().ref('Team/').once('value', function (snapshot) {
-        console.log(snapshot.val())
-});
+  // test console log
+  firebase.database().ref('Team/').once('value', function (snapshot) {
+    console.log(snapshot.val())
+  });
+}
