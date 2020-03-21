@@ -59,6 +59,7 @@ function increaseDisinfectant(teamId) {
         if (team) {
             team.disinfectant += 1;
         }
+        return team;
     });
 }
 
@@ -67,5 +68,6 @@ function increaseToiletpaper(userId) {
         if (user) {
             user.toiletpaper += 1;
         }
+        return user;
     });
 }
