@@ -55,19 +55,17 @@ export function start(teamId, userId, disinfectantCountdown, toiletpaperCountdow
 }
 
 function increaseDisinfectant(teamId) {
-    firebase.database().ref('Team/' + teamId + '/disinfectant').once('value', (snapshot) => {
-        const oldValue = snapshot.val();
-        var updates = {};
-        updates['disinfectant'] = oldValue + 1
-        firebase.database().ref('Team/' + teamId).update(updates);
+    firebase.database().ref('Team/' + teamId).transaction((team) => {
+        if (team) {
+            team.disinfectant += 1;
+        }
     });
 }
 
 function increaseToiletpaper(userId) {
-    firebase.database().ref('User/' + userId + '/toiletpaper').once('value', (snapshot) => {
-        const oldValue = snapshot.val();
-        var updates = {};
-        updates['toiletpaper'] = oldValue + 1;
-        firebase.database().ref('User/' + userId).update(updates);
+    firebase.database().ref('User/' + userId).transaction((user) => {
+        if (user) {
+            user.toiletpaper += 1;
+        }
     });
 }
