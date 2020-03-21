@@ -20,18 +20,18 @@ export function initFirebase() {
   // test console log
   firebase.database().ref('Team/').once('value', function (snapshot) {
     console.log(snapshot.val())
-    registerDesinfectantListener((desi) => {console.log("desinfectant: " + desi)}, "-M2xiPYYzZTU5u9yy3Fa");
-    registerToiletpaperListener((tp) => {console.log("toiletpaper: " + tp)}, "-M2xiPYYzZTU5u9yy3Fa");
+    registerDisinfectantListener("-M2xiPYYzZTU5u9yy3Fa", (desi) => {console.log("disinfectant: " + desi)});
+    registerToiletpaperListener("-M2xiPYYzZTU5u9yy3Fa", (tp) => {console.log("toiletpaper: " + tp)});
   });
 }
 
-export function registerDesinfectantListener(listener, teamId) {
+export function registerDisinfectantListener(teamId, listener) {
   firebase.database().ref('Team/' + teamId + '/disinfectant').on('value', (snapshot) => {
     listener(snapshot.val());
   });
 }
 
-export function registerToiletpaperListener(listener, teamId) {
+export function registerToiletpaperListener(teamId, listener) {
   
   firebase.database().ref('Team/' + teamId).once('value', (snapshot) => {
     const value = snapshot.val();
