@@ -5,7 +5,7 @@ const LoginScreen = ({navigation}) => (
   <SafeAreaView>
     <Text>Screen: Login</Text>
 
-    <TouchableHighlight onPress={() => navigation.navigate('Home')}>
+    <TouchableHighlight onPress={() => navigation.navigate('MyTeam')}>
       <Text>Go to home</Text>
     </TouchableHighlight>
   </SafeAreaView>

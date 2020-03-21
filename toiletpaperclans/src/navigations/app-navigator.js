@@ -1,6 +1,7 @@
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import HomeScreen from '_scenes/home';
+import MyTeamScreen from '_scenes/myteam';
 
 const TabNavigatorConfig = {
   initialRouteName: 'Home',
@@ -12,6 +13,9 @@ const RouteConfigs = {
   Home:{
     screen:HomeScreen,
   },
+  MyTeam:{
+    screen:MyTeamScreen,
+  }
 };
 
 const AppNavigator = createBottomTabNavigator(RouteConfigs, TabNavigatorConfig);
