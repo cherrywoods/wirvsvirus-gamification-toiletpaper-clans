@@ -13,7 +13,7 @@
     "@react-native-community/masked-view": "^0.1.7",
     "babel-plugin-module-resolver": "^4.0.0",
     "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react-native": "^0.61.5",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.7.3",
@@ -21,7 +21,8 @@
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.3.2",
     "react-navigation-stack": "^2.3.4",
-    "react-navigation-tabs": "^2.8.6"
+    "react-navigation-tabs": "^2.8.6",
+    "watchman": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
