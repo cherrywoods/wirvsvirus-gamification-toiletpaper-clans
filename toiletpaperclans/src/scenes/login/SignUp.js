@@ -3,45 +3,48 @@ import { BLACK, RED, BABYBlUE } from '_styles';
 import {SafeAreaView, Text, TouchableHighlight, View, StyleSheet, TextInput, ImageBackground} from 'react-native';
 
 const SignUpScreen = ({navigation}) => (
-  <SafeAreaView style={{backgroundColor: '#aec8c3', width: '100%', height: '100%'}}>
-    
-      <View style={styles.header} >
-        <TouchableHighlight onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.headerIconLeft} >Home</Text>
-        </TouchableHighlight>
-        <Text style={styles.headerText}>Sign Up</Text>
-        <Text style={styles.headerIconRight}>Icon</Text>
-      </View>
-
-    <View style={styles.textFieldWrapper}>
-      <Text style={styles.headerText} >Create An Account</Text>
-      <TextInput 
-        style={styles.textField}
-        placeholder="Name"
-      />
-      <TextInput 
-        style={styles.textField}
-        placeholder="Passwort"
-        secureTextEntry
-      />
-      <TextInput 
-        style={styles.textField}
-        placeholder="Confirm Passwort"
-        secureTextEntry
-      />
-    </View>
-
-    <View style={styles.footer}>
-        <Text style={styles.smallText}>Privacy...</Text>
-      <TouchableHighlight style={styles.button}>
-        <Text style={styles.buttonText}>Continue</Text>
+  <SafeAreaView style={{width: '100%', height: '100%'}}>
+<ImageBackground source={require('../../assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%'}}>
+    <View style={styles.header} >
+      <TouchableHighlight onPress={() => navigation.navigate('Home')}>
+        <Text style={styles.headerIconLeft} >Home</Text>
       </TouchableHighlight>
-        <TouchableHighlight>
-          <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
-        </TouchableHighlight>
+      <Text style={styles.headerText}>Sign Up</Text>
+      <Text style={styles.headerIconRight}>Icon</Text>
     </View>
 
-  </SafeAreaView>
+  <View style={styles.textFieldWrapper}>
+    <Text style={styles.headerText} >Create An Account</Text>
+    <TextInput 
+      style={styles.textField}
+      placeholder="Name"
+    />
+    <TextInput 
+      style={styles.textField}
+      placeholder="Passwort"
+      secureTextEntry
+    />
+    <TextInput 
+      style={styles.textField}
+      placeholder="Confirm Passwort"
+      secureTextEntry
+    />
+  </View>
+
+  <View style={styles.footer}>
+      <Text style={styles.smallText}>
+        By creating an account you agree to our 
+        Terms of Service and Privacy Policy
+        </Text>
+    <TouchableHighlight style={styles.button}>
+      <Text style={styles.buttonText}>Continue</Text>
+    </TouchableHighlight>
+      <TouchableHighlight>
+        <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
+      </TouchableHighlight>
+  </View>
+  </ImageBackground>
+</SafeAreaView>
 );
 
 const styles = StyleSheet.create({
@@ -86,9 +89,8 @@ const styles = StyleSheet.create({
       fontSize: 18,
   },
   footer: {
-    position: 'absolute',
     width: '100%',
-    bottom: 70,
+    marginTop: 70,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -96,8 +98,8 @@ const styles = StyleSheet.create({
     color: '#B40E22',
     fontSize: 16,
     textAlign: 'center',
-    marginTop: 30,
-    marginBottom: 30,
+    margin: 20,
+    padding: 10,
   },
   button: {
     backgroundColor: '#B40E22',
