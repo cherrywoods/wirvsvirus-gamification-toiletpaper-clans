@@ -5,7 +5,7 @@ import styles from './styles';
 
 export default () => (
   <SafeAreaView style={styles.view}>
-    <ImageBackground source={require('../../assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
+    <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header}>
         <TouchableHighlight onPress={onPressHome}>
           <Text style={styles.headerIconLeft}>Home</Text>
@@ -16,7 +16,7 @@ export default () => (
 
       <View style={styles.textFieldWrapper}>
         <Text style={styles.headerText}>Create An Account</Text>
-        <Image style={{width: '50%', aspectRatio:1, resizeMode: 'contain'}} source={require('../../assets/icons/Profile.png')}></Image> 
+        <Image style={{width: '50%', aspectRatio:1, resizeMode: 'contain'}} source={require('_assets/icons/Profile.png')}></Image> 
         <TouchableHighlight style={styles.createAvatarButton}>
           <Text style={styles.createAvatarText}>+</Text>
         </TouchableHighlight>

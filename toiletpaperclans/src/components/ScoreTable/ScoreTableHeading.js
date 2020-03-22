@@ -11,7 +11,7 @@ const ScoreTableHeading = ({}) => (
                     resizeMode: 'contain',
                     marginTop: 20,
                 }}
-                source={require('../../assets/icons/Pokal.png')} 
+                source={require('_assets/icons/Pokal.png')} 
             />
         </View>
         <View style={styles.row2Element}>
@@ -22,7 +22,7 @@ const ScoreTableHeading = ({}) => (
                     resizeMode: 'contain',
                     marginTop: 20,
                 }}
-                source={require('../../assets/icons/Paper.png')}
+                source={require('_assets/icons/Paper.png')}
             />
         </View>
         <View style={[styles.row3Element, styles.row3ElementTop]}>
@@ -33,7 +33,7 @@ const ScoreTableHeading = ({}) => (
                     resizeMode: 'contain',
                     marginTop: 20,
                 }}
-                source={require('../../assets/icons/group.png')}
+                source={require('_assets/icons/group.png')}
             />
         </View>
     </View>

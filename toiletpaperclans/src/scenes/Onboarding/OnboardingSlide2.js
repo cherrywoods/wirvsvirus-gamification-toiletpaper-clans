@@ -4,10 +4,10 @@ import { View, Text, StyleSheet, SafeAreaView, Image, ImageBackground} from 'rea
 
 const OnboardingSlide2 = ({}) => (
     <SafeAreaView style={styles.container}>
-  <ImageBackground source={require('../../assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
+  <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
       <View style={styles.slide}>
           <Text style={styles.title}>Your Toilet Paper</Text>
-          <Image source={require('../../assets/icons/your_toiletpaper.png')} style={{width: 300, height: 300, resizeMode: 'contain', marginBottom: 70}} />
+          <Image source={require('_assets/icons/your_toiletpaper.png')} style={{width: 300, height: 300, resizeMode: 'contain', marginBottom: 70}} />
           <Text style={styles.info} >and fight for the most</Text>
           <Text style={styles.info}>valuable good for this time</Text>
           <Text sytle={styles.footer}>Swipe > </Text>

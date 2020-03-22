@@ -5,7 +5,7 @@ import styles from './styles';
 
 export default ({ onPressHome }) => (
   <SafeAreaView style={styles.view}>
-    <ImageBackground source={require('../../assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
+    <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header} >
         <TouchableHighlight onPress={onPressHome}>
           <Text style={styles.headerIconLeft} >Home</Text>
