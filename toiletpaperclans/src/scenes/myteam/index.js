@@ -1,7 +1,12 @@
 import React from 'react';
 import { BLACK } from '_styles';
 import { View, Text, StyleSheet, SafeAreaView, Image, ImageBackground} from 'react-native';
+import Swiper from 'react-native-swiper'
+
 import MyTeamMembers from '_components/myteam-members.js';
+import ProgressBar from '_components/progressbar.js';
+import ScoreTable from '_ScoreTable/ScoreTable.js';
+
 
 const MyTeamScreen = ({}) => (
     <SafeAreaView style={styles.container}>
@@ -10,22 +15,49 @@ const MyTeamScreen = ({}) => (
                 <Text style={styles.menuText}>My Team</Text>
                 <Text style={styles.menuText}>Score</Text>
             </View>
-            <MyTeamMembers></MyTeamMembers>
-            <View style={styles.ressourcesContainer}>
-                <View style={styles.ressource}>
-                    <Image style={styles.ressourceImage} source={require('../../assets/icons/ToiletPaper.png')}></Image>
-                    <Text style={styles.ressourceCount}>31</Text>
+            <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
+                <View style={styles.slide1}>
+                    <MyTeamMembers></MyTeamMembers>
+                    <View style={styles.ressourcesContainer}>
+                        <View style={styles.ressource}>
+                            <Image style={styles.ressourceImage} source={require('../../assets/icons/ToiletPaper.png')}></Image>
+                            <Text style={styles.ressourceCount}>31</Text>
+                        </View>
+                        <View style={styles.ressource}>
+                            <Image style={styles.ressourceImage} source={require('../../assets/icons/Desinfection.png')}></Image>
+                            <Text style={styles.ressourceCount}>5l</Text>
+                        </View>
+                    </View>
+                    <View style={styles.progressContainer}>
+                        <ProgressBar
+                            row
+                            progress={0.8}
+                            duration={500}
+                            height={20}
+                            borderRadius={50}
+                        />
+                        <Image style={styles.progressbarIcon} source={require('../../assets/icons/Desinfection.png')}></Image>
+                    </View>
                 </View>
-                <View style={styles.ressource}>
-                    <Image style={styles.ressourceImage} source={require('../../assets/icons/Desinfection.png')}></Image>
-                    <Text style={styles.ressourceCount}>5l</Text>
+                <View style={styles.slide2}>
+                    <ScoreTable></ScoreTable>
                 </View>
-            </View>
+            </Swiper>
         </ImageBackground>
     </SafeAreaView>
 );
 
 const styles = StyleSheet.create({
+    wrapper: {},
+    slide1: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    slide2: {
+        flex: 1,
+        alignItems: 'center',
+        width: '100%'
+    },
     container: {
         flex: 1,
         width: '100%',
@@ -64,6 +96,16 @@ const styles = StyleSheet.create({
         position: 'relative',
         top: -40,
         left: 30,
+    },
+    progressContainer: {
+        alignItems: "center", 
+        flexDirection: "row",
+        width: '90%',
+    },
+    progressbarIcon: {
+        height: 70,
+        width: 70,
+        resizeMode: 'contain',
     }
 });
 
