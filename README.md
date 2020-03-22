@@ -6,6 +6,7 @@ Bleib zuhause, sammle Klopapier und nutze die Nachlässigkeit von anderen Gruppe
 ![App Overview](https://media.discordapp.net/attachments/690844505821151263/691291108503846962/WebScreen.png?width=1197&height=673)
 
 devpost: https://devpost.com/software/46_gamification_toiletpaperclans#
+adobe xd design prototype: https://xd.adobe.com/view/c4bec169-faaf-4fc9-5040-f7f724555f58-b28f/screen/84582bc9-b6a2-4d1b-b94d-2e75b520909d/iPad-Pro-10-5-3
 
 ## Anforderungen
 
