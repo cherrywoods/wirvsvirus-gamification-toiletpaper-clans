@@ -15,11 +15,19 @@ export default ({ onChangeEmail, onChangePassword, onPressHome, onPressLogin, on
         {/* <Text style={styles.headerIconRight}>Icon</Text> */}
       </View>
 
+      {/* TODO: Remove!!! */}
+      <View>
+        <Text style={{ color: 'green', fontSize: 30 }}>Dev credentials:</Text>
+        <Text style={{ color: 'green', fontSize: 30 }}>Email: a@b.de</Text>
+        <Text style={{ color: 'green', fontSize: 30 }}>Password: 123456789</Text>
+      </View>
+
       <View style={styles.textFieldWrapper}>
         <Text style={styles.headerText}>Sign in with your</Text>
         <TextInput
           style={styles.textField}
           placeholder="E-mail"
+          autoCapitalize="none"
           onChangeText={onChangeEmail}
         />
         <TextInput
@@ -37,13 +45,6 @@ export default ({ onChangeEmail, onChangePassword, onPressHome, onPressLogin, on
         <TouchableHighlight onPress={onPressSignUp}>
           <Text style={styles.smallText}>Don't have an Account? Sign Up!</Text>
         </TouchableHighlight>
-
-        {/* TODO: Remove!!! */}
-        <View>
-          <Text style={{ color: 'green', fontSize: 18 }}>Dev credentials:</Text>
-          <Text style={{ color: 'green', fontSize: 18 }}>Email: a@b.de</Text>
-          <Text style={{ color: 'green', fontSize: 18 }}>Password: 123456789</Text>
-        </View>
       </View>
     </ImageBackground>
   </SafeAreaView>
