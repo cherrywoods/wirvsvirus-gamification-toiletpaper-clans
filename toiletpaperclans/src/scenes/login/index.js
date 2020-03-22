@@ -6,7 +6,7 @@ const LoginScreen = ({navigation}) => (
   <SafeAreaView style={{backgroundColor: '#aec8c3', width: '100%', height: '100%'}}>
     
       <View style={styles.header} >
-        <TouchableHighlight onPress={() => navigation.navigate('Home')}>
+        <TouchableHighlight onPress={() => navigation.navigate('MyTeam')}>
           <Text style={styles.headerIconLeft} >Home</Text>
         </TouchableHighlight>
         <Text style={styles.headerText}>Sign In</Text>
