@@ -13,10 +13,9 @@ const InitScreen = ({ navigation }) => {
     return subscriber; // unsubscribe on unmount
   }, []);
   useEffect(() => {
-    if (user) {
-      if (initializing) {
-        setInitializing(false);
-      }
+    if (initializing) {
+      setInitializing(false);
+      return;
     }
     navigation.navigate(user ? 'App' : 'Auth');
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps

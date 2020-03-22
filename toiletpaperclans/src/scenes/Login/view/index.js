@@ -20,13 +20,13 @@ export default ({ onChangeEmail, onChangePassword, onPressHome, onPressLogin, on
         <TextInput
           style={styles.textField}
           placeholder="E-mail"
-          onChange={onChangeEmail}
+          onChangeText={onChangeEmail}
         />
         <TextInput
           style={styles.textField}
           placeholder="Password"
           secureTextEntry
-          onChange={onChangePassword}
+          onChangeText={onChangePassword}
         />
       </View>
 

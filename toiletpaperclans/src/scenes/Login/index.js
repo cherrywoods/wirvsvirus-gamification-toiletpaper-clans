@@ -9,8 +9,8 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const doLogin = () => {
-    auth().createUserWithEmailAndPassword(email, password)
-      .then(() => {
+    auth().signInWithEmailAndPassword(email, password)
+      .then((b) => {
         navigation.navigate('App');
       })
       .catch(() => {
