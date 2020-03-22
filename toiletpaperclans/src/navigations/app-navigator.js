@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import MyTeamScreen from '_scenes/myteam';
+import MyTeamScreen from '_scenes/MyTeam';
 
 const TabNavigatorConfig = {
   initialRouteName: 'MyTeam',

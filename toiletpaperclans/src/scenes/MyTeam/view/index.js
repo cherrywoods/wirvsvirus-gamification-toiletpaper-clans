@@ -13,7 +13,7 @@ import styles from './styles';
 export default ({ teamName, toiletpaperScore, disinfectantScore }) => (
   <SafeAreaView style={styles.container}>
     <ImageBackground
-      source={require('../../assets/img/toiletpaper.jpg')}
+      source={require('_assets/img/toiletpaper.jpg')}
       style={styles.imageBackground}
     >
       <View style={styles.upperMenu}>
@@ -27,14 +27,14 @@ export default ({ teamName, toiletpaperScore, disinfectantScore }) => (
             <View style={styles.ressource}>
               <Image
                 style={styles.ressourceImage}
-                source={require('../../assets/icons/ToiletPaper.png')}
+                source={require('_assets/icons/ToiletPaper.png')}
               />
               <Text style={styles.ressourceCount}>{toiletpaperScore}</Text>
             </View>
             <View style={styles.ressource}>
               <Image
                 style={styles.ressourceImage}
-                source={require('../../assets/icons/Desinfection.png')}
+                source={require('_assets/icons/Desinfection.png')}
               />
               <Text style={styles.ressourceCount}>{disinfectantScore}</Text>
             </View>
@@ -43,7 +43,7 @@ export default ({ teamName, toiletpaperScore, disinfectantScore }) => (
             <ProgressBar row progress={0.8} duration={500} height={20} borderRadius={50} />
             <Image
               style={styles.progressbarIcon}
-              source={require('../../assets/icons/Desinfection.png')}
+              source={require('_assets/icons/Desinfection.png')}
             />
           </View>
         </View>
