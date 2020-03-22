@@ -3,15 +3,20 @@ import {Text, View, StyleSheet} from 'react-native';
 import ProfilePicture from '_components/profilepicture.js';
 import ButtonAddMember from '_components/addButton.js';
 
-const MyTeamMembers = ({}) => (
-    <View style={styles.container}>
-        <ProfilePicture />
-        <ProfilePicture />
-        <ProfilePicture />
-        <ProfilePicture />
-        <ButtonAddMember />
-    </View>
-);
+const MyTeamMembers = ({members}) => {
+
+    var profiles = [];
+    for (const member of members) {
+        profiles.push(<ProfilePicture key={member.key}></ProfilePicture>);
+    }
+
+    return (
+        <View style={styles.container}>
+            {profiles}
+            <ButtonAddMember></ButtonAddMember>
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
     container: {

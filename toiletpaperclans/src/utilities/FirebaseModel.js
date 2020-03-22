@@ -45,6 +45,8 @@ class FirebaseModel {
         this.teamDisinfectant = null;
         // map of members by userIds
         this.teamMembers = new Map();
+        // array of {name:, score:}
+        this.leaderboard = null;
 
         // MARK: listeners
         this.listers = new Map();
@@ -61,15 +63,33 @@ class FirebaseModel {
         this.listers.set('teamDisinfectant', [(newValue) => { this.teamDisinfectant = newValue; }]);
         this.listers.set('teamMembers', [
             (newValue) => { this.teamMembers = newValue; },
+            /*
             (newMembers) => {
                 // update toiletpaper score
                 var newToiletpaperScore = 0;
                 for (const member of newMembers.values()) {
                     newToiletpaperScore += member.toiletpaper;
                 }
-                this.trigger('teamToiletpaper', newToiletpaperScore);
-            },
+                this.trigger("teamToiletpaper", newToiletpaperScore);
+            }
+            */
         ]);
+        this.listers.set("leaderboard", [(newValue) => { this.leaderboard = newValue }]);
+
+        // TODO: replace by server side solution to scale
+        firebase.database().ref("Team/").on('value', (snapshot) => {
+            const teams = snapshot.val();
+            var teamStats = [];
+            for (const teamKey in teams) {
+                teamStats.push({
+                    "name": teams[teamKey].Name,
+                    "score": teams[teamKey].toiletpaper,
+                });
+            }
+            teamStats.sort((a, b) => b.score - a.score);
+            const topTen = teamStats.slice(0, Math.min(10, teamStats.length));
+            this.trigger("leaderboard", topTen);
+        });
 
     }
 
@@ -127,8 +147,12 @@ class FirebaseModel {
             this.trigger('teamAllAtHome', snapshot.val());
         });
 
-        firebase.database().ref('Team/' + teamId + '/Member').on('value', (snapshot) => {
-            const memberIds = snapshot.val().split(',');
+        firebase.database().ref("Team/"+teamId+"/toiletpaper").on('value', (snapshot) => {
+            this.trigger("teamToiletpaper", snapshot.val());
+        });
+
+        firebase.database().ref("Team/"+teamId+"/Member").on('value', (snapshot) => {
+            const memberIds = snapshot.val().split(",");
             const oldMemberIds = Array.from(this.teamMembers.keys());
 
             const memberCallback = (_snapshot) => {

@@ -10,7 +10,7 @@ import ScoreTable from '_components/ScoreTable';
 import styles from './styles';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore }) => (
+export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers }) => (
   <SafeAreaView style={styles.container}>
     <ImageBackground
       source={require('_assets/img/toiletpaper.jpg')}
@@ -22,7 +22,7 @@ export default ({ teamName, toiletpaperScore, disinfectantScore }) => (
       </View>
       <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
         <View style={styles.slide1}>
-          <MyTeamMembers />
+          <MyTeamMembers members={teamMembers}/>
           <View style={styles.ressourcesContainer}>
             <View style={styles.ressource}>
               <Image
