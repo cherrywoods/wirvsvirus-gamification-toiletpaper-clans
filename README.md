@@ -1,6 +1,8 @@
 # Toiletpaper Clans 
 Unser Git-Repository für die App 'Toiletpaper Clans'. Wir sind Teil von #WirvsVirusHack.
 
+**Active Development Branch: frontend**
+
 ToiletPaper Clans - Das Spiel für die Quarantäne
 
 Stay at home und sammle Klopapier! Noch besser sammle mit deinen Freunden zusammen! Bildet Teams und sammelt zusammen Klopapier.
