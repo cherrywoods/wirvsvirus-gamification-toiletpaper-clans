@@ -1,7 +1,5 @@
-import {createBottomTabNavigator} from 'react-navigation-tabs';
 import React from 'react';
-import { Icon } from 'react-native-vector-icons/MaterialCommunityIcons';
-import { TouchableOpacity } from 'react-native';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import MyTeamScreen from '_scenes/myteam';
 
@@ -12,13 +10,13 @@ const TabNavigatorConfig = {
 };
 
 const RouteConfigs = {
-  MyTeam:{
-    screen:MyTeamScreen,
+  MyTeam: {
+    screen: MyTeamScreen,
     navigationOptions: {
       title: 'My Team',
       header: null,
     },
-  }
+  },
 };
 
 const AppNavigator = createBottomTabNavigator(RouteConfigs, TabNavigatorConfig);
