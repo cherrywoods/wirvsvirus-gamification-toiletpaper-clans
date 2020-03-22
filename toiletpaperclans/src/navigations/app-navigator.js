@@ -13,7 +13,7 @@ const AppNavigator = createStackNavigator({
 }, {
   initialRouteName: 'MyTeam',
   header: null,
-  headerMode: 'none'
+  headerMode: 'none',
 });
 
 export default AppNavigator;

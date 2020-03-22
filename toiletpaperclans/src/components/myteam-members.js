@@ -5,11 +5,11 @@ import ButtonAddMember from '_components/addButton.js';
 
 const MyTeamMembers = ({}) => (
     <View style={styles.container}>
-        <ProfilePicture></ProfilePicture>
-        <ProfilePicture></ProfilePicture>
-        <ProfilePicture></ProfilePicture>
-        <ProfilePicture></ProfilePicture>
-        <ButtonAddMember></ButtonAddMember>
+        <ProfilePicture />
+        <ProfilePicture />
+        <ProfilePicture />
+        <ProfilePicture />
+        <ButtonAddMember />
     </View>
 );
 

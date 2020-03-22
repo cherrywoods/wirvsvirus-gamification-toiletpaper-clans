@@ -3,13 +3,13 @@ import {View, StyleSheet, Text} from 'react-native';
 
 const ScoreTableRow = ({index, score, teamname}) => (
     <View style={styles.row}>
-        <View style={styles.row1Element}>            
+        <View style={styles.row1Element}>
             <Text style={styles.text}>{ index }</Text>
         </View>
-        <View style={styles.row2Element}>            
+        <View style={styles.row2Element}>
             <Text style={styles.text}>{ score }</Text>
         </View>
-        <View style={styles.row3Element}>            
+        <View style={styles.row3Element}>
             <Text style={styles.text}>{ teamname }</Text>
         </View>
     </View>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         flex: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     row3Element: {
         flex: 3,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     text : {
         marginTop: 25,
-        fontWeight: "bold",
+        fontWeight: 'bold',
     },
 });
 

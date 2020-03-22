@@ -16,7 +16,7 @@ export default () => (
 
       <View style={styles.textFieldWrapper}>
         <Text style={styles.headerText}>Create An Account</Text>
-        <Image style={{width: '50%', aspectRatio:1, resizeMode: 'contain'}} source={require('_assets/icons/Profile.png')}></Image> 
+        <Image style={{width: '50%', aspectRatio:1, resizeMode: 'contain'}} source={require('_assets/icons/Profile.png')} />
         <TouchableHighlight style={styles.createAvatarButton}>
           <Text style={styles.createAvatarText}>+</Text>
         </TouchableHighlight>
@@ -24,7 +24,7 @@ export default () => (
 
       <View style={styles.footer}>
         <Text style={styles.smallText}>
-          By creating an account you agree to our 
+          By creating an account you agree to our
           Terms of Service and Privacy Policy
         </Text>
         <TouchableHighlight style={styles.button}>

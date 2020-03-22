@@ -16,16 +16,16 @@ export default ({ onPressHome }) => (
 
       <View style={styles.textFieldWrapper}>
         <Text style={styles.headerText} >Create An Account</Text>
-        <TextInput 
+        <TextInput
           style={styles.textField}
           placeholder="Name"
         />
-        <TextInput 
+        <TextInput
           style={styles.textField}
           placeholder="Passwort"
           secureTextEntry
         />
-        <TextInput 
+        <TextInput
           style={styles.textField}
           placeholder="Confirm Passwort"
           secureTextEntry
@@ -34,7 +34,7 @@ export default ({ onPressHome }) => (
 
       <View style={styles.footer}>
         <Text style={styles.smallText}>
-          By creating an account you agree to our 
+          By creating an account you agree to our
           Terms of Service and Privacy Policy
         </Text>
         <TouchableHighlight style={styles.button}>

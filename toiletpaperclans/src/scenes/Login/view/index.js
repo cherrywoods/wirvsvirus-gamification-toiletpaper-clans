@@ -17,11 +17,11 @@ export default ({ onPressHome, onPressContinue, onPressSignUp }) => (
 
       <View style={styles.textFieldWrapper}>
         <Text style={styles.headerText} >Sign in with your</Text>
-        <TextInput 
+        <TextInput
           style={styles.textField}
           placeholder="Name"
         />
-        <TextInput 
+        <TextInput
           style={styles.textField}
           placeholder="Passwort"
           secureTextEntry
