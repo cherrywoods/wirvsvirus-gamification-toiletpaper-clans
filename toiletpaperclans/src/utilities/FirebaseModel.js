@@ -45,7 +45,12 @@ class FirebaseModel {
         this.teamDisinfectant = null;
         // map of members by userIds
         this.teamMembers = new Map();
-        // array of {name:, score:}
+        /**
+         * {
+         *   leaderboard: array of {name:, score:},
+         *   ownTeamRank:,
+         * }
+         */
         this.leaderboard = null;
 
         // MARK: listeners
@@ -75,22 +80,6 @@ class FirebaseModel {
             */
         ]);
         this.listers.set("leaderboard", [(newValue) => { this.leaderboard = newValue }]);
-
-        // TODO: replace by server side solution to scale
-        firebase.database().ref("Team/").on('value', (snapshot) => {
-            const teams = snapshot.val();
-            var teamStats = [];
-            for (const teamKey in teams) {
-                teamStats.push({
-                    "name": teams[teamKey].Name,
-                    "score": teams[teamKey].toiletpaper,
-                });
-            }
-            teamStats.sort((a, b) => b.score - a.score);
-            const topTen = teamStats.slice(0, Math.min(10, teamStats.length));
-            this.trigger("leaderboard", topTen);
-        });
-
     }
 
     /// register a new listener. you can register listeners for all properties by their textual names
@@ -128,9 +117,33 @@ class FirebaseModel {
             this.trigger("userAtHome", snapshot.val());
         });
         firebase.database().ref("User/"+userId+"/team").on('value', (snapshot) => {
-                this.trigger('teamId', snapshot.val());
+                this.trigger("teamId", snapshot.val());
             }
         );
+
+        // TODO: replace by server side solution to scale
+        firebase.database().ref("Team/").on('value', (snapshot) => {
+            const teams = snapshot.val();
+            var teamStats = [];
+            var ownTeamStats = null;
+            for (const teamKey in teams) {
+                teamStats.push({
+                    "teamId": teamKey,
+                    "name": teams[teamKey].Name,
+                    "score": teams[teamKey].toiletpaper,
+                });
+                if (teamKey === this.teamId) {
+                    ownTeamStats = teamStats[teamStats.length-1];
+                }
+            }
+            teamStats.sort((a, b) => b.score - a.score);
+            const topTen = teamStats.slice(0, Math.min(10, teamStats.length));
+            const ownTeamRank = teamStats.indexOf(ownTeamStats) + 1;
+            this.trigger("leaderboard", {
+                "leaderboard": topTen,
+                "ownTeamRank": ownTeamRank,
+            });
+        });
     }
 
     setupTeam(teamId) {
@@ -177,7 +190,6 @@ class FirebaseModel {
             
         });
     }
-
 
 }
 

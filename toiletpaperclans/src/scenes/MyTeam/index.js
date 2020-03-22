@@ -10,17 +10,20 @@ const MyTeamScreen = () => {
   const [toiletpaperScore, setToiletpaperScore] = useState(firebaseData.teamToiletpaper);
   const [disinfectantScore, setDisinfectantScore] = useState(firebaseData.teamDisinfectant);
   const [teamMembers, setTeamMembers] = useState(firebaseData.teamMembers);
+  const [leaderboard, setLeaderboard] = useState(firebaseData.leaderboard);
 
   useEffect(() => {
     firebaseData.on('teamName', setTeamName);
     firebaseData.on('teamToiletpaper', setToiletpaperScore);
     firebaseData.on('teamDisinfectant', setDisinfectantScore);
     firebaseData.on('teamMembers', setTeamMembers);
+    firebaseData.on('leaderboard', setLeaderboard);
     return () => {
       firebaseData.off('teamName', setTeamName);
       firebaseData.off('teamToiletpaper', setToiletpaperScore);
       firebaseData.off('teamDisinfectant', setDisinfectantScore);
       firebaseData.off('teamMembers', setTeamMembers);
+      firebaseData.off('leaderboard', setLeaderboard);
     };
   }, []);
 
@@ -30,6 +33,7 @@ const MyTeamScreen = () => {
       toiletpaperScore={toiletpaperScore}
       disinfectantScore={disinfectantScore}
       teamMembers={teamMembers}
+      leaderboard={leaderboard}
     />
   );
 };

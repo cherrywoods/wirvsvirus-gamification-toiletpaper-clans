@@ -6,20 +6,50 @@ import ScoreTableYour from '_ScoreTable/ScoreTableYour';
 
 export default class ScoreTable extends Component {
   render() {
+
+    const leaderboard = this.props.leaderboard.leaderboard;
+    const ownTeamRank = this.props.leaderboard.ownTeamRank;
+    const teamName = this.props.teamName;
+    const teamScore = this.props.toiletpaperScore;
+
+    var tableEntries = [];
+    for (i = 0; i < leaderboard.length; i += 1) {
+      if (ownTeamRank === i) {
+        tableEntries.push(
+          <ScoreTableYour 
+            key={i}
+            index={i + 1} 
+            score={leaderboard[i].score} 
+            teamname={leaderboard[i].name}>
+          </ScoreTableYour>
+        );
+      } else {
+        tableEntries.push(
+          <ScoreTableRow 
+            key={i}
+            index={i + 1} 
+            score={leaderboard[i].score} 
+            teamname={leaderboard[i].name}>
+          </ScoreTableRow>
+        );
+      }
+    }
+    console.log("ownTeamRank", ownTeamRank);
+    if (ownTeamRank > leaderboard.length) {
+      tableEntries.push(
+        <ScoreTableYour 
+          key={leaderboard.length+1}
+          index={ownTeamRank} 
+          score={teamScore} 
+          teamname={teamName}>
+        </ScoreTableYour>
+      );
+    }
+
     return (
-      <View style={styles.horizontal}>
+        <View style={styles.horizontal}>
         <ScoreTableHeading></ScoreTableHeading>
-        <ScoreTableRow index={1} score={232} teamname={'Team A'}></ScoreTableRow>
-        <ScoreTableRow index={2} score={220} teamname={'Team B'}></ScoreTableRow>
-        <ScoreTableRow index={3} score={219} teamname={'Team C'}></ScoreTableRow>
-        <ScoreTableRow index={4} score={210} teamname={'Team D'}></ScoreTableRow>
-        <ScoreTableRow index={5} score={204} teamname={'Team E'}></ScoreTableRow>
-        <ScoreTableRow index={6} score={201} teamname={'Team F'}></ScoreTableRow>
-        <ScoreTableRow index={7} score={196} teamname={'Team G'}></ScoreTableRow>
-        <ScoreTableRow index={8} score={194} teamname={'Team H'}></ScoreTableRow>
-        <ScoreTableRow index={9} score={193} teamname={'Team I'}></ScoreTableRow>
-        <ScoreTableRow index={10} score={180} teamname={'Team J'}></ScoreTableRow>
-        <ScoreTableYour index={203} score={134} teamname={'Ottos'}></ScoreTableYour>
+            {tableEntries}
       </View>
     );
   }

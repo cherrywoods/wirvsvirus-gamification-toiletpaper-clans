@@ -6,8 +6,10 @@ import ButtonAddMember from '_components/addButton.js';
 const MyTeamMembers = ({members}) => {
 
     var profiles = [];
+    var counter = 0; // assing keys
     for (const member of members) {
-        profiles.push(<ProfilePicture key={member.key}></ProfilePicture>);
+        profiles.push(<ProfilePicture key={counter}></ProfilePicture>);
+        counter += 1;
     }
 
     return (
