@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
 import ProfilePicture from '_components/profilepicture.js';
 import ButtonAddMember from '_components/addButton.js';
 
 const MyTeamMembers = ({ members }) => {
+    const membersObject = useMemo(() => Object.fromEntries(members), [members]);
     return (
         <View style={styles.container}>
-            {members.map(member => (
-                <ProfilePicture key={member.key} />
+            {Object.keys(membersObject).map(key => (
+                <ProfilePicture key={key} />
             ))}
             <ButtonAddMember />
         </View>
