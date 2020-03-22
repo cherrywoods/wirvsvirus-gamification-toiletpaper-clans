@@ -1,0 +1,28 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": false,
+    "Team": {
+      "name": {
+        ".write": "data.val().leader === auth.uid"
+      },
+      "members": {
+        ".write": "data.val().leader === auth.uid"
+      },
+      "added": {
+        ".write": "data.val().leader === auth.uid"
+      }
+    },
+    "User": {
+      "$uid": {
+        "username": {
+          ".write": "$uid === auth.uid"
+        },
+        "team": {
+          ".write": "$uid === auth.uid"
+        }
+      },
+      ".indexOn": ["atHomeTime"]
+    }
+  }
+}

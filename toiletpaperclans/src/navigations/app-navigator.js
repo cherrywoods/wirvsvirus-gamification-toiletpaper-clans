@@ -1,19 +1,19 @@
-import {createBottomTabNavigator} from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 
-import HomeScreen from '_scenes/home';
+import MyTeamScreen from '_scenes/MyTeam';
 
-const TabNavigatorConfig = {
-  initialRouteName: 'Home',
+const AppNavigator = createStackNavigator({
+  MyTeam: {
+    screen: MyTeamScreen,
+    navigationOptions: {
+      title: 'My Team',
+      header: null,
+    },
+  },
+}, {
+  initialRouteName: 'MyTeam',
   header: null,
   headerMode: 'none',
-};
-
-const RouteConfigs = {
-  Home:{
-    screen:HomeScreen,
-  },
-};
-
-const AppNavigator = createBottomTabNavigator(RouteConfigs, TabNavigatorConfig);
+});
 
 export default AppNavigator;
