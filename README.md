@@ -57,5 +57,25 @@ Die App basiert auf dem Framework 'React Native' und der Datenbank 'Firebase'. D
     ├── utilities               # Backend Utilities like API
     └── index.js                # initial route file
 
+### Instalation
+Installiere zunächst React Native auf deinem Gerät: https://reactnative.dev/docs/getting-started
+Führe anschließend die folgenden Befehle auf deiner Konsole aus:
+```
+git clone https://github.com/cherrywoods/wirvsvirus-gamification-toiletpaper-clans.git
+cd wirvisvirus-gamification-toiletpaper-clans
+yarn install
+```
+Wenn du für iOS bauen möchtest außerdem:
+```
+cd ios
+pod install
+cd ..
+yarn react-native run-ios
+```
+Für android reicht der folgenden Befehl:
+```
+yarn react-native run-android
+```
+
 ## Licensing
-Currenty licensed at the terms of the MIT Open Source Licence
+Licensed at the terms of the MIT Open Source Licence
