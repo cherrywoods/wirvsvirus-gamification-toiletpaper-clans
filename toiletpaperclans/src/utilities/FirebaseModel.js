@@ -70,21 +70,6 @@ class FirebaseModel {
         ]);
         this.listers.set("leaderboard", [(newValue) => { this.leaderboard = newValue }]);
 
-        // TODO: replace by server side solution to scale
-        database().ref("Team/").on('value', (snapshot) => {
-            const teams = snapshot.val();
-            var teamStats = [];
-            for (const teamKey in teams) {
-                teamStats.push({
-                    "name": teams[teamKey].Name,
-                    "score": teams[teamKey].toiletpaper,
-                });
-            }
-            teamStats.sort((a, b) => b.score - a.score);
-            const topTen = teamStats.slice(0, Math.min(10, teamStats.length));
-            this.trigger("leaderboard", topTen);
-        });
-
     }
 
     /// register a new listener. you can register listeners for all properties by their textual names
