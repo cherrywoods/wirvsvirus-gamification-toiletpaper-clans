@@ -59,7 +59,7 @@ Die App basiert auf dem Framework 'React Native' und der Datenbank 'Firebase'. D
     ├── utilities               # Backend Utilities like API
     └── index.js                # initial route file
 
-### Instalation
+### Installation
 Installiere zunächst React Native auf deinem Gerät: https://reactnative.dev/docs/getting-started
 Führe anschließend die folgenden Befehle auf deiner Konsole aus:
 ```
