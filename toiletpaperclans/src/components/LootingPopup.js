@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Button,Image,TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image,TouchableOpacity } from 'react-native';
  
 export default class LootingPopup extends Component {
- constructor() {
-   super();
+ constructor(props) {
+   super(props);
    this.state = {
      // Content 0: invisible, Content 1: Attack a Team!, Content 2: Got Value, Content 3: Lost Value
-     content: 1,
-     value: 2
+     content: props.content,
+     value: props.value
    };
  }
  

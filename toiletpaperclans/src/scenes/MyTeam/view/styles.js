@@ -42,6 +42,8 @@ export default StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   ressourceImage: {
     height: 100,
@@ -51,8 +53,7 @@ export default StyleSheet.create({
   ressourceCount: {
     fontSize: 40,
     position: 'relative',
-    top: -40,
-    left: 30,
+    top: -30,
   },
   progressContainer: {
     alignItems: 'center',
@@ -64,4 +65,11 @@ export default StyleSheet.create({
     width: 70,
     resizeMode: 'contain',
   },
+  popup: {
+    width: '100%',
+    height: 250,
+    position: 'absolute',
+    bottom: 0,
+    zIndex: 1,
+  }
 });

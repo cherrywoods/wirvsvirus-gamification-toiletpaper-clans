@@ -8,6 +8,7 @@ import ProgressBar from '_components/progressbar';
 import ScoreTable from '_components/ScoreTable';
 
 import styles from './styles';
+import LootingPopup from '_components/LootingPopup';
 
 // NO Logic here!
 export default ({ teamName, toiletpaperScore, disinfectantScore }) => (
@@ -22,6 +23,9 @@ export default ({ teamName, toiletpaperScore, disinfectantScore }) => (
       </View>
       <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
         <View style={styles.slide1}>
+          <View style={styles.popup}>
+            <LootingPopup content={2} value={3}></LootingPopup>  
+          </View>
           <MyTeamMembers />
           <View style={styles.ressourcesContainer}>
             <View style={styles.ressource}>
