@@ -11,9 +11,9 @@ import styles from './styles';
 import LootingPopup from '_components/LootingPopup';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout }) => {
+export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton }) => {
 
-  ref = useRef();
+  const ref = useRef();
 
   return (
   <SafeAreaView style={styles.container}>
@@ -29,10 +29,10 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
           <Text style={[styles.menuText, { color: slide2 }]}>Score</Text>
         </TouchableOpacity>
       </View>
-      <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false}>
+      <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
         <View style={styles.slide1}>
           <View style={styles.popup}>
-            <LootingPopup content={2} value={3}></LootingPopup>  
+            <LootingPopup content={2} value={3} />
           </View>
           <MyTeamMembers members={teamMembers}/>
           <View style={styles.ressourcesContainer}>
@@ -43,16 +43,16 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
               />
               <Text style={styles.ressourceCount}>{toiletpaperScore}</Text>
             </View>
-            <View style={styles.progressContainer}>
-              <ProgressBar row progress={0.8} duration={500} height={20} borderRadius={50} />
+            <View style={styles.ressource}>
               <Image
-                style={styles.progressbarIcon}
+                style={styles.ressourceImage}
                 source={require('_assets/icons/Desinfection.png')}
               />
+              <Text style={styles.ressourceCount}>{disinfectantScore}</Text>
             </View>
           </View>
-          <View style={styles.slide2}>
-            <ScoreTable teamName={teamName} toiletpaperScore={toiletpaperScore} leaderboard={leaderboard}/>
+          <View style={styles.progressContainer}>
+            <ProgressBar row progress={0.8} duration={500} height={20} borderRadius={50} />
           </View>
         </View>
         <View style={styles.slide2}>
@@ -60,9 +60,9 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
         </View>
       </Swiper>
       <View style={styles.footer}>
-        <TouchableHighlight onPress={onPressLogout}>
+        <TouchableOpacity onPress={onPressLogout}>
           <Text style={styles.smallText}>Log out</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   </SafeAreaView>
