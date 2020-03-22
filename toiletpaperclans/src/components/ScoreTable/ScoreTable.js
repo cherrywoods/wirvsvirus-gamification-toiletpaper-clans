@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ScoreTableRow from '_ScoreTable/ScoreTableRow.js';
 import ScoreTableHeading from '_ScoreTable/ScoreTableHeading.js';
 import ScoreTableYour from '_ScoreTable/ScoreTableYour';
@@ -62,5 +62,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     width: '90%',
-  }
+  },
 });

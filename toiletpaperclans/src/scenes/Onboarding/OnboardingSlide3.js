@@ -29,13 +29,13 @@ const styles = StyleSheet.create({
       fontWeight: '600',
       marginLeft: 50,
       marginRight: 50,
-      textAlign: 'center'
+      textAlign: 'center',
     },
     footer: {
       textSize: 16,
       margin: 30,
       textAlign: 'center',
-    }
+    },
   });
 
 export default OnboardingSlide3;

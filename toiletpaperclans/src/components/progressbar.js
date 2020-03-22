@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { AppRegistry, StyleSheet, Text, View, Animated } from "react-native";
+import React, { Component } from 'react';
+import { AppRegistry, StyleSheet, Text, View, Animated } from 'react-native';
 
 class ProgressBar extends Component {
 
@@ -11,7 +11,7 @@ class ProgressBar extends Component {
     if (prevProps.progress !== this.props.progress) {
       Animated.timing(this.animation, {
         toValue: this.props.progress,
-        duration: this.props.duration
+        duration: this.props.duration,
       }).start();
     }
   }
@@ -25,24 +25,24 @@ class ProgressBar extends Component {
       borderRadius,
       barColor,
       fillColor,
-      row
+      row,
     } = this.props;
 
     const widthInterpolated = this.animation.interpolate({
       inputRange: [0, 1],
-      outputRange: ["0%", "100%"],
-      extrapolate: "clamp"
-    })
+      outputRange: ['0%', '100%'],
+      extrapolate: 'clamp',
+    });
 
     return (
-      <View style={[{flexDirection: "row", height }, row ? { flex: 1} : undefined ]}>
+      <View style={[{flexDirection: 'row', height }, row ? { flex: 1} : undefined ]}>
         <View style={{ flex: 1, borderColor, borderWidth, borderRadius}}>
           <View
             style={[StyleSheet.absoluteFill, { backgroundColor: fillColor }]}
           />
           <Animated.View
             style={{
-              position: "absolute",
+              position: 'absolute',
               left: 0,
               top: 0,
               bottom: 0,
@@ -53,18 +53,18 @@ class ProgressBar extends Component {
           />
         </View>
       </View>
-    )
+    );
   }
 }
 
 ProgressBar.defaultProps = {
   height: 10,
-  borderColor: "#FFFFFF",
+  borderColor: '#FFFFFF',
   borderWidth: 2,
   borderRadius: 4,
   barColor: '#aec8c3',
   fillColor: 'white',
   duration: 100,
-}
+};
 
 export default ProgressBar;

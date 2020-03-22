@@ -1,21 +1,17 @@
-import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, { useMemo } from 'react';
+import { View, StyleSheet } from 'react-native';
 import ProfilePicture from '_components/profilepicture.js';
 import ButtonAddMember from '_components/addButton.js';
 
-const MyTeamMembers = ({members}) => {
-
-    var profiles = [];
-    var counter = 0; // assing keys
-    for (const member of members) {
-        profiles.push(<ProfilePicture key={counter}></ProfilePicture>);
-        counter += 1;
-    }
-
+const MyTeamMembers = ({ members }) => {
+    const membersObject = useMemo(() => Object.fromEntries(members), [members]);
     return (
         <View style={styles.container}>
-            {profiles}
-            <ButtonAddMember></ButtonAddMember>
+            {Object.keys(membersObject).map(key => (
+                // member object is at membersObject[key].
+                <ProfilePicture key={key} />
+            ))}
+            <ButtonAddMember />
         </View>
     );
 }

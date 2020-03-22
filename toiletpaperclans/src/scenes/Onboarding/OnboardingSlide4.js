@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         marginLeft: 50,
         marginRight: 50,
-        textAlign: 'center'
+        textAlign: 'center',
       },
       button: {
         backgroundColor: '#B40E22',
-        width: 300, 
+        width: 300,
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
         textSize: 16,
         margin: 30,
         textAlign: 'center',
-      }
-  
+      },
+
   });
 
 export default OnboardingSlide4;

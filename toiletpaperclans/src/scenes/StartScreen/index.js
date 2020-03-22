@@ -6,8 +6,8 @@ const StartScreen = ({navigation}) => (
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
       <TouchableHighlight style={styles.highlight} onPress={() => navigation.navigate('Login')}>
         <View style={styles.container}>
-          <Image style={styles.logo} source={require('_assets/img/logo.png')}></Image>
-          <Image style={styles.logoWord} source={require('_assets/img/logo_word.png')}></Image>
+          <Image style={styles.logo} source={require('_assets/img/logo.png')} />
+          <Image style={styles.logoWord} source={require('_assets/img/logo_word.png')} />
           <Text style={styles.text}>Press to Play!</Text>
         </View>
       </TouchableHighlight>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 20,
       fontWeight: 'bold',
-    }
+    },
   });
-  
+
 export default StartScreen;
