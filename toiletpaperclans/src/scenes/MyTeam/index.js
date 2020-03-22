@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import FirebaseModel from '_utilities/FirebaseModel';
 
@@ -13,6 +13,29 @@ const MyTeamScreen = ({ navigation }) => {
   const [disinfectantScore, setDisinfectantScore] = useState(firebaseData.teamDisinfectant);
   const [teamMembers, setTeamMembers] = useState(firebaseData.teamMembers);
   const [leaderboard, setLeaderboard] = useState(firebaseData.leaderboard);
+  const [slide1, setSlide1] = useState(slide1);
+  const [slide2, setSlide2] = useState(slide2);
+
+  const clickSliderButton = (ref) => {
+    console.log(ref.current.state);
+    if(ref.current.state.index == 1) { 
+      ref.current.scrollBy(-1);
+      slideHasChanged(1);
+    } else if(ref.current.state.index == 0) {
+        ref.current.scrollBy(1); 
+        slideHasChanged(2);
+    }
+  }
+
+  const slideHasChanged = (index) => {
+    if(index == 0){
+      setSlide1('#B40E22');
+      setSlide2('black');
+    } else if(index == 1){
+      setSlide2('#B40E22');
+      setSlide1('black');
+    }
+  }
 
   useEffect(() => {
     firebaseData.on('teamName', setTeamName);
@@ -42,9 +65,15 @@ const MyTeamScreen = ({ navigation }) => {
       disinfectantScore={disinfectantScore}
       teamMembers={teamMembers}
       leaderboard={leaderboard}
+      slide1={slide1}
+      slide2={slide2}
+      slideHasChanged={slideHasChanged}
+      clickSliderButton={clickSliderButton}
       onPressLogout={doLogout}
     />
   );
 };
+
+
 
 export default MyTeamScreen;

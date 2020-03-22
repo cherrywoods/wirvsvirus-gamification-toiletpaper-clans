@@ -38,7 +38,7 @@ export default class GeneralModal extends Component {
                 fontSize: 30,
                 fontWeight: 'bold',
               }}>
-              -{this.state.description}
+              {this.state.description}
             </Text>
 
             <TouchableOpacity

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, SafeAreaView, Image, ImageBackground, TouchableHighlight } from 'react-native';
+import React, { useRef } from 'react';
+import { View, Text, SafeAreaView, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
@@ -11,17 +11,25 @@ import styles from './styles';
 import LootingPopup from '_components/LootingPopup';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout }) => (
+export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout }) => {
+
+  ref = useRef();
+
+  return (
   <SafeAreaView style={styles.container}>
     <ImageBackground
       source={require('_assets/img/toiletpaper.jpg')}
       style={styles.imageBackground}
     >
       <View style={styles.upperMenu}>
-        <Text style={styles.menuText}>{teamName}</Text>
-        <Text style={styles.menuText}>Score</Text>
+        <TouchableOpacity onPress={() => clickSliderButton(ref)}>
+          <Text style={[styles.menuText, { color: slide1 }]}>{teamName}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => clickSliderButton(ref)}>
+          <Text style={[styles.menuText, { color: slide2 }]}>Score</Text>
+        </TouchableOpacity>
       </View>
-      <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
+      <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false}>
         <View style={styles.slide1}>
           <View style={styles.popup}>
             <LootingPopup content={2} value={3}></LootingPopup>  
@@ -35,20 +43,16 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
               />
               <Text style={styles.ressourceCount}>{toiletpaperScore}</Text>
             </View>
-            <View style={styles.ressource}>
+            <View style={styles.progressContainer}>
+              <ProgressBar row progress={0.8} duration={500} height={20} borderRadius={50} />
               <Image
-                style={styles.ressourceImage}
+                style={styles.progressbarIcon}
                 source={require('_assets/icons/Desinfection.png')}
               />
-              <Text style={styles.ressourceCount}>{disinfectantScore}</Text>
             </View>
           </View>
-          <View style={styles.progressContainer}>
-            <ProgressBar row progress={0.8} duration={500} height={20} borderRadius={50} />
-            <Image
-              style={styles.progressbarIcon}
-              source={require('_assets/icons/Desinfection.png')}
-            />
+          <View style={styles.slide2}>
+            <ScoreTable teamName={teamName} toiletpaperScore={toiletpaperScore} leaderboard={leaderboard}/>
           </View>
         </View>
         <View style={styles.slide2}>
@@ -62,4 +66,5 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
       </View>
     </ImageBackground>
   </SafeAreaView>
-);
+  );
+}
