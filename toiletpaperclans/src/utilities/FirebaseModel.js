@@ -178,7 +178,7 @@ class FirebaseModel {
 
         database().ref("Team/"+teamId+"/Member").on('value', (snapshot) => {
             const memberIds = snapshot.val().split(",");
-            const oldMemberIds = Array.from(this.teamMembers.keys());
+            const oldMemberIds = this.teamMembers ? Array.from(this.teamMembers.keys()) : [];
 
             const memberCallback = (_snapshot) => {
                 const value = _snapshot.val();
