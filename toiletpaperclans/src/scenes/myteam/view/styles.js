@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+import { BLACK } from '_styles';
 export default StyleSheet.create({
   imageBackground: {
     width: '100%',
     height: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   slide1: {
     flex: 1,
@@ -12,7 +13,7 @@ export default StyleSheet.create({
   slide2: {
     flex: 1,
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
   },
   container: {
     flex: 1,
@@ -54,13 +55,13 @@ export default StyleSheet.create({
     left: 30,
   },
   progressContainer: {
-    alignItems: "center", 
-    flexDirection: "row",
+    alignItems: 'center',
+    flexDirection: 'row',
     width: '90%',
   },
   progressbarIcon: {
     height: 70,
     width: 70,
     resizeMode: 'contain',
-  }
+  },
 });
