@@ -5,7 +5,6 @@ import FirebaseModel from '_utilities/FirebaseModel';
 import MyTeamView from './view';
 
 import auth from '@react-native-firebase/auth';
-import navigations from '_navigations';
 
 const firebaseData = FirebaseModel.instance();
 const MyTeamScreen = ({ navigation }) => {

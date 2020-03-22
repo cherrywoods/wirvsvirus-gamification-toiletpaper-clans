@@ -1,4 +1,4 @@
-import {createStackNavigator} from 'react-navigation-stack';
+import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 
 import LoginScreen from '_scenes/Login';
 import SignUpScreen from '_scenes/SignUp';
@@ -14,6 +14,6 @@ const RouteConfigs = {
   SignUp: SignUpScreen,
 };
 
-const AuthNavigator = createStackNavigator(RouteConfigs, AuthNavigatorConfig);
+const AuthNavigator = createAnimatedSwitchNavigator(RouteConfigs, AuthNavigatorConfig);
 
 export default AuthNavigator;

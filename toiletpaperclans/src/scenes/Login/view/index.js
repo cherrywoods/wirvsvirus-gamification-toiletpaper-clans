@@ -4,7 +4,7 @@ import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackgroun
 import styles from './styles';
 
 // NO Logic here!
-export default ({ onChangeEmail, onChangePassword, onPressHome, onPressLogin, onPressSignUp }) => (
+export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPressSignUp }) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header} >
@@ -26,12 +26,16 @@ export default ({ onChangeEmail, onChangePassword, onPressHome, onPressLogin, on
         <Text style={styles.headerText}>Sign in with your</Text>
         <TextInput
           style={styles.textField}
+          editable={!isLoading}
           placeholder="E-mail"
           autoCapitalize="none"
+          autoCompleteType="email"
+          keyboardType="email-address"
           onChangeText={onChangeEmail}
         />
         <TextInput
           style={styles.textField}
+          editable={!isLoading}
           placeholder="Password"
           secureTextEntry
           onChangeText={onChangePassword}
@@ -39,10 +43,10 @@ export default ({ onChangeEmail, onChangePassword, onPressHome, onPressLogin, on
       </View>
 
       <View style={styles.footer}>
-        <TouchableHighlight style={styles.button} onPress={onPressLogin}>
+        <TouchableHighlight disabled={isLoading} style={styles.button} onPress={onPressLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableHighlight>
-        <TouchableHighlight onPress={onPressSignUp}>
+        <TouchableHighlight disabled={isLoading} onPress={onPressSignUp}>
           <Text style={styles.smallText}>Don't have an Account? Sign Up!</Text>
         </TouchableHighlight>
       </View>
