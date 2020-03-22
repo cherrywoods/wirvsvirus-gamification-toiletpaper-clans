@@ -3,7 +3,6 @@ import Navigator from '_navigations';
 import FirebaseModel from '_utilities/FirebaseModel';
 
 // TODO: for testing
-FirebaseModel.instance().loginAsUser("-M2xiPYZuRgUzlWEa_q1");
 FirebaseModel.instance().on('leaderboard', b => console.log("board", b));
 
 const App = () => <Navigator />;

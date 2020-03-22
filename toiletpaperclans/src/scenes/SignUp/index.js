@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import auth from '@react-native-firebase/auth';
 
+import FirebaseModel from '_utilities/FirebaseModel';
+
 import SignUpView from './view';
 
 const SignUpScreen = ({ navigation }) => {
@@ -17,8 +19,11 @@ const SignUpScreen = ({ navigation }) => {
     }
     setIsLoading(true);
     auth().createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        navigation.navigate('App');
+      .then(({ user }) => {
+        if (user) {
+          FirebaseModel.instance().loginAsUser(user.uid);
+          navigation.navigate('App');
+        }
       })
       .catch(() => {
         console.log('error');

@@ -27,6 +27,7 @@ const MyTeamScreen = ({ navigation }) => {
   }, []);
 
   const doLogout = () => {
+    FirebaseModel.instance().logout();
     auth().signOut();
     navigation.navigate('Auth');
   };
