@@ -19,6 +19,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* toiletpaperclansTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* toiletpaperclansTests.m */; };
+		63FB983C242814DD002E055D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63FB983B242814DD002E055D /* GoogleService-Info.plist */; };
 		D847902AE1FAFA33DA12EDA4 /* libPods-toiletpaperclans-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C573479A189D6DFF8B734D17 /* libPods-toiletpaperclans-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		25FC9DEE057B7A6E60CE9151 /* Pods-toiletpaperclansTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclansTests.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclansTests/Pods-toiletpaperclansTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* toiletpaperclans-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "toiletpaperclans-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* toiletpaperclans-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "toiletpaperclans-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63FB983B242814DD002E055D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82BE0082EA4DC91F862B4646 /* Pods-toiletpaperclans.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans/Pods-toiletpaperclans.release.xcconfig"; sourceTree = "<group>"; };
 		863786793F497ECDBBC95539 /* Pods-toiletpaperclans.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans/Pods-toiletpaperclans.debug.xcconfig"; sourceTree = "<group>"; };
 		9AF5AB6132B67AEB00DFA129 /* libPods-toiletpaperclans-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclans-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 		1E26014485614042B28FA3E6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				63FB983B242814DD002E055D /* GoogleService-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				63FB983C242814DD002E055D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
