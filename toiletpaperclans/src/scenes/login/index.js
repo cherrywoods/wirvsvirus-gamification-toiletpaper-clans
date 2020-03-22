@@ -27,11 +27,11 @@ const LoginScreen = ({navigation}) => (
     </View>
 
     <View style={styles.footer}>
-      <TouchableHighlight style={styles.button}>
+      <TouchableHighlight style={styles.button} onPress={() => navigation.navigate('MyTeam')}>
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableHighlight>
-        <TouchableHighlight  >
-          <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
+        <TouchableHighlight onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.smallText}>Don't have an Account? Sign Up!</Text>
         </TouchableHighlight>
     </View>
     </ImageBackground>
