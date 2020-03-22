@@ -40,7 +40,6 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPas
           onChangeText={onChangeConfirmPassword}
         />
       </View>
-
       <View style={styles.footer}>
         <Text style={styles.smallText}>
           By creating an account you agree to our
