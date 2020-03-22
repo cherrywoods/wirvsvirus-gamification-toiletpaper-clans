@@ -68,16 +68,6 @@ class FirebaseModel {
         this.listers.set('teamDisinfectant', [(newValue) => { this.teamDisinfectant = newValue; }]);
         this.listers.set('teamMembers', [
             (newValue) => { this.teamMembers = newValue; },
-            /*
-            (newMembers) => {
-                // update toiletpaper score
-                var newToiletpaperScore = 0;
-                for (const member of newMembers.values()) {
-                    newToiletpaperScore += member.toiletpaper;
-                }
-                this.trigger("teamToiletpaper", newToiletpaperScore);
-            }
-            */
         ]);
         this.listers.set("leaderboard", [(newValue) => { this.leaderboard = newValue }]);
     }
@@ -121,12 +111,12 @@ class FirebaseModel {
             }
         );
 
-        // TODO: replace by server side solution to scale
-        firebase.database().ref("Team/").on('value', (snapshot) => {
+        // TODO: optimally request index of own team and get only the first 10
+        firebase.database().ref("Team/").orderByChild('toiletpaper').on('value', (snapshot) => {
             const teams = snapshot.val();
             var teamStats = [];
             var ownTeamStats = null;
-            for (const teamKey in teams) {
+            for (const teamKey in snapshot.val()) {
                 teamStats.push({
                     "teamId": teamKey,
                     "name": teams[teamKey].Name,
@@ -136,7 +126,6 @@ class FirebaseModel {
                     ownTeamStats = teamStats[teamStats.length-1];
                 }
             }
-            teamStats.sort((a, b) => b.score - a.score);
             const topTen = teamStats.slice(0, Math.min(10, teamStats.length));
             const ownTeamRank = teamStats.indexOf(ownTeamStats) + 1;
             this.trigger("leaderboard", {
