@@ -1,12 +1,20 @@
 # Toiletpaper Clans 
-Unser Git-Repository für die App 'Toiletpaper Clans'. Wir sind Teil von #WirvsVirus.
+Unser Git-Repository für die App 'Toiletpaper Clans'. Wir sind Teil von #WirvsVirusHack.
 
-Bleib zuhause, sammle Klopapier und nutze die Nachlässigkeit von anderen Gruppen, um weiteres Klopapier zu rauben. Schaffst du es, das meiste Klopapier zu horten und auf dem Siegerpodest zu stehen?
+ToiletPaper Clans - Das Spiel für die Quarantäne
+
+Stay at home und sammle Klopapier! Noch besser sammle mit deinen Freunden zusammen! Bildet Teams und sammelt zusammen Klopapier.
+
+Doch halt! Ihr seid unter Quarantäne....
+
+Wehe einer von euch verlässt das Haus, dann sinkt euer Desinfektionslevel!!!
+
+Wir können als Team auch andere Teams überfallen, wenn diese nicht zu Hause sind und ihr Klopapier ergattern! 
 
 ![App Overview](https://media.discordapp.net/attachments/690844505821151263/691291108503846962/WebScreen.png?width=1197&height=673)
 
-devpost: https://devpost.com/software/46_gamification_toiletpaperclans#
-adobe xd design prototype: https://xd.adobe.com/view/c4bec169-faaf-4fc9-5040-f7f724555f58-b28f/screen/84582bc9-b6a2-4d1b-b94d-2e75b520909d/iPad-Pro-10-5-3
+Devpost: https://devpost.com/software/46_gamification_toiletpaperclans
+Adobe XD Design Prototyp: https://xd.adobe.com/view/c4bec169-faaf-4fc9-5040-f7f724555f58-b28f/screen/84582bc9-b6a2-4d1b-b94d-2e75b520909d/iPad-Pro-10-5-3
 
 ## Anforderungen
 
@@ -16,14 +24,14 @@ adobe xd design prototype: https://xd.adobe.com/view/c4bec169-faaf-4fc9-5040-f7f
 
 ### Tracking
 
-    - Nutzer muss getrackt werden können, ob er zu Hause ist oder nicht
-    - Nutzer müssen die Möglichkeit habe das Tracking ihres Verhaltens ein- und ausschalten zu können 
-    - Ist das Tracking ausgeschaltet dann ist der Zustand des Nutzers der selbe wie wenn dieser das Haus verlassen hat.
-    - Nutzer müssen die Möglichkeit haben zu sehen ob ihre Teammitglieder zuhause oder unterwegs sind
+    - Nutzer müssen getrackt werden können, um zu ermitteln, ob sie zu Hause sind oder nicht
+    - Nutzer müssen die Möglichkeit haben, das Tracking ihres Verhaltens ein- und ausschalten zu können 
+    - Sobald das Tracking ausgeschaltet wurde, ist der Zustand des Nutzers der selbe, wie wenn dieser das Haus verlassen hat.
+    - Nutzer müssen die Möglichkeit haben zu sehen, ob ihre Teammitglieder zuhause oder unterwegs sind
 
 ### Argon/Wettkampf
 
-    - Nutzer müssen Kloppaier und Desinfektionsmittel in einem Stock sammeln können
+    - Nutzer müssen Klopapier und Desinfektionsmittel in einem Stock sammeln können
         - Desinfektionsmittel => sowas wie **Mana**/ Schutzmittel
         - Desinfektionsmittel wie wird es gesammelt wenn alle gleichzeitig zuhause sind.
         - Nutzer die draußen sind verbrauchen Desinfektionsmittel (in welchem verhältnis? können wir die nähe zu anderen nutzern verwenden und den verbrauch hier steigern?
