@@ -62,7 +62,7 @@ export default class LootingPopup extends Component {
    } 
    if (this.state.content == 3) {
      popup  =  <View style={styles.popup}>
-           <Text style={{fontWeight: "bold",fontSize: 18,color:"white"}}>THINGS MISSED UP!</Text>
+           <Text style={{fontWeight: "bold",fontSize: 18,color:"white"}}>THINGS MESSED UP!</Text>
            <View>
            <Image style={{
             width: 50,
