@@ -14,7 +14,7 @@ const SignUpScreen = ({navigation}) => (
       </View>
 
     <View style={styles.textFieldWrapper}>
-      <Text style={styles.headerText} >Create An Account</Text>
+      <Text style={styles.headerText}>Create An Account</Text>
       <TextInput 
         style={styles.textField}
         placeholder="Name"
@@ -33,12 +33,12 @@ const SignUpScreen = ({navigation}) => (
 
     <View style={styles.footer}>
         <Text style={styles.smallText}>Privacy...</Text>
-      <TouchableHighlight style={styles.button}>
+      <TouchableHighlight style={styles.button} onPress={() => navigation.navigate('MyTeam')}>
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableHighlight>
-        <TouchableHighlight>
-          <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
-        </TouchableHighlight>
+        <TouchableHighlight onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.smallText}>Already an account? Sign In!</Text>
+      </TouchableHighlight>
     </View>
 
   </SafeAreaView>
