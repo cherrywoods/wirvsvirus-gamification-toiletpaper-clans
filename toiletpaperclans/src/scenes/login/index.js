@@ -3,8 +3,8 @@ import { BLACK, RED, BABYBlUE } from '_styles';
 import {SafeAreaView, Text, TouchableHighlight, View, StyleSheet, TextInput, ImageBackground} from 'react-native';
 
 const LoginScreen = ({navigation}) => (
-  <SafeAreaView style={{backgroundColor: '#aec8c3', width: '100%', height: '100%'}}>
-    
+  <SafeAreaView style={{ width: '100%', height: '100%'}}>
+    <ImageBackground source={require('../../assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%'}}>
       <View style={styles.header} >
         <TouchableHighlight onPress={() => navigation.navigate('Home')}>
           <Text style={styles.headerIconLeft} >Home</Text>
@@ -34,78 +34,82 @@ const LoginScreen = ({navigation}) => (
           <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
         </TouchableHighlight>
     </View>
+    </ImageBackground>
 </SafeAreaView>);
 
 
-const styles = StyleSheet.create({
-  header: {
-      marginTop: 30,
-      justifyContent: 'space-between',
+  const styles = StyleSheet.create({
+    header: {
+        marginTop: 30,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+        marginBottom: 100,
+    },
+    headerText: {
+        color: '#B40E22',
+        fontSize: 28,
+        fontWeight: "500",
+        textAlign: 'center',
+        marginBottom: 30,
+    },
+    headerIconLeft: {
+        marginLeft: 30,
+        color: '#B40E22',
+        fontSize: 24,
+        width: 90,
+        marginBottom: 30,
+    },
+    headerIconRight: {
+        marginRight: 30,
+        opacity: 0,
+        width: 90,
+        marginBottom: 30,
+    },
+    textFieldWrapper: {
       alignItems: 'center',
-      flexDirection: 'row',
-      marginBottom: 100,
-  },
-  headerText: {
+    },
+    textField: {
+        backgroundColor: '#CCCCCC',
+        margin: 10,
+        height: 50,
+        width: '80%',
+        borderRadius: 10,
+        padding: 10,
+        color: '#B40E22',
+        fontSize: 18,
+    },
+    footer: {
+      width: '100%',
+      marginTop: 70,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    smallText: {
       color: '#B40E22',
-      fontSize: 28,
-      fontWeight: "500",
+      fontSize: 16,
       textAlign: 'center',
-      marginBottom: 30,
-  },
-  headerIconLeft: {
-      marginLeft: 30,
-      color: '#B40E22',
-      fontSize: 24,
-      width: 90,
-      marginBottom: 30,
-  },
-  headerIconRight: {
-      marginRight: 30,
-      opacity: 0,
-      width: 90,
-      marginBottom: 30,
-  },
-  textFieldWrapper: {
-    alignItems: 'center',
-  },
-  textField: {
-      backgroundColor: '#CCCCCC',
-      margin: 10,
-      height: 50,
-      width: '80%',
-      borderRadius: 10,
+      margin: 20,
       padding: 10,
-      color: '#B40E22',
-      fontSize: 18,
-  },
-  footer: {
-    position: 'absolute',
-    width: '100%',
-    bottom: 70,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  smallText: {
-    color: '#B40E22',
-    fontSize: 16,
-    textAlign: 'center',
-    marginTop: 30,
-  },
-  button: {
-    backgroundColor: '#B40E22',
-    width: '80%', 
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 10,
-  },
-  buttonText: {
-    color: '#FFFFFF',
-    textAlign: 'center',
-    fontSize: 28,
-    fontWeight: '500',
-  }
-});
+
+    },
+    button: {
+      backgroundColor: '#B40E22',
+      width: '80%', 
+      height: 50,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 10,
+    },
+    buttonText: {
+      color: '#FFFFFF',
+      textAlign: 'center',
+      fontSize: 28,
+      fontWeight: '500',
+    }
+  });
+  
 
 export default LoginScreen;
+
 

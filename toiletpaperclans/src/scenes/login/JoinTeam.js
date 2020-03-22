@@ -4,7 +4,7 @@ import {SafeAreaView, Text, TouchableHighlight, View, StyleSheet, TextInput, Ima
 
 const JoinTeamScreen = ({navigation}) => (
   <SafeAreaView style={{backgroundColor: '#aec8c3', width: '100%', height: '100%'}}>
-    
+    <ImageBackground source={require('../../assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%'}}>
       <View style={styles.header} >
         <TouchableHighlight onPress={() => navigation.navigate('Home')}>
           <Text style={styles.headerIconLeft} >Home</Text>
@@ -26,7 +26,7 @@ const JoinTeamScreen = ({navigation}) => (
         <Text style={styles.buttonText}>Join</Text>
       </TouchableHighlight>
     </View>
-
+    </ImageBackground>
   </SafeAreaView>
 );
 
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
   },
   textFieldWrapper: {
     alignItems: 'center',
+    //marginBottom: '70%'
   },
   textField: {
       backgroundColor: '#CCCCCC',
@@ -72,9 +73,8 @@ const styles = StyleSheet.create({
       fontSize: 18,
   },
   footer: {
-    position: 'absolute',
     width: '100%',
-    bottom: 70,
+    marginTop: 70,
     justifyContent: 'center',
     alignItems: 'center',
   },
