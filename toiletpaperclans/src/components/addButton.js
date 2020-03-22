@@ -1,6 +1,5 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
-import { GRAY_LIGHT, BABYBLUE } from '_styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ButtonAddMember = ({}) => (
