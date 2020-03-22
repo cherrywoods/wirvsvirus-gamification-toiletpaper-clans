@@ -34,9 +34,16 @@ export default ({ onChangeEmail, onChangePassword, onPressHome, onPressLogin, on
         <TouchableHighlight style={styles.button} onPress={onPressLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableHighlight>
-          <TouchableHighlight onPress={onPressSignUp}>
-            <Text style={styles.smallText}>Don't have an Account? Sign Up!</Text>
-          </TouchableHighlight>
+        <TouchableHighlight onPress={onPressSignUp}>
+          <Text style={styles.smallText}>Don't have an Account? Sign Up!</Text>
+        </TouchableHighlight>
+
+        {/* TODO: Remove!!! */}
+        <View>
+          <Text style={{ color: 'green', fontSize: 18 }}>Dev credentials:</Text>
+          <Text style={{ color: 'green', fontSize: 18 }}>Email: a@b.de</Text>
+          <Text style={{ color: 'green', fontSize: 18 }}>Password: 123456789</Text>
+        </View>
       </View>
     </ImageBackground>
   </SafeAreaView>

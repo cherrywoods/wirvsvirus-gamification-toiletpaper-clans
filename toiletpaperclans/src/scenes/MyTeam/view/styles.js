@@ -64,4 +64,14 @@ export default StyleSheet.create({
     width: 70,
     resizeMode: 'contain',
   },
+  footer: {
+    width: '100%',
+    alignItems: 'flex-end'
+  },
+  smallText: {
+    color: '#B40E22',
+    fontSize: 16,
+    margin: 20,
+    padding: 10,
+  },
 });

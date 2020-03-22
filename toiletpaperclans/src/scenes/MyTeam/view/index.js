@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, Image, ImageBackground } from 'react-native';
+import { View, Text, SafeAreaView, Image, ImageBackground, TouchableHighlight } from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
@@ -10,7 +10,7 @@ import ScoreTable from '_components/ScoreTable';
 import styles from './styles';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers }) => (
+export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, onPressLogout }) => (
   <SafeAreaView style={styles.container}>
     <ImageBackground
       source={require('_assets/img/toiletpaper.jpg')}
@@ -51,6 +51,11 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers }) 
           <ScoreTable />
         </View>
       </Swiper>
+      <View style={styles.footer}>
+        <TouchableHighlight onPress={onPressLogout}>
+          <Text style={styles.smallText}>Log out</Text>
+        </TouchableHighlight>
+      </View>
     </ImageBackground>
   </SafeAreaView>
 );
