@@ -9,7 +9,7 @@ const IsRunningOverlay = ({isRunning}) => {
     }
     return (
         <View style={styles.overlay}>
-            <Icon name='run' size={40} color='#aec8c3'></Icon>
+            <Icon name="run" size={40} color="#aec8c3" />
         </View>
     );
 };
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,0,0,0.5)',
         justifyContent: 'center',
         alignItems: 'center',
-    }
+    },
 });
 
 export default IsRunningOverlay;

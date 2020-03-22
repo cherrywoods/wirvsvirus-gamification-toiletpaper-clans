@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   view: {
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   imageBackground: {
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
   header: {
     marginTop: 30,
@@ -18,7 +18,7 @@ export default StyleSheet.create({
   headerText: {
     color: '#B40E22',
     fontSize: 28,
-    fontWeight: "500",
+    fontWeight: '500',
     textAlign: 'center',
     marginBottom: 30,
   },
@@ -52,7 +52,7 @@ export default StyleSheet.create({
   },
   button: {
     backgroundColor: '#B40E22',
-    width: '80%', 
+    width: '80%',
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
@@ -73,7 +73,7 @@ export default StyleSheet.create({
     width: '80%',
     paddingLeft: 40,
     height: 80,
-    marginTop: -80
+    marginTop: -80,
   },
   createAvatarText: {
     textAlign: 'right',
@@ -82,5 +82,5 @@ export default StyleSheet.create({
     fontSize: 70,
     fontWeight: '700',
     color: '#B40E22',
-  }
+  },
 });

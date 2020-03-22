@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ButtonAddMember = ({}) => (
     <TouchableOpacity style={styles.buttonStyle}>
-        <Icon name='plus' size={50} color='#aec8c3'></Icon>
+        <Icon name="plus" size={50} color="#aec8c3" />
     </TouchableOpacity>
 );
 
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
         margin: 5,
         backgroundColor: 'white',
         justifyContent: 'center',
-        alignItems: 'center'
-    }
+        alignItems: 'center',
+    },
 });
 
 export default ButtonAddMember;

@@ -7,7 +7,7 @@ const SignUpScreen = ({ navigation }) => {
     <SignUpView
       onPressHome={() => navigation.navigate('Home')}
     />
-  )
+  );
 };
 
 export default SignUpScreen;

@@ -14,7 +14,7 @@ export default ({ onPressHome }) => (
 
       <View style={styles.textFieldWrapper}>
         <Text style={styles.headerText} >Search a Team to join</Text>
-        <TextInput 
+        <TextInput
           style={styles.textField}
           placeholder="Cl4n%"
         />

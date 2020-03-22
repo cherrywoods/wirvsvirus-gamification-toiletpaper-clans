@@ -11,7 +11,7 @@ const ScoreTableHeading = ({}) => (
                     resizeMode: 'contain',
                     marginTop: 20,
                 }}
-                source={require('_assets/icons/Pokal.png')} 
+                source={require('_assets/icons/Pokal.png')}
             />
         </View>
         <View style={styles.row2Element}>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         flex: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     row3Element: {
         flex: 3,

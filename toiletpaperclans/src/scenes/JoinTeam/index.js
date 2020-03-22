@@ -5,7 +5,7 @@ const JoinTeamScreen = ({ navigation }) => {
     <JoinTeamView
       onPressHome={() => navigation.navigate('Home')}
     />
-  )
+  );
 };
 
 export default JoinTeamScreen;

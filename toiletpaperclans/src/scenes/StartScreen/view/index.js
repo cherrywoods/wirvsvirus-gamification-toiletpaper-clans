@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, Text, TouchableHighlight, ImageBackground, Image, View } from 'react-native';
 
 import styles from './styles';
-  
+
 export default ({ onPressLogin }) => (
   <SafeAreaView>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>

@@ -1,5 +1,5 @@
-import * as firebase from "firebase/app";
-import "firebase/database";
+import * as firebase from 'firebase/app';
+import 'firebase/database';
 
 /**
  * Mirrors the firebase data model.
@@ -19,14 +19,14 @@ class FirebaseModel {
 
     constructor() {
         const firebaseConfig = {
-            apiKey: "AIzaSyADJaKzQkiHVAlJsjEVijQA7vU81ltyxTs",
-            authDomain: "wirvsvirus-toiletpaper.firebaseapp.com",
-            databaseURL: "https://wirvsvirus-toiletpaper.firebaseio.com/",
-            projectId: "wirvsvirus-toiletpaper",
-            storageBucket: "wirvsvirus-toiletpaper.appspot.com",
-            messagingSenderId: "922995692187",
-            appId: "1:922995692187:web:f98db1f5db979682e5ec3e",
-            measurementId: "G-SCVEE4EEG5"
+            apiKey: 'AIzaSyADJaKzQkiHVAlJsjEVijQA7vU81ltyxTs',
+            authDomain: 'wirvsvirus-toiletpaper.firebaseapp.com',
+            databaseURL: 'https://wirvsvirus-toiletpaper.firebaseio.com/',
+            projectId: 'wirvsvirus-toiletpaper',
+            storageBucket: 'wirvsvirus-toiletpaper.appspot.com',
+            messagingSenderId: '922995692187',
+            appId: '1:922995692187:web:f98db1f5db979682e5ec3e',
+            measurementId: 'G-SCVEE4EEG5',
         };
 
         if (!firebase.apps.length) {
@@ -45,22 +45,25 @@ class FirebaseModel {
         this.teamDisinfectant = null;
         // map of members by userIds
         this.teamMembers = new Map();
+        // array of {name:, score:}
+        this.leaderboard = null;
 
         // MARK: listeners
         this.listers = new Map();
-        this.listers.set("userId", [(newUserId) => { this.userId = newUserId; }]);
-        this.listers.set("userName", [(newUserName) => { this.userName = newUserName; }]);
-        this.listers.set("userAtHome", [(newValue) => { this.userAtHome = newValue; }]);
-        this.listers.set("teamId", [
-            (newTeamId) => { this.teamId = newTeamId; }, 
+        this.listers.set('userId', [(newUserId) => { this.userId = newUserId; }]);
+        this.listers.set('userName', [(newUserName) => { this.userName = newUserName; }]);
+        this.listers.set('userAtHome', [(newValue) => { this.userAtHome = newValue; }]);
+        this.listers.set('teamId', [
+            (newTeamId) => { this.teamId = newTeamId; },
             (newTeamId) => {this.setupTeam(newTeamId); },
         ]);
-        this.listers.set("teamName", [(newTeamName) => {this.teamName = newTeamName }]);
-        this.listers.set("teamAllAtHome", [(newValue) => { this.teamAllAtHome = newValue; }]);
-        this.listers.set("teamToiletpaper", [(newValue) => { this.teamToiletpaper = newValue; }]);
-        this.listers.set("teamDisinfectant", [(newValue) => { this.teamDisinfectant = newValue; }]);
-        this.listers.set("teamMembers", [
+        this.listers.set('teamName', [(newTeamName) => {this.teamName = newTeamName; }]);
+        this.listers.set('teamAllAtHome', [(newValue) => { this.teamAllAtHome = newValue; }]);
+        this.listers.set('teamToiletpaper', [(newValue) => { this.teamToiletpaper = newValue; }]);
+        this.listers.set('teamDisinfectant', [(newValue) => { this.teamDisinfectant = newValue; }]);
+        this.listers.set('teamMembers', [
             (newValue) => { this.teamMembers = newValue; },
+            /*
             (newMembers) => {
                 // update toiletpaper score
                 var newToiletpaperScore = 0;
@@ -69,7 +72,24 @@ class FirebaseModel {
                 }
                 this.trigger("teamToiletpaper", newToiletpaperScore);
             }
+            */
         ]);
+        this.listers.set("leaderboard", [(newValue) => { this.leaderboard = newValue }]);
+
+        // TODO: replace by server side solution to scale
+        firebase.database().ref("Team/").on('value', (snapshot) => {
+            const teams = snapshot.val();
+            var teamStats = [];
+            for (const teamKey in teams) {
+                teamStats.push({
+                    "name": teams[teamKey].Name,
+                    "score": teams[teamKey].toiletpaper,
+                });
+            }
+            teamStats.sort((a, b) => b.score - a.score);
+            const topTen = teamStats.slice(0, Math.min(10, teamStats.length));
+            this.trigger("leaderboard", topTen);
+        });
 
     }
 
@@ -77,7 +97,7 @@ class FirebaseModel {
     on(eventKey, listener) {
         var ls = this.listers.get(eventKey);
         if (!ls) {
-            throw "invalid key to register listener on FirebaseModel";
+            throw 'invalid key to register listener on FirebaseModel';
         }
         ls.push(listener);
         this.listers.set(eventKey, ls);
@@ -87,9 +107,9 @@ class FirebaseModel {
     off(eventKey, listener) {
         var ls = this.listers.get(eventKey);
         if (!ls) {
-            throw "invalid key to remove listener on FirebaseModel";
+            throw 'invalid key to remove listener on FirebaseModel';
         }
-        let i = ls.indexOf(listener); 
+        let i = ls.indexOf(listener);
         ls.splice(i, Math.max(i, 0));
         this.listers.set(eventKey, ls);
     }
@@ -100,14 +120,14 @@ class FirebaseModel {
 
     /// login with the given user id
     loginAsUser(userId) {
-        this.trigger("userId", userId);
-        firebase.database().ref("User/"+userId+"/name").on('value', (snapshot) => {
-            this.trigger("userName", snapshot.val());
+        this.trigger('userId', userId);
+        firebase.database().ref('User/' + userId + '/name').on('value', (snapshot) => {
+            this.trigger('userName', snapshot.val());
         });
-        firebase.database().ref("User/"+userId+"/athome").on('value', (snapshot) => {
-            this.trigger("userAtHome", snapshot.val());
+        firebase.database().ref('User/' + userId + '/athome').on('value', (snapshot) => {
+            this.trigger('userAtHome', snapshot.val());
         });
-        firebase.database().ref("User/"+userId+"/team").on('value', (snapshot) => {
+        firebase.database().ref('User/' + userId + '/team').on('value', (snapshot) => {
                 this.trigger('teamId', snapshot.val());
             }
         );
@@ -115,42 +135,46 @@ class FirebaseModel {
 
     setupTeam(teamId) {
 
-        firebase.database().ref("Team/"+teamId+"/Name").on('value', (snapshot) => {
-            this.trigger("teamName", snapshot.val());
+        firebase.database().ref('Team/' + teamId + '/Name').on('value', (snapshot) => {
+            this.trigger('teamName', snapshot.val());
         });
 
-        firebase.database().ref("Team/"+teamId+"/disinfectant").on('value', (snapshot) => {
-            this.trigger("teamDisinfectant", snapshot.val());
+        firebase.database().ref('Team/' + teamId + '/disinfectant').on('value', (snapshot) => {
+            this.trigger('teamDisinfectant', snapshot.val());
         });
 
-        firebase.database().ref("Team/"+teamId+"/allathome").on('value', (snapshot) => {
-            this.trigger("teamAllAtHome", snapshot.val());
+        firebase.database().ref('Team/' + teamId + '/allathome').on('value', (snapshot) => {
+            this.trigger('teamAllAtHome', snapshot.val());
+        });
+
+        firebase.database().ref("Team/"+teamId+"/toiletpaper").on('value', (snapshot) => {
+            this.trigger("teamToiletpaper", snapshot.val());
         });
 
         firebase.database().ref("Team/"+teamId+"/Member").on('value', (snapshot) => {
             const memberIds = snapshot.val().split(",");
             const oldMemberIds = Array.from(this.teamMembers.keys());
-            
-            const memberCallback = (snapshot) => {
-                const value = snapshot.val();
+
+            const memberCallback = (_snapshot) => {
+                const value = _snapshot.val();
                 const newMembers = new Map(this.teamMembers);
-                newMembers.set(snapshot.key, value);
-                this.trigger("teamMembers", newMembers);
+                newMembers.set(_snapshot.key, value);
+                this.trigger('teamMembers', newMembers);
             };
 
             // turn listening off of removed members and remove from teamMembers
             const newMembers = new Map(this.teamMembers);
             for (const oldMemberId of oldMemberIds) {
-                firebase.database().ref("User/"+oldMemberId).off('value', memberCallback);
+                firebase.database().ref('User/' + oldMemberId).off('value', memberCallback);
                 newMembers.delete(oldMemberId);
             }
-            this.trigger("teamMembers", newMembers);
+            this.trigger('teamMembers', newMembers);
 
             // call of memberCallback following to on will setup the new members
             for (const memberId of memberIds) {
-                firebase.database().ref("User/"+memberId).on('value', memberCallback);
+                firebase.database().ref('User/' + memberId).on('value', memberCallback);
             }
-            
+
         });
     }
 

@@ -1,17 +1,18 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import ProfilePicture from '_components/profilepicture.js';
 import ButtonAddMember from '_components/addButton.js';
 
-const MyTeamMembers = ({}) => (
-    <View style={styles.container}>
-        <ProfilePicture></ProfilePicture>
-        <ProfilePicture></ProfilePicture>
-        <ProfilePicture></ProfilePicture>
-        <ProfilePicture></ProfilePicture>
-        <ButtonAddMember></ButtonAddMember>
-    </View>
-);
+const MyTeamMembers = ({ members }) => {
+    return (
+        <View style={styles.container}>
+            {members.map(member => (
+                <ProfilePicture key={member.key} />
+            ))}
+            <ButtonAddMember />
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
     container: {
