@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "922995692187",
+    "firebase_url": "https://wirvsvirus-toiletpaper.firebaseio.com",
+    "project_id": "wirvsvirus-toiletpaper",
+    "storage_bucket": "wirvsvirus-toiletpaper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922995692187:android:34aa9103146c6816e5ec3e",
+        "android_client_info": {
+          "package_name": "com.toiletpaperclans"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922995692187-glprho23qnehfjmevi8bnaubrc6gdu4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0b5JIgchSmWe6IDe7qseZAKWhcsRmm74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922995692187-glprho23qnehfjmevi8bnaubrc6gdu4q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "922995692187-g5qol4jj1o5gm1ob353k3kt951h25uq3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "de.geilerscheiss.toiletpaperclans"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, SafeAreaView, Image, ImageBackground, TouchableHighlight } from 'react-native';
+import React, { useRef } from 'react';
+import { View, Text, SafeAreaView, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
@@ -11,20 +11,28 @@ import styles from './styles';
 import LootingPopup from '_components/LootingPopup';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout }) => (
+export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton }) => {
+
+  const ref = useRef();
+
+  return (
   <SafeAreaView style={styles.container}>
     <ImageBackground
       source={require('_assets/img/toiletpaper.jpg')}
       style={styles.imageBackground}
     >
       <View style={styles.upperMenu}>
-        <Text style={styles.menuText}>{teamName}</Text>
-        <Text style={styles.menuText}>Score</Text>
+        <TouchableOpacity onPress={() => clickSliderButton(ref)}>
+          <Text style={[styles.menuText, { color: slide1 }]}>{teamName}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => clickSliderButton(ref)}>
+          <Text style={[styles.menuText, { color: slide2 }]}>Score</Text>
+        </TouchableOpacity>
       </View>
-      <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
+      <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
         <View style={styles.slide1}>
           <View style={styles.popup}>
-            <LootingPopup content={2} value={3}></LootingPopup>  
+            <LootingPopup content={2} value={3} />
           </View>
           <MyTeamMembers members={teamMembers}/>
           <View style={styles.ressourcesContainer}>
@@ -45,10 +53,6 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
           </View>
           <View style={styles.progressContainer}>
             <ProgressBar row progress={0.8} duration={500} height={20} borderRadius={50} />
-            <Image
-              style={styles.progressbarIcon}
-              source={require('_assets/icons/Desinfection.png')}
-            />
           </View>
         </View>
         <View style={styles.slide2}>
@@ -56,10 +60,11 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
         </View>
       </Swiper>
       <View style={styles.footer}>
-        <TouchableHighlight onPress={onPressLogout}>
+        <TouchableOpacity onPress={onPressLogout}>
           <Text style={styles.smallText}>Log out</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   </SafeAreaView>
-);
+  );
+}

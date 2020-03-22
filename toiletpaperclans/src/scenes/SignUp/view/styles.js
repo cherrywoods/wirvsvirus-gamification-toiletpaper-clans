@@ -50,7 +50,7 @@ export default StyleSheet.create({
   },
   footer: {
     width: '100%',
-    marginTop: 70,
+    marginTop: 35,
     justifyContent: 'center',
     alignItems: 'center',
   },
