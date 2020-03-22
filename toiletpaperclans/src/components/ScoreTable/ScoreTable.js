@@ -13,7 +13,7 @@ export default class ScoreTable extends Component {
     const teamScore = this.props.toiletpaperScore;
 
     var tableEntries = [];
-    for (i = 0; i < leaderboard.length; i += 1) {
+    for (var i = 0; i < leaderboard.length; i += 1) {
       if (ownTeamRank === i) {
         tableEntries.push(
           <ScoreTableYour 
