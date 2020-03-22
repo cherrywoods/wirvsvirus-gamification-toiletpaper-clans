@@ -1,5 +1,4 @@
-import * as firebase from 'firebase/app';
-import 'firebase/database';
+import { firebase } from '@react-native-firebase/database'
 
 /**
  * Mirrors the firebase data model.
