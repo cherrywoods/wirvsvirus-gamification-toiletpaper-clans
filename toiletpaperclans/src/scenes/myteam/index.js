@@ -16,6 +16,7 @@ class MyTeamScreen extends React.Component {
             "teamName": FirebaseModel.instance().teamName,
             "toiletpaperScore": FirebaseModel.instance().teamToiletpaper,
             "disinfectantScore": FirebaseModel.instance().teamDisinfectant,
+            "teamMembers": FirebaseModel.instance().teamMembers,
         };
     }
 
@@ -30,6 +31,9 @@ class MyTeamScreen extends React.Component {
         FirebaseModel.instance().on('teamDisinfectant', (dis) => this.setState({
             "disinfectantScore": dis,
         }));
+        FirebaseModel.instance().on('teamMembers', (members) => this.setState({
+            "teamMembers": members,
+        }))
     }
 
     render() {
@@ -42,7 +46,7 @@ class MyTeamScreen extends React.Component {
                     </View>
                     <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
                         <View style={styles.slide1}>
-                            <MyTeamMembers></MyTeamMembers>
+                            <MyTeamMembers members={this.state.teamMembers}></MyTeamMembers>
                             <View style={styles.ressourcesContainer}>
                                 <View style={styles.ressource}>
                                     <Image style={styles.ressourceImage} source={require('../../assets/icons/ToiletPaper.png')}></Image>
