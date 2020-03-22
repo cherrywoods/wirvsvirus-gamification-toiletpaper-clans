@@ -3,15 +3,15 @@ import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackgroun
 
 import styles from './styles';
 
-export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPassword, onPressLogin, onPressSignUp }) => (
+export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPassword, onPressLogin, onPressSignUp, onPressCancel }) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header} >
-        {/* <TouchableHighlight onPress={onPressHome}>
-          <Text style={styles.headerIconLeft} >Home</Text>
+        { /* <TouchableHighlight onPress={onPressHome}>
+          <Text style={styles.headerIconLeft}>Home</Text>
         </TouchableHighlight> */}
         <Text style={styles.headerText}>Sign Up</Text>
-        {/* <Text style={styles.headerIconRight}>Icon</Text> */}
+        { /* <Text style={styles.headerIconRight}>Icon</Text> */}
       </View>
 
       <View style={styles.textFieldWrapper}>
@@ -48,9 +48,14 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPas
         <TouchableHighlight disabled={isLoading} style={styles.button} onPress={onPressSignUp}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableHighlight>
+        <TouchableHighlight disabled={isLoading} onPress={onPressCancel}>
+          <Text style={styles.smallText}>Cancel</Text>
+        </TouchableHighlight>
+        { /* dont display this text on sign up screen
         <TouchableHighlight disabled={isLoading} onPress={onPressLogin}>
           <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
         </TouchableHighlight>
+          */ }
       </View>
     </ImageBackground>
   </SafeAreaView>
