@@ -1,4 +1,5 @@
 import database from '@react-native-firebase/database';
+import functions from '@react-native-firebase/functions';
 
 /**
  * Mirrors the firebase data model.
@@ -68,8 +69,7 @@ class FirebaseModel {
         this.listers.set('teamMembers', [
             (newValue) => { this.teamMembers = newValue; },
         ]);
-        this.listers.set("leaderboard", [(newValue) => { this.leaderboard = newValue }]);
-
+        this.listers.set('leaderboard', [(newValue) => { this.leaderboard = newValue }]);
     }
 
     /// register a new listener. you can register listeners for all properties by their textual names
@@ -100,6 +100,8 @@ class FirebaseModel {
     /// login with the given user id
     loginAsUser(userId) {
         this.trigger('userId', userId);
+        this.updateHomeStatus();
+
         database().ref('User/' + userId + '/name').on('value', (snapshot) => {
             this.trigger('userName', snapshot.val());
         });
@@ -198,6 +200,15 @@ class FirebaseModel {
                 database().ref('User/' + memberId).on('value', memberCallback);
             }
 
+        });
+    }
+
+    updateHomeStatus() {
+        if (!this.userId) {
+            return;
+        }
+        functions().httpsCallable('updateHomeStatus')({
+            home: true,
         });
     }
 

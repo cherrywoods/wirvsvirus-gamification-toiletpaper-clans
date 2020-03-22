@@ -28,7 +28,7 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   menuText: {
-    fontFamily: 'AdamWarrenpro',
+    // fontFamily: 'AdamWarrenpro',
     color: BLACK,
     fontSize: 25,
   },
@@ -52,7 +52,7 @@ export default StyleSheet.create({
   },
   ressourceCount: {
     fontSize: 35,
-    fontFamily: 'AdamWarrenpro-Bold',
+    // fontFamily: 'AdamWarrenpro-Bold',
     position: 'relative',
     top: -20,
   },

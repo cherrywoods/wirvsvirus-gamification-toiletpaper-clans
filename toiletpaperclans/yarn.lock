@@ -1103,6 +1103,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/database/-/database-6.3.4.tgz#76dc4679d00f33ee2c3157ed5ac95fa5af5f1b2f"
   integrity sha512-ytr3VyZ/CRCbYl1a28LCB8znv3l9ftxqkC7RJ0k0GZ+zfmMwjFy1GBYxz7F9XDHdUkpEXJSsXd4FiVwbNX1YSQ==
 
+"@react-native-firebase/functions@^6.3.4":
+  version "6.3.4"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/functions/-/functions-6.3.4.tgz#e5ac9d9793375f2247d709a838e3954fcb9a872b"
+  integrity sha512-mKi8MqNrzQ1po0CIBMszvO/fFLU3ev42oLH2b2c5WlJLS6JgY21jhwSAsy8ME250nR2j+Xx/T1vWfCWeefJ0Xw==
+
 "@react-navigation/core@^3.7.0":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.7.0.tgz#e184d1336c437828968917a21b06114c981b5035"
