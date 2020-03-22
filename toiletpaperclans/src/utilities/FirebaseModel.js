@@ -112,20 +112,22 @@ class FirebaseModel {
         );
 
         // TODO: optimally request index of own team and get only the first 10
-        firebase.database().ref("Team/").orderByChild('toiletpaper').on('value', (snapshot) => {
-            const teams = snapshot.val();
+        firebase.database().ref("Team/").orderByChild('toiletpaper').on('value', (teams) => {
             var teamStats = [];
             var ownTeamStats = null;
-            for (const teamKey in snapshot.val()) {
+            teams.forEach( (team) => {
+                const teamKey = team.key;
                 teamStats.push({
                     "teamId": teamKey,
-                    "name": teams[teamKey].Name,
-                    "score": teams[teamKey].toiletpaper,
-                });
+                    "name": teams.child(teamKey + "/Name").val(),
+                    "score": teams.child(teamKey + "/toiletpaper").val(),
+                    });
                 if (teamKey === this.teamId) {
                     ownTeamStats = teamStats[teamStats.length-1];
                 }
-            }
+            });
+            // firebase returns ordered in ascending oder
+            teamStats.reverse();
             const topTen = teamStats.slice(0, Math.min(10, teamStats.length));
             const ownTeamRank = teamStats.indexOf(ownTeamStats) + 1;
             this.trigger("leaderboard", {

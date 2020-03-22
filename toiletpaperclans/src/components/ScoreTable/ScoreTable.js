@@ -34,7 +34,6 @@ export default class ScoreTable extends Component {
         );
       }
     }
-    console.log("ownTeamRank", ownTeamRank);
     if (ownTeamRank > leaderboard.length) {
       tableEntries.push(
         <ScoreTableYour 
