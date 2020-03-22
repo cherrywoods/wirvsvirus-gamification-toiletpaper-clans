@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   header: {
     marginTop: 30,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     marginBottom: 100,
@@ -60,7 +60,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     margin: 20,
     padding: 10,
-
   },
   button: {
     backgroundColor: '#B40E22',

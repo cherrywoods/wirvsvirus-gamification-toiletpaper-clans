@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>922995692187-g5qol4jj1o5gm1ob353k3kt951h25uq3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.922995692187-g5qol4jj1o5gm1ob353k3kt951h25uq3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBzkUUVbWmMTu3ApRKTJx2dRuQcwFxOEjo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>922995692187</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>de.geilerscheiss.toiletpaperclans</string>
+	<key>PROJECT_ID</key>
+	<string>wirvsvirus-toiletpaper</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wirvsvirus-toiletpaper.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:922995692187:ios:d17bb797bbf52c56e5ec3e</string>
+	<key>DATABASE_URL</key>
+	<string>https://wirvsvirus-toiletpaper.firebaseio.com</string>
+</dict>
+</plist>

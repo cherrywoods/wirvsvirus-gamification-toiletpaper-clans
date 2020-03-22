@@ -1,5 +1,4 @@
-import * as firebase from 'firebase/app';
-import 'firebase/database';
+import database from '@react-native-firebase/database';
 
 /**
  * Mirrors the firebase data model.
@@ -18,20 +17,20 @@ class FirebaseModel {
     }
 
     constructor() {
-        const firebaseConfig = {
-            apiKey: 'AIzaSyADJaKzQkiHVAlJsjEVijQA7vU81ltyxTs',
-            authDomain: 'wirvsvirus-toiletpaper.firebaseapp.com',
-            databaseURL: 'https://wirvsvirus-toiletpaper.firebaseio.com/',
-            projectId: 'wirvsvirus-toiletpaper',
-            storageBucket: 'wirvsvirus-toiletpaper.appspot.com',
-            messagingSenderId: '922995692187',
-            appId: '1:922995692187:web:f98db1f5db979682e5ec3e',
-            measurementId: 'G-SCVEE4EEG5',
-        };
+        // const firebaseConfig = {
+        //     apiKey: 'AIzaSyADJaKzQkiHVAlJsjEVijQA7vU81ltyxTs',
+        //     authDomain: 'wirvsvirus-toiletpaper.firebaseapp.com',
+        //     databaseURL: 'https://wirvsvirus-toiletpaper.firebaseio.com/',
+        //     projectId: 'wirvsvirus-toiletpaper',
+        //     storageBucket: 'wirvsvirus-toiletpaper.appspot.com',
+        //     messagingSenderId: '922995692187',
+        //     appId: '1:922995692187:web:f98db1f5db979682e5ec3e',
+        //     measurementId: 'G-SCVEE4EEG5',
+        // };
 
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
+        // if (!firebase.apps.length) {
+        //     firebase.initializeApp(firebaseConfig);
+        // }
 
         // MARK: simple properties
 
@@ -70,6 +69,7 @@ class FirebaseModel {
             (newValue) => { this.teamMembers = newValue; },
         ]);
         this.listers.set("leaderboard", [(newValue) => { this.leaderboard = newValue }]);
+
     }
 
     /// register a new listener. you can register listeners for all properties by their textual names
@@ -100,19 +100,15 @@ class FirebaseModel {
     /// login with the given user id
     loginAsUser(userId) {
         this.trigger('userId', userId);
-        firebase.database().ref('User/' + userId + '/name').on('value', (snapshot) => {
+        database().ref('User/' + userId + '/name').on('value', (snapshot) => {
             this.trigger('userName', snapshot.val());
         });
-        firebase.database().ref('User/' + userId + '/athome').on('value', (snapshot) => {
+        database().ref('User/' + userId + '/athome').on('value', (snapshot) => {
             this.trigger('userAtHome', snapshot.val());
         });
-        firebase.database().ref("User/"+userId+"/team").on('value', (snapshot) => {
-                this.trigger("teamId", snapshot.val());
-            }
-        );
 
         // TODO: optimally request index of own team and get only the first 10
-        firebase.database().ref("Team/").orderByChild('toiletpaper').on('value', (teams) => {
+        database().ref("Team/").orderByChild('toiletpaper').on('value', (teams) => {
             var teamStats = [];
             var ownTeamStats = null;
             teams.forEach( (team) => {
@@ -135,27 +131,50 @@ class FirebaseModel {
                 "ownTeamRank": ownTeamRank,
             });
         });
+
+        database().ref('User/' + userId + '/team').on('value', (snapshot) => {
+                this.trigger('teamId', snapshot.val());
+        });
+    }
+
+    logout() {
+        [
+            'userId',
+            'userName',
+            'userAtHome',
+            'teamId',
+        ].map(key => this.trigger(key, null));
     }
 
     setupTeam(teamId) {
+        if (!teamId) {
+            [
+                'teamName',
+                'teamDisinfectant',
+                'teamAllAtHome',
+                'teamToiletpaper',
+                'teamMembers',
+            ].map(key => this.trigger(key, null));
+            return;
+        }
 
-        firebase.database().ref('Team/' + teamId + '/Name').on('value', (snapshot) => {
+        database().ref('Team/' + teamId + '/Name').on('value', (snapshot) => {
             this.trigger('teamName', snapshot.val());
         });
 
-        firebase.database().ref('Team/' + teamId + '/disinfectant').on('value', (snapshot) => {
+        database().ref('Team/' + teamId + '/disinfectant').on('value', (snapshot) => {
             this.trigger('teamDisinfectant', snapshot.val());
         });
 
-        firebase.database().ref('Team/' + teamId + '/allathome').on('value', (snapshot) => {
+        database().ref('Team/' + teamId + '/allathome').on('value', (snapshot) => {
             this.trigger('teamAllAtHome', snapshot.val());
         });
 
-        firebase.database().ref("Team/"+teamId+"/toiletpaper").on('value', (snapshot) => {
+        database().ref("Team/"+teamId+"/toiletpaper").on('value', (snapshot) => {
             this.trigger("teamToiletpaper", snapshot.val());
         });
 
-        firebase.database().ref("Team/"+teamId+"/Member").on('value', (snapshot) => {
+        database().ref("Team/"+teamId+"/Member").on('value', (snapshot) => {
             const memberIds = snapshot.val().split(",");
             const oldMemberIds = Array.from(this.teamMembers.keys());
 
@@ -169,14 +188,14 @@ class FirebaseModel {
             // turn listening off of removed members and remove from teamMembers
             const newMembers = new Map(this.teamMembers);
             for (const oldMemberId of oldMemberIds) {
-                firebase.database().ref('User/' + oldMemberId).off('value', memberCallback);
+                database().ref('User/' + oldMemberId).off('value', memberCallback);
                 newMembers.delete(oldMemberId);
             }
             this.trigger('teamMembers', newMembers);
 
             // call of memberCallback following to on will setup the new members
             for (const memberId of memberIds) {
-                firebase.database().ref('User/' + memberId).on('value', memberCallback);
+                database().ref('User/' + memberId).on('value', memberCallback);
             }
 
         });

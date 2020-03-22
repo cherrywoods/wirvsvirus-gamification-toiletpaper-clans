@@ -3,32 +3,41 @@ import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackgroun
 
 import styles from './styles';
 
-export default ({ onPressHome }) => (
+export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPassword, onPressLogin, onPressSignUp }) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header} >
-        <TouchableHighlight onPress={onPressHome}>
+        {/* <TouchableHighlight onPress={onPressHome}>
           <Text style={styles.headerIconLeft} >Home</Text>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
         <Text style={styles.headerText}>Sign Up</Text>
-        <Text style={styles.headerIconRight}>Icon</Text>
+        {/* <Text style={styles.headerIconRight}>Icon</Text> */}
       </View>
 
       <View style={styles.textFieldWrapper}>
         <Text style={styles.headerText} >Create An Account</Text>
         <TextInput
           style={styles.textField}
-          placeholder="Name"
+          editable={!isLoading}
+          placeholder="E-mail"
+          autoCapitalize="none"
+          autoCompleteType="email"
+          keyboardType="email-address"
+          onChangeText={onChangeEmail}
         />
         <TextInput
           style={styles.textField}
-          placeholder="Passwort"
+          editable={!isLoading}
+          placeholder="Password"
           secureTextEntry
+          onChangeText={onChangePassword}
         />
         <TextInput
           style={styles.textField}
-          placeholder="Confirm Passwort"
+          editable={!isLoading}
+          placeholder="Confirm Password"
           secureTextEntry
+          onChangeText={onChangeConfirmPassword}
         />
       </View>
 
@@ -37,10 +46,10 @@ export default ({ onPressHome }) => (
           By creating an account you agree to our
           Terms of Service and Privacy Policy
         </Text>
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight disabled={isLoading} style={styles.button} onPress={onPressSignUp}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableHighlight>
-        <TouchableHighlight>
+        <TouchableHighlight disabled={isLoading} onPress={onPressLogin}>
           <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
         </TouchableHighlight>
       </View>
