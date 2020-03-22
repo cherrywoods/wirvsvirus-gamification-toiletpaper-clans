@@ -3,11 +3,11 @@ import {SafeAreaView, Text, TouchableHighlight, StyleSheet, ImageBackground, Ima
 
 const StartScreen = ({navigation}) => (
   <SafeAreaView>
-    <ImageBackground source={require('../../assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
+    <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
       <TouchableHighlight style={styles.highlight} onPress={() => navigation.navigate('Login')}>
         <View style={styles.container}>
-          <Image style={styles.logo} source={require('../../assets/img/logo.png')}></Image>
-          <Image style={styles.logoWord} source={require('../../assets/img/logo_word.png')}></Image>
+          <Image style={styles.logo} source={require('_assets/img/logo.png')}></Image>
+          <Image style={styles.logoWord} source={require('_assets/img/logo_word.png')}></Image>
           <Text style={styles.text}>Press to Play!</Text>
         </View>
       </TouchableHighlight>
