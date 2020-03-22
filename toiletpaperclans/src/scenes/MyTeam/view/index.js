@@ -23,12 +23,10 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers }) 
       </View>
       <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
         <View style={styles.slide1}>
-<<<<<<< HEAD
           <View style={styles.popup}>
             <LootingPopup content={2} value={3}></LootingPopup>  
-          </View>=======
+          </View>
           <MyTeamMembers members={teamMembers}/>
->>>>>>> 1f1d9e5ff6de4b415c4c611b6c109b4a4405949a
           <View style={styles.ressourcesContainer}>
             <View style={styles.ressource}>
               <Image
