@@ -28,9 +28,9 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
   menuText: {
-    fontWeight: 'bold',
+    fontFamily: 'AdamWarrenpro',
     color: BLACK,
-    fontSize: 20,
+    fontSize: 25,
   },
   ressourcesContainer: {
     width: '90%',
@@ -51,9 +51,10 @@ export default StyleSheet.create({
     resizeMode: 'contain',
   },
   ressourceCount: {
-    fontSize: 40,
+    fontSize: 35,
+    fontFamily: 'AdamWarrenpro-Bold',
     position: 'relative',
-    top: -30,
+    top: -20,
   },
   progressContainer: {
     alignItems: 'center',
