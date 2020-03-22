@@ -3,6 +3,8 @@ Unser Git-Repository für die App 'Toiletpaper Clans'. Wir sind Teil von #WirvsV
 
 Bleib zuhause, sammle Klopapier und nutze die Nachlässigkeit von anderen Gruppen, um weiteres Klopapier zu rauben. Schaffst du es, das meiste Klopapier zu horten und auf dem Siegerpodest zu stehen?
 
+![App Overview](https://media.discordapp.net/attachments/690844505821151263/691291108503846962/WebScreen.png?width=1197&height=673)
+
 devpost: https://devpost.com/software/46_gamification_toiletpaperclans#
 
 ## Anforderungen
