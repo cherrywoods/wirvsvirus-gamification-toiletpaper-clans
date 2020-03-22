@@ -72,5 +72,15 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     zIndex: 1,
-  }
+  },
+  footer: {
+    width: '100%',
+    alignItems: 'flex-end'
+  },
+  smallText: {
+    color: '#B40E22',
+    fontSize: 16,
+    margin: 20,
+    padding: 10,
+  },
 });

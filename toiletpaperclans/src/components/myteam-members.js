@@ -4,11 +4,10 @@ import ProfilePicture from '_components/profilepicture.js';
 import ButtonAddMember from '_components/addButton.js';
 
 const MyTeamMembers = ({ members }) => {
-    const membersObject = useMemo(() => Object.fromEntries(members), [members]);
+    const membersObject = useMemo(() => members && Object.fromEntries(members), [members]);
     return (
         <View style={styles.container}>
-            {Object.keys(membersObject).map(key => (
-                // member object is at membersObject[key].
+            {membersObject && Object.keys(membersObject).map(key => (
                 <ProfilePicture key={key} />
             ))}
             <ButtonAddMember />
