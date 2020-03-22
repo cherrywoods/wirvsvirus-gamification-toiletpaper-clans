@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import { BLACK, RED, BABYBlUE } from '_styles';
 import {SafeAreaView, Text, TouchableHighlight, View, StyleSheet, TextInput, ImageBackground} from 'react-native';
 
@@ -35,27 +34,10 @@ const LoginScreen = ({navigation}) => (
           <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
         </TouchableHighlight>
     </View>
+</SafeAreaView>);
 
-=======
-import {SafeAreaView, Text, TouchableHighlight, StyleSheet, ImageBackground, Image, View} from 'react-native';
-
-const LoginScreen = ({navigation}) => (
-  <SafeAreaView>
-    <ImageBackground source={require('../../assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
-      <TouchableHighlight style={styles.highlight} onPress={() => navigation.navigate('MyTeam')}>
-        <View style={styles.container}>
-          <Image style={styles.logo} source={require('../../assets/img/logo.png')}></Image>
-          <Image style={styles.logoWord} source={require('../../assets/img/logo_word.png')}></Image>
-          <Text style={styles.text}>Press to Play!</Text>
-        </View>
-      </TouchableHighlight>
-    </ImageBackground>
->>>>>>> 2efd72a92cfe127972f714d092c4696f3bac0003
-  </SafeAreaView>
-);
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
   header: {
       marginTop: 30,
       justifyContent: 'space-between',
@@ -126,34 +108,4 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
-=======
-  highlight: {
-    height: '100%',
-    width: '100%',
-  },
-  container: {
-    width: '100%',
-    height: '100%',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logo: {
-    height: 250,
-    width: 250,
-    resizeMode: 'contain',
-  },
-  logoWord: {
-    width: 250,
-    resizeMode: 'contain',
-    position: 'relative',
-    top: -70,
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  }
-});
 
-export default LoginScreen;
->>>>>>> 2efd72a92cfe127972f714d092c4696f3bac0003

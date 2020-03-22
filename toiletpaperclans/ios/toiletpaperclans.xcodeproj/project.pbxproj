@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* toiletpaperclansTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* toiletpaperclansTests.m */; };
-		08043A5101B012BC695F7ACE /* libPods-toiletpaperclans.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 777B8847E433062EA8A5F93E /* libPods-toiletpaperclans.a */; };
+		127FF78F700E7ADED793A091 /* libPods-toiletpaperclansTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 473A501A648C522BFAE97D5E /* libPods-toiletpaperclansTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -17,9 +17,9 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* toiletpaperclansTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* toiletpaperclansTests.m */; };
-		63E13D1E0D257D8FA32B133D /* libPods-toiletpaperclans-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF6E8F5DE0687FDFE69CE04 /* libPods-toiletpaperclans-tvOSTests.a */; };
-		A39332E93A8E5237B6161053 /* libPods-toiletpaperclans-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C548BB9D3DCD85D260FE66 /* libPods-toiletpaperclans-tvOS.a */; };
-		B6D88863ED6AAD9298E559BC /* libPods-toiletpaperclansTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E200A761DA8B19AFAB7FFDCC /* libPods-toiletpaperclansTests.a */; };
+		80AED2E2D998E664FE1C1298 /* libPods-toiletpaperclans-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD9D71B3B9712B764D54ECF /* libPods-toiletpaperclans-tvOS.a */; };
+		D1FAD552455CCF503D995A4E /* libPods-toiletpaperclans-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ECEDF32168DABBA4B997BB7 /* libPods-toiletpaperclans-tvOSTests.a */; };
+		FBA1AFAA571250B0FB6E2ABD /* libPods-toiletpaperclans.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A184FE6A53FF428006553C24 /* libPods-toiletpaperclans.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,6 @@
 		00E356EE1AD99517003FC87E /* toiletpaperclansTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = toiletpaperclansTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* toiletpaperclansTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = toiletpaperclansTests.m; sourceTree = "<group>"; };
-		0FF6E8F5DE0687FDFE69CE04 /* libPods-toiletpaperclans-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclans-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* toiletpaperclans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = toiletpaperclans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = toiletpaperclans/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = toiletpaperclans/AppDelegate.m; sourceTree = "<group>"; };
@@ -52,19 +51,20 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = toiletpaperclans/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = toiletpaperclans/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = toiletpaperclans/main.m; sourceTree = "<group>"; };
-		16C370DADFEB2C8009B2DFFD /* Pods-toiletpaperclans-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans-tvOS/Pods-toiletpaperclans-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		13BE7C0A468BD30970AA8CC7 /* Pods-toiletpaperclans-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans-tvOS.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans-tvOS/Pods-toiletpaperclans-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		189DBE086B79C469AF3B9DF8 /* Pods-toiletpaperclans-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans-tvOS/Pods-toiletpaperclans-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1AD8B1E804FFBE2C8DBF4065 /* Pods-toiletpaperclans.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans/Pods-toiletpaperclans.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* toiletpaperclans-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "toiletpaperclans-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* toiletpaperclans-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "toiletpaperclans-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		50454193EC508F9FCF30E85C /* Pods-toiletpaperclans-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans-tvOSTests/Pods-toiletpaperclans-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		56774DE615FE2267FAA8EFB5 /* Pods-toiletpaperclans-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans-tvOS.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans-tvOS/Pods-toiletpaperclans-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		6C6560A812EF69F94BB454D6 /* Pods-toiletpaperclans.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans/Pods-toiletpaperclans.release.xcconfig"; sourceTree = "<group>"; };
-		777B8847E433062EA8A5F93E /* libPods-toiletpaperclans.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclans.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EBA4B41906D20EB8D7A07E1 /* Pods-toiletpaperclansTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclansTests.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclansTests/Pods-toiletpaperclansTests.release.xcconfig"; sourceTree = "<group>"; };
-		8446B030F23FC70057FDD859 /* Pods-toiletpaperclans-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans-tvOSTests/Pods-toiletpaperclans-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9643DB6350DD9A0B4F889743 /* Pods-toiletpaperclans.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans/Pods-toiletpaperclans.debug.xcconfig"; sourceTree = "<group>"; };
-		CB69F8AC0DDE82FAFCCE865F /* Pods-toiletpaperclansTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclansTests.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclansTests/Pods-toiletpaperclansTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E200A761DA8B19AFAB7FFDCC /* libPods-toiletpaperclansTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclansTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3C548BB9D3DCD85D260FE66 /* libPods-toiletpaperclans-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclans-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		473A501A648C522BFAE97D5E /* libPods-toiletpaperclansTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclansTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56EBF144A0368A31DFBA819A /* Pods-toiletpaperclansTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclansTests.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclansTests/Pods-toiletpaperclansTests.release.xcconfig"; sourceTree = "<group>"; };
+		62A4099951426487BDE55822 /* Pods-toiletpaperclansTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclansTests.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclansTests/Pods-toiletpaperclansTests.debug.xcconfig"; sourceTree = "<group>"; };
+		67A24621343331AA4BFBDCEB /* Pods-toiletpaperclans-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans-tvOSTests/Pods-toiletpaperclans-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		8ECEDF32168DABBA4B997BB7 /* libPods-toiletpaperclans-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclans-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0E8FD998928886C66CF02D5 /* Pods-toiletpaperclans-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans-tvOSTests/Pods-toiletpaperclans-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A184FE6A53FF428006553C24 /* libPods-toiletpaperclans.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclans.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE913F3BD69506CCA8F1BDA2 /* Pods-toiletpaperclans.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toiletpaperclans.debug.xcconfig"; path = "Target Support Files/Pods-toiletpaperclans/Pods-toiletpaperclans.debug.xcconfig"; sourceTree = "<group>"; };
+		EBD9D71B3B9712B764D54ECF /* libPods-toiletpaperclans-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-toiletpaperclans-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6D88863ED6AAD9298E559BC /* libPods-toiletpaperclansTests.a in Frameworks */,
+				127FF78F700E7ADED793A091 /* libPods-toiletpaperclansTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08043A5101B012BC695F7ACE /* libPods-toiletpaperclans.a in Frameworks */,
+				FBA1AFAA571250B0FB6E2ABD /* libPods-toiletpaperclans.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A39332E93A8E5237B6161053 /* libPods-toiletpaperclans-tvOS.a in Frameworks */,
+				80AED2E2D998E664FE1C1298 /* libPods-toiletpaperclans-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63E13D1E0D257D8FA32B133D /* libPods-toiletpaperclans-tvOSTests.a in Frameworks */,
+				D1FAD552455CCF503D995A4E /* libPods-toiletpaperclans-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,28 +149,12 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				777B8847E433062EA8A5F93E /* libPods-toiletpaperclans.a */,
-				E3C548BB9D3DCD85D260FE66 /* libPods-toiletpaperclans-tvOS.a */,
-				0FF6E8F5DE0687FDFE69CE04 /* libPods-toiletpaperclans-tvOSTests.a */,
-				E200A761DA8B19AFAB7FFDCC /* libPods-toiletpaperclansTests.a */,
+				A184FE6A53FF428006553C24 /* libPods-toiletpaperclans.a */,
+				EBD9D71B3B9712B764D54ECF /* libPods-toiletpaperclans-tvOS.a */,
+				8ECEDF32168DABBA4B997BB7 /* libPods-toiletpaperclans-tvOSTests.a */,
+				473A501A648C522BFAE97D5E /* libPods-toiletpaperclansTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3963A28B014C2C2E8E9578FA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9643DB6350DD9A0B4F889743 /* Pods-toiletpaperclans.debug.xcconfig */,
-				6C6560A812EF69F94BB454D6 /* Pods-toiletpaperclans.release.xcconfig */,
-				16C370DADFEB2C8009B2DFFD /* Pods-toiletpaperclans-tvOS.debug.xcconfig */,
-				56774DE615FE2267FAA8EFB5 /* Pods-toiletpaperclans-tvOS.release.xcconfig */,
-				8446B030F23FC70057FDD859 /* Pods-toiletpaperclans-tvOSTests.debug.xcconfig */,
-				50454193EC508F9FCF30E85C /* Pods-toiletpaperclans-tvOSTests.release.xcconfig */,
-				CB69F8AC0DDE82FAFCCE865F /* Pods-toiletpaperclansTests.debug.xcconfig */,
-				7EBA4B41906D20EB8D7A07E1 /* Pods-toiletpaperclansTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -189,7 +173,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				1E26014485614042B28FA3E6 /* Resources */,
-				3963A28B014C2C2E8E9578FA /* Pods */,
+				8E281F9A8B4893921710D98C /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -207,6 +191,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8E281F9A8B4893921710D98C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE913F3BD69506CCA8F1BDA2 /* Pods-toiletpaperclans.debug.xcconfig */,
+				1AD8B1E804FFBE2C8DBF4065 /* Pods-toiletpaperclans.release.xcconfig */,
+				189DBE086B79C469AF3B9DF8 /* Pods-toiletpaperclans-tvOS.debug.xcconfig */,
+				13BE7C0A468BD30970AA8CC7 /* Pods-toiletpaperclans-tvOS.release.xcconfig */,
+				A0E8FD998928886C66CF02D5 /* Pods-toiletpaperclans-tvOSTests.debug.xcconfig */,
+				67A24621343331AA4BFBDCEB /* Pods-toiletpaperclans-tvOSTests.release.xcconfig */,
+				62A4099951426487BDE55822 /* Pods-toiletpaperclansTests.debug.xcconfig */,
+				56EBF144A0368A31DFBA819A /* Pods-toiletpaperclansTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,7 +214,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "toiletpaperclansTests" */;
 			buildPhases = (
-				31E2D7F51F6A73100B9DE672 /* [CP] Check Pods Manifest.lock */,
+				7F6C23BB0214EDA04E238DAC /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -233,13 +233,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "toiletpaperclans" */;
 			buildPhases = (
-				FA7C3E44CBC4DCF874FBF40A /* [CP] Check Pods Manifest.lock */,
+				659A15E4C499EEE81FF9E63B /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				AB0F1DDDA589379E153DC585 /* [CP] Copy Pods Resources */,
+				36489BF6710BC42FB7A8D27B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,7 +254,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "toiletpaperclans-tvOS" */;
 			buildPhases = (
-				EE1A5C3459A0603A4E86FC54 /* [CP] Check Pods Manifest.lock */,
+				224874377D9662C368E17700 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -274,7 +274,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "toiletpaperclans-tvOSTests" */;
 			buildPhases = (
-				A2A7D5A7C07A45D0969A967A /* [CP] Check Pods Manifest.lock */,
+				0FB6BBAB1FAC2D1C98943D35 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -383,43 +383,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		31E2D7F51F6A73100B9DE672 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-toiletpaperclansTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A2A7D5A7C07A45D0969A967A /* [CP] Check Pods Manifest.lock */ = {
+		0FB6BBAB1FAC2D1C98943D35 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -441,7 +405,43 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AB0F1DDDA589379E153DC585 /* [CP] Copy Pods Resources */ = {
+		224874377D9662C368E17700 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-toiletpaperclans-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		36489BF6710BC42FB7A8D27B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -489,29 +489,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-toiletpaperclans/Pods-toiletpaperclans-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EE1A5C3459A0603A4E86FC54 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-toiletpaperclans-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA7C3E44CBC4DCF874FBF40A /* [CP] Check Pods Manifest.lock */ = {
+		659A15E4C499EEE81FF9E63B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -527,6 +505,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-toiletpaperclans-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F6C23BB0214EDA04E238DAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-toiletpaperclansTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -638,7 +638,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB69F8AC0DDE82FAFCCE865F /* Pods-toiletpaperclansTests.debug.xcconfig */;
+			baseConfigurationReference = 62A4099951426487BDE55822 /* Pods-toiletpaperclansTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -661,7 +661,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EBA4B41906D20EB8D7A07E1 /* Pods-toiletpaperclansTests.release.xcconfig */;
+			baseConfigurationReference = 56EBF144A0368A31DFBA819A /* Pods-toiletpaperclansTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -681,7 +681,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9643DB6350DD9A0B4F889743 /* Pods-toiletpaperclans.debug.xcconfig */;
+			baseConfigurationReference = AE913F3BD69506CCA8F1BDA2 /* Pods-toiletpaperclans.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -701,7 +701,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C6560A812EF69F94BB454D6 /* Pods-toiletpaperclans.release.xcconfig */;
+			baseConfigurationReference = 1AD8B1E804FFBE2C8DBF4065 /* Pods-toiletpaperclans.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -720,7 +720,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16C370DADFEB2C8009B2DFFD /* Pods-toiletpaperclans-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 189DBE086B79C469AF3B9DF8 /* Pods-toiletpaperclans-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -748,7 +748,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56774DE615FE2267FAA8EFB5 /* Pods-toiletpaperclans-tvOS.release.xcconfig */;
+			baseConfigurationReference = 13BE7C0A468BD30970AA8CC7 /* Pods-toiletpaperclans-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -776,7 +776,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8446B030F23FC70057FDD859 /* Pods-toiletpaperclans-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = A0E8FD998928886C66CF02D5 /* Pods-toiletpaperclans-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -803,7 +803,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50454193EC508F9FCF30E85C /* Pods-toiletpaperclans-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 67A24621343331AA4BFBDCEB /* Pods-toiletpaperclans-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
