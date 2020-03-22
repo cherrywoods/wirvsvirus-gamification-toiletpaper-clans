@@ -1,15 +1,8 @@
-import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import MyTeamScreen from '_scenes/MyTeam';
 
-const TabNavigatorConfig = {
-  initialRouteName: 'MyTeam',
-  header: null,
-  headerMode: 'none',
-};
-
-const RouteConfigs = {
+const AppNavigator = createStackNavigator({
   MyTeam: {
     screen: MyTeamScreen,
     navigationOptions: {
@@ -17,8 +10,10 @@ const RouteConfigs = {
       header: null,
     },
   },
-};
-
-const AppNavigator = createBottomTabNavigator(RouteConfigs, TabNavigatorConfig);
+}, {
+  initialRouteName: 'MyTeam',
+  header: null,
+  headerMode: 'none'
+});
 
 export default AppNavigator;
