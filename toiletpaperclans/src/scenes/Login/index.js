@@ -31,6 +31,8 @@ const LoginScreen = ({ navigation }) => {
   return (
     <LoginView
       isLoading={isLoading}
+      email={email}
+      password={password}
       onChangeEmail={setEmail}
       onChangePassword={setPassword}
       onPressLogin={doLogin}

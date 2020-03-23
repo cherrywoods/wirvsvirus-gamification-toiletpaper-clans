@@ -4,7 +4,7 @@ import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackgroun
 import styles from './styles';
 
 // NO Logic here!
-export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPressSignUp }) => (
+export default ({ isLoading, email, password, onChangeEmail, onChangePassword, onPressLogin, onPressSignUp }) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header} >
@@ -34,6 +34,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPr
           autoCapitalize="none"
           autoCompleteType="email"
           keyboardType="email-address"
+          value={email}
           onChangeText={onChangeEmail}
         />
         <TextInput
@@ -41,6 +42,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPr
           editable={!isLoading}
           placeholder="Password"
           secureTextEntry
+          value={password}
           onChangeText={onChangePassword}
         />
       </View>

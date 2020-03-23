@@ -3,7 +3,7 @@ import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackgroun
 
 import styles from './styles';
 
-export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPassword, onPressLogin, onPressSignUp, onPressCancel }) => (
+export default ({ isLoading, email, password, confirmPassword, onChangeEmail, onChangePassword, onChangeConfirmPassword, onPressLogin, onPressSignUp, onPressCancel }) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header} >
@@ -23,6 +23,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPas
           autoCapitalize="none"
           autoCompleteType="email"
           keyboardType="email-address"
+          value={email}
           onChangeText={onChangeEmail}
         />
         <TextInput
@@ -30,6 +31,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPas
           editable={!isLoading}
           placeholder="Password"
           secureTextEntry
+          value={password}
           onChangeText={onChangePassword}
         />
         <TextInput
@@ -37,6 +39,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPas
           editable={!isLoading}
           placeholder="Confirm Password"
           secureTextEntry
+          value={confirmPassword}
           onChangeText={onChangeConfirmPassword}
         />
       </View>
