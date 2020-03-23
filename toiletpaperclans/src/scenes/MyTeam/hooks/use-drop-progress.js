@@ -11,6 +11,15 @@ export default () => {
 
   const [toiletpaperProgress, setToiletpaperProgress] = useState(0);
   const [disinfectantProgress, setDisinfectantProgress] = useState(0);
+  const [toiletpaperTime, setToiletpaperTime] = useState(0);
+  const [disinfectantTime, setDisinfectantTime] = useState(0);
+
+  function secondsToHms(d) {
+    d = Number(d);
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+    return m + ':' + s;
+  }
 
   useEffect(() => {
     firebaseData.on('lastToiletpaperDrop', setLastToiletpaperDrop);
@@ -31,9 +40,11 @@ export default () => {
       // console.log(typeof lastToiletpaperDrop, lastToiletpaperDrop);
       setToiletpaperProgress((curTime - lastToiletpaperDrop) / (upcomingToiletpaperDrop - lastToiletpaperDrop));
       setDisinfectantProgress((curTime - lastDisinfectantDrop) / (upcomingDisinfectantDrop - lastDisinfectantDrop));
+      setToiletpaperTime(secondsToHms((1 - toiletpaperProgress) * 300));
+      setDisinfectantTime(secondsToHms((1 - disinfectantProgress) * 600));
     }, 1000);
     return () => clearInterval(timerHandle);
-  }, [lastToiletpaperDrop, lastDisinfectantDrop, upcomingToiletpaperDrop, upcomingDisinfectantDrop]);
+  }, [lastToiletpaperDrop, lastDisinfectantDrop, upcomingToiletpaperDrop, upcomingDisinfectantDrop, toiletpaperProgress, disinfectantProgress]);
 
-  return { toiletpaperProgress, disinfectantProgress };
+  return { toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime };
 };

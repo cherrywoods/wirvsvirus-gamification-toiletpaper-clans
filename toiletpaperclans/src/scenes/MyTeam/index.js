@@ -18,7 +18,7 @@ const MyTeamScreen = ({ navigation }) => {
   const [slide2, setSlide2] = useState('black');
   const [isAddModalVisible, toggleAddModal] = useState(false);
 
-  const { toiletpaperProgress, disinfectantProgress } = useDropProgress();
+  const { toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime } = useDropProgress();
 
   const clickSliderButton = (ref) => {
     console.log(ref.current.state);
@@ -69,6 +69,8 @@ const MyTeamScreen = ({ navigation }) => {
       disinfectantScore={disinfectantScore}
       toiletpaperProgress={toiletpaperProgress}
       disinfectantProgress={disinfectantProgress}
+      toiletpaperTime={toiletpaperTime}
+      disinfectantTime={disinfectantTime}
       teamMembers={teamMembers}
       leaderboard={leaderboard}
       slide1={slide1}
