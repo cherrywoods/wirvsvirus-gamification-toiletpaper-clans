@@ -6,12 +6,14 @@ import Swiper from 'react-native-swiper';
 import MyTeamMembers from '_components/myteam-members';
 import ProgressBar from '_components/progressbar';
 import ScoreTable from '_components/ScoreTable';
+import ModalAddMember from '_components/ModalAddMember';
 import LootingPopup from '_components/LootingPopup';
+
 
 import styles from './styles';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton }) => {
+export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton, isAddModalVisible, toggleAddModal }) => {
 
   const ref = useRef();
 
@@ -29,9 +31,10 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
           <Text style={[styles.menuText, { color: slide2 }]}>Score</Text>
         </TouchableOpacity>
       </View>
+      <ModalAddMember isVisibleState={isAddModalVisible} toggleModal={toggleAddModal} />
       <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
         <View style={styles.slide1}>
-          <MyTeamMembers members={teamMembers}/>
+          <MyTeamMembers members={teamMembers} onPressAdd={toggleAddModal}/>
           <View style={styles.ressourcesContainer}>
             <View style={styles.ressource}>
               <Image

@@ -15,6 +15,7 @@ const MyTeamScreen = ({ navigation }) => {
   const [leaderboard, setLeaderboard] = useState(firebaseData.leaderboard);
   const [slide1, setSlide1] = useState('#B40E22');
   const [slide2, setSlide2] = useState('black');
+  const [isAddModalVisible, toggleAddModal] = useState(false);
 
   const clickSliderButton = (ref) => {
     console.log(ref.current.state);
@@ -70,6 +71,8 @@ const MyTeamScreen = ({ navigation }) => {
       slideHasChanged={slideHasChanged}
       clickSliderButton={clickSliderButton}
       onPressLogout={doLogout}
+      isAddModalVisible={isAddModalVisible}
+      toggleAddModal={toggleAddModal}
     />
   );
 };
