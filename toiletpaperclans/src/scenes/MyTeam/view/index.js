@@ -7,8 +7,9 @@ import MyTeamMembers from '_components/myteam-members';
 import ProgressBar from '_components/progressbar';
 import ScoreTable from '_components/ScoreTable';
 import ModalAddMember from '_components/ModalAddMember';
-import LootingPopup from '_components/LootingPopup';
-
+import ModalLootOther from '_components/Looting/ModalLootOther';
+import ModalGotPaper from '_components/Looting/ModalGotPaper';
+import ModalLostPaper from '_components/Looting/ModalLostPaper';
 
 import styles from './styles';
 
@@ -32,6 +33,9 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProg
           </TouchableOpacity>
         </View>
         <ModalAddMember isVisibleState={isAddModalVisible} toggleModal={toggleAddModal} />
+        <ModalLostPaper value={3}/>
+        <ModalGotPaper value={4}/>
+        <ModalLootOther minutes={10}/>
         <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
           <View style={styles.slide1}>
             <MyTeamMembers members={teamMembers} onPressAdd={toggleAddModal}/>
