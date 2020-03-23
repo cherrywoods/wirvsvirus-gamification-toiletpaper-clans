@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import IsRunningOverlay from '_components/isRunningOverlay.js';
+import IsRunningOverlay from '_components/IsRunningOverlay.js';
 
 const ProfilePicture = ({ isRunning }) => (
   <View>

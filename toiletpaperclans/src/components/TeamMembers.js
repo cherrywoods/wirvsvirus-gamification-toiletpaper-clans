@@ -1,16 +1,16 @@
 import React, { useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
-import ProfilePicture from '_components/profilepicture.js';
-import ButtonAddMember from '_components/addButton.js';
+import ProfilePicture from '_components/ProfilePicture.js';
+import AddButton from '_components/AddButton.js';
 
-const MyTeamMembers = ({ members, onPressAdd }) => {
+const TeamMembers = ({ members, onPressAdd }) => {
   const membersObject = useMemo(() => members && Object.fromEntries(members), [members]);
   return (
     <View style={styles.container}>
       {membersObject && Object.keys(membersObject).map(key => (
         <ProfilePicture key={key} />
       ))}
-      <ButtonAddMember funcOnPress={onPressAdd} />
+      <AddButton onPress={onPressAdd} />
     </View>
   );
 };
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyTeamMembers;
+export default TeamMembers;

@@ -3,8 +3,8 @@ import { View, Text, SafeAreaView, Image, ImageBackground, TouchableOpacity } fr
 
 import Swiper from 'react-native-swiper';
 
-import MyTeamMembers from '_components/myteam-members';
-import ProgressBar from '_components/progressbar';
+import TeamMembers from '_components/TeamMembers';
+import ProgressBar from '_components/ProgressBar';
 import ScoreTable from '_components/ScoreTable';
 import ModalAddMember from '_components/ModalAddMember';
 import LootingPopup from '_components/LootingPopup';
@@ -34,7 +34,7 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProg
         <ModalAddMember isVisibleState={isAddModalVisible} toggleModal={toggleAddModal} />
         <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
           <View style={styles.slide1}>
-            <MyTeamMembers members={teamMembers} onPressAdd={toggleAddModal}/>
+            <TeamMembers members={teamMembers} onPressAdd={toggleAddModal}/>
             <View style={styles.ressourcesContainer}>
               <View style={styles.ressource}>
                 <Image

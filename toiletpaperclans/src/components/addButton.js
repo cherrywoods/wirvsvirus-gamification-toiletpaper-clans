@@ -3,8 +3,8 @@ import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const ButtonAddMember = ({ funcOnPress }) => (
-  <TouchableOpacity style={styles.buttonStyle} onPress={funcOnPress}>
+const ButtonAddMember = ({ onPress }) => (
+  <TouchableOpacity style={styles.buttonStyle} onPress={onPress}>
     <Icon name="plus" size={50} color="#aec8c3" />
   </TouchableOpacity>
 );
