@@ -22,7 +22,7 @@ const SignUpScreen = ({ navigation }) => {
       .then(({ user }) => {
         if (user) {
           FirebaseModel.instance().loginAsUser(user.uid);
-          navigation.navigate('App');
+          navigation.navigate('Onboarding');
         }
       })
       .catch(() => {

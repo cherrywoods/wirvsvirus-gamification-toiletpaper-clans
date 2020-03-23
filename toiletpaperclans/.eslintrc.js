@@ -11,6 +11,7 @@ module.exports = {
           _components: './src/components',
           _ScoreTable: './src/components/ScoreTable',
           _navigations: './src/navigations',
+          _hooks: './src/hooks',
           _scenes: './src/scenes',
           _services: './src/services',
           _styles: './src/styles',

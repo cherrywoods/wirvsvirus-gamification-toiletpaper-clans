@@ -1,14 +1,14 @@
 import React from 'react';
-import { BLACK } from '_styles';
 import { View, Text, StyleSheet, SafeAreaView, Image, ImageBackground} from 'react-native';
+
 import Swiper from 'react-native-swiper';
 
-import OnboardingSlide1 from '_/OnboardingSlide1.js';
-import OnboardingSlide2 from '_/OnboardingSlide2.js';
-import OnboardingSlide3 from '_/OnboardingSlide3.js';
-import OnboardingSlide4 from '_/OnboardingSlide4.js';
+import OnboardingSlide1 from './OnboardingSlide1';
+import OnboardingSlide2 from './OnboardingSlide2';
+import OnboardingSlide3 from './OnboardingSlide3';
+import OnboardingSlide4 from './OnboardingSlide4';
 
-const OnboardingScreen = ({}) => (
+const OnboardingScreen = ({ navigation }) => (
     <SafeAreaView style={styles.container}>
         <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
             <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
@@ -22,7 +22,7 @@ const OnboardingScreen = ({}) => (
                     <OnboardingSlide3 />
                 </View>
                 <View style={styles.slide}>
-                    <OnboardingSlide4 />
+                    <OnboardingSlide4 onPressContinue={() => navigation.navigate('OnboardingChallenge')} />
                 </View>
             </Swiper>
         </ImageBackground>

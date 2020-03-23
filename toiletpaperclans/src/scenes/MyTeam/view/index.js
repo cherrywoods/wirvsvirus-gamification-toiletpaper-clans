@@ -6,9 +6,9 @@ import Swiper from 'react-native-swiper';
 import MyTeamMembers from '_components/myteam-members';
 import ProgressBar from '_components/progressbar';
 import ScoreTable from '_components/ScoreTable';
+import LootingPopup from '_components/LootingPopup';
 
 import styles from './styles';
-import LootingPopup from '_components/LootingPopup';
 
 // NO Logic here!
 export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton }) => {

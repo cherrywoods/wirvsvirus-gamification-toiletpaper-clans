@@ -1,8 +1,7 @@
 import React from 'react';
-import { BLACK } from '_styles';
 import { View, Text, StyleSheet, SafeAreaView, Image, ImageBackground} from 'react-native';
 
-const OnboardingSlide3 = ({}) => (
+const OnboardingSlide3 = () => (
     <SafeAreaView style={styles.container}>
   <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
       <View style={styles.slide}>
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     footer: {
-      textSize: 16,
+      fontSize: 16,
       margin: 30,
       textAlign: 'center',
     },

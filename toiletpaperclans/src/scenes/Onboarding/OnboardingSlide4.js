@@ -1,15 +1,14 @@
 import React from 'react';
-import { BLACK } from '_styles';
 import { View, Text, StyleSheet, SafeAreaView, Image, ImageBackground, TouchableHighlight} from 'react-native';
 
-const OnboardingSlide4 = ({}) => (
+const OnboardingSlide4 = ({ onPressContinue }) => (
     <SafeAreaView style={styles.container}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
         <View style={styles.slide}>
             <Text style={styles.title}>Are you ready?</Text>
             <Image source={require('_assets/icons/Pokal.png')} style={{width: 300, height: 300, resizeMode: 'contain', marginBottom: 70}} />
             <Text style={styles.info} >...to enter the Challenge</Text>
-            <TouchableHighlight style={styles.button}>
+            <TouchableHighlight style={styles.button} onPress={onPressContinue}>
               <Text style={styles.buttonText}>Start!</Text>
             </TouchableHighlight>
         </View>
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
       },
       footer: {
-        textSize: 16,
+        fontSize: 16,
         margin: 30,
         textAlign: 'center',
       },
