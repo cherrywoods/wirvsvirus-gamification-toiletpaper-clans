@@ -176,10 +176,10 @@ class FirebaseModel {
             this.trigger("teamToiletpaper", snapshot.val());
         });
 
-        database().ref("Team/"+teamId+"/Member").on('value', (snapshot) => {
-            const memberIds = snapshot.val().split(",");
-            const oldMemberIds = Array.from(this.teamMembers.keys());
-
+        database().ref("Team/"+teamId+"/members").on('value', (snapshot) => {
+            const memberIds = snapshot.val();
+            const oldMemberIds = this.teamMembers ? Array.from(this.teamMembers.keys()) : [];
+            
             const memberCallback = (_snapshot) => {
                 const value = _snapshot.val();
                 const newMembers = new Map(this.teamMembers);

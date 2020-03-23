@@ -31,9 +31,6 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
       </View>
       <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
         <View style={styles.slide1}>
-          <View style={styles.popup}>
-            <LootingPopup content={2} value={3} />
-          </View>
           <MyTeamMembers members={teamMembers}/>
           <View style={styles.ressourcesContainer}>
             <View style={styles.ressource}>
