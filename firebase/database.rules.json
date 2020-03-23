@@ -24,7 +24,7 @@
           ".write": "$uid === auth.uid"
         }
       },
-      ".indexOn": ["atHomeTime"]
+      ".indexOn": ["lastAtHomeTime"]
     }
   }
 }
