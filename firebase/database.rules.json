@@ -13,7 +13,8 @@
         "added": {
           ".write": "data.parent().child('leader').val() === auth.uid"
         }
-      }
+      },
+      ".indexOn": ["toiletpaper"]
     },
     "User": {
       "$uid": {
