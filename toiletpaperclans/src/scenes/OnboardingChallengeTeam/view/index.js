@@ -1,7 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, KeyboardAvoidingView, Image, ImageBackground, TextInput, ActivityIndicator, TouchableHighlight } from 'react-native';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { View, Text, SafeAreaView, KeyboardAvoidingView, ImageBackground, TextInput, TouchableHighlight } from 'react-native';
 
 import styles from './styles';
 
@@ -12,8 +10,6 @@ export default ({ name, isLoading, isUsernameValid, onChangeName, onPressContinu
         <View>
           <Text style={styles.title}>Name your team!</Text>
         </View>
-        {/* <Image source={require('_assets/icons/Pokal.png')} style={{width: 300, height: 300, resizeMode: 'contain', marginBottom: 70}} /> */}
-        {/* <Text style={styles.info}>...to enter the Challenge</Text> */}
         <TextInput
           style={styles.textField}
           editable={!isLoading}

@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
-const ScoreTableYour = ({index, score, teamname}) => (
+const ScoreTableYour = ({ index, score, teamname }) => (
   <View style={[styles.row]}>
     <View style={[styles.row1Element, styles.row1ElementBottom, { paddingBottom: 20 }]}>
       <Text style={styles.textme}>{ index }</Text>

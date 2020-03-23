@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import database from '@react-native-firebase/database';
 
 import useDebounce from '_hooks/use-debounce';
-import FirebaseModel from '_utilities/FirebaseModel';
 
 import OnboardingChallengeUsernameView from './view';
 

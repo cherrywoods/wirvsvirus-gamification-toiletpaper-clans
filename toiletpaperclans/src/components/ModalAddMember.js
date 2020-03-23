@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -17,18 +17,18 @@ export default class ModalAddMember extends Component {
     };
 
     toggleModal = () => {
-      this.setState({isModalVisible: !this.state.isModalVisible});
+      this.setState({ isModalVisible: !this.state.isModalVisible });
     };
 
     onChangeText = (text) => {
-      this.setState({inputValue: text});
+      this.setState({ inputValue: text });
     }
 
     render() {
       return (
-        <Modal isVisible={this.state.isModalVisible} style={{ alignItems: 'center' }}>
+        <Modal isVisible={this.state.isModalVisible} style={styles.modal}>
           <View style={styles.container}>
-            <TouchableOpacity onPress={this.toggleModal} style={{ position: 'absolute', zIndex: 1, right: 10, top: 10 }}>
+            <TouchableOpacity onPress={this.toggleModal} style={styles.closeButton}>
               <Icon name="close" size={25} color="black" />
             </TouchableOpacity>
             <Text style={styles.heading}>Who do you want to add?</Text>
@@ -39,7 +39,7 @@ export default class ModalAddMember extends Component {
               placeholder={'Username'}
             />
             <TouchableOpacity style={styles.button} onPress={this.toggleModal}>
-              <Text style={{ color: 'white', fontWeight: 'bold' }}>Add User</Text>
+              <Text style={styles.buttonText}>Add User</Text>
             </TouchableOpacity>
           </View>
         </Modal>
@@ -48,6 +48,15 @@ export default class ModalAddMember extends Component {
 }
 
 const styles = StyleSheet.create({
+  modal: {
+    alignItems: 'center',
+  },
+  closeButton: {
+    position: 'absolute',
+    zIndex: 1,
+    right: 10,
+    top: 10,
+  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -74,5 +83,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#aec8c3',
     paddingHorizontal: 40,
     paddingVertical: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });

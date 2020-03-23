@@ -21,7 +21,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPr
         <Text style={{ color: 'green', fontSize: 30 }}>Email: a@b.de</Text>
         <Text style={{ color: 'green', fontSize: 30 }}>Password: 123456789</Text>
       </View>
-      {/* end remove */}
+      {/* End remove */}
 
       <View style={styles.textFieldWrapper}>
         <Text style={styles.headerText}>Sign in with your</Text>

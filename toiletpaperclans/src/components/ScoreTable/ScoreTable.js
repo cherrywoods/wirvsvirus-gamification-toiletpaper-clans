@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import ScoreTableRow from '_ScoreTable/ScoreTableRow.js';
 import ScoreTableHeading from '_ScoreTable/ScoreTableHeading.js';
-import ScoreTableYour from '_ScoreTable/ScoreTableYour';
 
 export default ({ ownTeamName, ownTeamScore, leaderboard }) => {
   const { topTen, ownTeamIndex } = leaderboard || {};

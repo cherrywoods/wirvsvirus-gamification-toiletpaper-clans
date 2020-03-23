@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 
 const ScoreTableHeading = () => (
   <View style={styles.row}>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   column: {
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'white',
+    // BackgroundColor: 'white',
   },
   column1: {
     flex: 1,

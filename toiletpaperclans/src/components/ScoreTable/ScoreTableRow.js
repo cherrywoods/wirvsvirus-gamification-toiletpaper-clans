@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
 const ScoreTableRow = ({ rank, score, teamName, isOwnTeam }) => (
   <View style={styles.row}>

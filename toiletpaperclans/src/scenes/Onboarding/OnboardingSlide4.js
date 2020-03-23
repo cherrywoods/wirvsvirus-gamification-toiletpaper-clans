@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, ImageBackground, TouchableHighlight} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Image, ImageBackground, TouchableHighlight } from 'react-native';
 
 const OnboardingSlide4 = ({ onPressContinue }) => (
   <SafeAreaView style={styles.container}>
-    <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
+    <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.slide}>
         <Text style={styles.title}>Are you ready?</Text>
-        <Image source={require('_assets/icons/Pokal.png')} style={{width: 300, height: 300, resizeMode: 'contain', marginBottom: 70}} />
+        <Image source={require('_assets/icons/Pokal.png')} style={styles.image} />
         <Text style={styles.info} >...to enter the Challenge</Text>
         <TouchableHighlight style={styles.button} onPress={onPressContinue}>
           <Text style={styles.buttonText}>Start!</Text>
@@ -17,6 +17,11 @@ const OnboardingSlide4 = ({ onPressContinue }) => (
 );
 
 const styles = StyleSheet.create({
+  imageBackground: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+  },
   slide: {
     alignItems: 'center',
   },
@@ -24,6 +29,12 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '700',
     margin: 70,
+  },
+  image: {
+    width: 300,
+    height: 300,
+    aspectRatio: 1,
+    marginBottom: 70,
   },
   info: {
     fontSize: 26,

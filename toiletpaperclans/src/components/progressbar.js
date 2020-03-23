@@ -42,8 +42,8 @@ class ProgressBar extends Component {
           <Icon name="timer" size={15} color="black" style={{ position: 'absolute', zIndex: 1, left: 10 }} />
           <Text style={styles.timer}>{ this.props.duration }</Text>
         </View>
-        <View style={[{flexDirection: 'row', height }, row ? { flex: 1} : undefined ]}>
-          <View style={{ flex: 1, borderColor, borderWidth, borderRadius}}>
+        <View style={[{ flexDirection: 'row', height }, row ? { flex: 1 } : undefined ]}>
+          <View style={{ flex: 1, borderColor, borderWidth, borderRadius }}>
             <View
               style={[StyleSheet.absoluteFill, { backgroundColor: fillColor }]}
             />

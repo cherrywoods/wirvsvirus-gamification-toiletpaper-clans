@@ -1,9 +1,9 @@
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {StyleSheet, View} from 'react-native';
 
-
-
-const IsRunningOverlay = ({isRunning}) => {
+const IsRunningOverlay = ({ isRunning }) => {
   if (!isRunning){
     return null;
   }

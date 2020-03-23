@@ -1,4 +1,4 @@
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 import AuthNavigator from './auth-navigator';
 import AppNavigator from './app-navigator';

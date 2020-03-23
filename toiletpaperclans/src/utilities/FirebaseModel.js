@@ -39,7 +39,7 @@ class FirebaseModel {
     this.teamAllAtHome = null;
     this.teamToiletpaper = null;
     this.teamDisinfectant = null;
-    // map of members by userIds
+    // Map of members by userIds
     this.teamMembers = new Map();
     /**
          * {
@@ -93,7 +93,7 @@ class FirebaseModel {
     this.listers.set(eventKey, ls);
   }
 
-  // remove a registered listener
+  // Remove a registered listener
   off(eventKey, listener) {
     var ls = this.listers.get(eventKey);
     if (!ls) {
@@ -151,14 +151,14 @@ class FirebaseModel {
     const ownScoreLeaderboardIndex = board.findIndex(team => team.toiletpaper === this.teamToiletpaper);
     if (ownTeamLeaderboardIndex !== -1) {
       console.log('id');
-      // board is reversed, therefore 9 - index will be correct index in the end
+      // Board is reversed, therefore 9 - index will be correct index in the end
       ownTeamIndex = 9 - ownTeamLeaderboardIndex;
     } else if (ownScoreLeaderboardIndex !== -1) {
       console.log('score');
       board.splice(ownScoreLeaderboardIndex + 1, 0, { key: this.teamId });
       board.shift();
 
-      // board is reversed, therefore 9 - index will be correct index in the end
+      // Board is reversed, therefore 9 - index will be correct index in the end
       ownTeamIndex = 9 - ownScoreLeaderboardIndex;
     } else if (this.teamToiletpaper) {
       console.log('loading');
@@ -242,7 +242,7 @@ class FirebaseModel {
         this.trigger('teamMembers', newMembers);
       };
 
-      // turn listening off of removed members and remove from teamMembers
+      // Turn listening off of removed members and remove from teamMembers
       const newMembers = new Map(this.teamMembers);
       for (const oldMemberId of oldMemberIds) {
         database().ref('User/' + oldMemberId).off('value', memberCallback);
@@ -250,7 +250,7 @@ class FirebaseModel {
       }
       this.trigger('teamMembers', newMembers);
 
-      // call of memberCallback following to on will setup the new members
+      // Call of memberCallback following to on will setup the new members
       for (const memberId of memberIds) {
         database().ref('User/' + memberId).on('value', memberCallback);
       }

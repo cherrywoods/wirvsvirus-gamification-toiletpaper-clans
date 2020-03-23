@@ -12,7 +12,7 @@ const InitScreen = ({ navigation }) => {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(setUser);
-    return subscriber; // unsubscribe on unmount
+    return subscriber; // Unsubscribe on unmount
   }, []);
   useEffect(() => {
     if (initializing) {

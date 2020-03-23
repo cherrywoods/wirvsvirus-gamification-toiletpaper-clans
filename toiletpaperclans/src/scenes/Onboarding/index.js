@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, ImageBackground} from 'react-native';
+import { View, StyleSheet, SafeAreaView, ImageBackground } from 'react-native';
 
 import Swiper from 'react-native-swiper';
 
@@ -10,7 +10,7 @@ import OnboardingSlide4 from './OnboardingSlide4';
 
 const OnboardingScreen = ({ navigation }) => (
   <SafeAreaView style={styles.container}>
-    <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
+    <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <Swiper style={styles.wrapper} loop={false}>
         <View style={styles.slide}>
           <OnboardingSlide1 />
@@ -30,6 +30,11 @@ const OnboardingScreen = ({ navigation }) => (
 );
 
 const styles = StyleSheet.create({
+  imageBackground: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+  },
   slide: {
     width: '100%',
     height: '100%',
