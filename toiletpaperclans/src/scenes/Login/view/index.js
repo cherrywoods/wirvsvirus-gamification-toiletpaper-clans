@@ -16,11 +16,13 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPr
       </View>
 
       {/* TODO: Remove!!! */}
+      {/* eslint-disable react-native/no-inline-styles */}
       <View>
         <Text style={{ color: 'green', fontSize: 30 }}>Dev credentials:</Text>
         <Text style={{ color: 'green', fontSize: 30 }}>Email: a@b.de</Text>
         <Text style={{ color: 'green', fontSize: 30 }}>Password: 123456789</Text>
       </View>
+      {/* eslint-enable react-native/no-inline-styles */}
       {/* End remove */}
 
       <View style={styles.textFieldWrapper}>

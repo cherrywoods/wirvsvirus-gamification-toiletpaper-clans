@@ -43,6 +43,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  image: {
+    width: '50%',
+    aspectRatio: 1,
+    resizeMode: 'contain',
+  },
   smallText: {
     color: '#B40E22',
     fontSize: 16,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Animated } from 'react-native';
+import { StyleSheet, Text, View, Animated } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 class ProgressBar extends Component {
@@ -39,24 +39,23 @@ class ProgressBar extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.durationContainer}>
-          <Icon name="timer" size={15} color="black" style={{ position: 'absolute', zIndex: 1, left: 10 }} />
+          <Icon name="timer" size={15} color="black" style={styles.icon} />
           <Text style={styles.timer}>{ this.props.duration }</Text>
         </View>
-        <View style={[{ flexDirection: 'row', height }, row ? { flex: 1 } : undefined ]}>
-          <View style={{ flex: 1, borderColor, borderWidth, borderRadius }}>
+        <View style={[styles.barContainer, row && styles.row, { height }]}>
+          <View style={[styles.row, { borderColor, borderWidth, borderRadius }]}>
             <View
               style={[StyleSheet.absoluteFill, { backgroundColor: fillColor }]}
             />
             <Animated.View
-              style={{
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                bottom: 0,
-                width: widthInterpolated,
-                backgroundColor: barColor,
-                borderRadius: borderRadius,
-              }}
+              style={[
+                styles.bar,
+                {
+                  width: widthInterpolated,
+                  backgroundColor: barColor,
+                  borderRadius: borderRadius,
+                },
+              ]}
             />
           </View>
         </View>
@@ -70,9 +69,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  icon: {
+    position: 'absolute',
+    zIndex: 1,
+    left: 10,
+  },
   durationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  barContainer: {
+    flexDirection: 'row',
+  },
+  row: {
+    flex: 1,
   },
   timer: {
     position: 'absolute',
@@ -80,6 +90,12 @@ const styles = StyleSheet.create({
     zIndex: 1,
     fontFamily: 'Carista',
     fontSize: 22,
+  },
+  bar: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
   },
 });
 
