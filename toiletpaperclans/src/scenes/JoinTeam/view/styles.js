@@ -1,4 +1,4 @@
-import { StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   view: {
     backgroundColor: '#aec8c3',
@@ -38,7 +38,7 @@ export default StyleSheet.create({
   },
   textFieldWrapper: {
     alignItems: 'center',
-    //marginBottom: '70%'
+    //MarginBottom: '70%'
   },
   textField: {
     backgroundColor: '#CCCCCC',

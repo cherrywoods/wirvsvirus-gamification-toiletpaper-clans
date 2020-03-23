@@ -43,7 +43,7 @@ export default StyleSheet.create({
     marginRight: 20,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   ressourceImage: {
     height: 100,
@@ -93,7 +93,7 @@ export default StyleSheet.create({
   },
   footer: {
     width: '100%',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
   smallText: {
     color: '#B40E22',

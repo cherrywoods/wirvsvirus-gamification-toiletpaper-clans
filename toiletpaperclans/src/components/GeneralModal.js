@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   View,
   Text,
-  Button,
-  Image,
   TouchableOpacity,
   Modal,
 } from 'react-native';
@@ -27,24 +24,20 @@ export default class GeneralModal extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Modal visible={Boolean(this.state.header != '')}>
+        <Modal visible={Boolean(this.state.header !== '')}>
           <View style={styles.popup}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
+            <Text style={styles.header}>
               {this.state.header}
             </Text>
             <Text
-              style={{
-                color: '#db9f44',
-                fontSize: 30,
-                fontWeight: 'bold',
-              }}>
+              style={styles.message}>
               {this.state.description}
             </Text>
 
             <TouchableOpacity
               style={styles.button}
               onPress={this.componentHide}>
-              <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
+              <Text style={styles.buttonText}>
                 {this.state.buttontext}
               </Text>
             </TouchableOpacity>
@@ -73,10 +66,24 @@ const styles = StyleSheet.create({
     width: '90%',
     marginLeft: '5%',
   },
+  header: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'white',
+  },
+  message: {
+    color: '#db9f44',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
   button: {
     alignItems: 'center',
     backgroundColor: '#ffffff',
     padding: 10,
     borderRadius: 10,
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });

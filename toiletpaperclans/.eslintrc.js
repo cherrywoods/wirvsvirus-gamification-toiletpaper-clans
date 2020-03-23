@@ -21,6 +21,10 @@ module.exports = {
     },
   },
   rules: {
-    'prettier/prettier': 0
+    'prettier/prettier': 0,
+    'indent': ['error', 2],
+    'object-curly-spacing': ['error', 'always'],
+    'capitalized-comments': 1,
+    'react-native/no-inline-styles': 'error',
   }
 };

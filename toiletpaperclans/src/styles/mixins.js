@@ -1,4 +1,4 @@
-import {Dimensions,PixelRatio} from 'react-native';
+import { Dimensions,PixelRatio } from 'react-native';
 const WINDOW_WIDTH = Dimensions.get('window').width;
 const guidelineBaseWidth = 375;
 
@@ -25,8 +25,8 @@ export function padding(top, right, bottom, left){
   return dimensions(top, right, bottom, left, 'padding');
 }
 
-export function boxShadow(color, offset = {height:2,width:2},
-                           radius = 8, opacity = 0.2){
+export function boxShadow(color, offset = { height:2,width:2 },
+  radius = 8, opacity = 0.2){
   return {
     shadowColor: color,
     shadowOffset: offset,
