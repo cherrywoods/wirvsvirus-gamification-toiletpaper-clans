@@ -170,7 +170,7 @@ class FirebaseModel {
             this.trigger('teamAllAtHome', snapshot.val());
         });
 
-        database().ref("Team/"+teamId+"/teamToiletpaper").on('value', (snapshot) => {
+        database().ref("Team/"+teamId+"/toiletpaper").on('value', (snapshot) => {
             this.trigger("teamToiletpaper", snapshot.val());
         });
 

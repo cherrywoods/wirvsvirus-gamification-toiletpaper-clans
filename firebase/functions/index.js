@@ -19,7 +19,8 @@ exports.onUserSignup = functions.auth.user().onCreate(async user => {
     name: 'Team',
     leader: uid,
     members: [uid],
-    toiletpaper: 0
+    toiletpaper: 0,
+    disinfectant: 1
   });
   if (!teamRef || !teamRef.key) {
     throw new Error('Team creation failure.');
