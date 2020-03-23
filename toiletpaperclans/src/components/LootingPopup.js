@@ -27,102 +27,102 @@ export default class LootingPopup extends Component {
     return (
       <View style={styles.container}>
         <Modal visible={Boolean(this.state.content == 3)}>
-        <View style={styles.popup}>
-          <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
+          <View style={styles.popup}>
+            <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
             THINGS MISSED UP!
-          </Text>
-          <View>
-            <Image
-              style={{
-                width: 50,
-                height: 50,
-                resizeMode: 'contain',
-              }}
-              source={{
-                uri:
-                  'https://media.discordapp.net/attachments/690844505821151263/690972885275115641/Paper.png',
-              }}
-            />
-            <Text
-              style={{
-                color: '#db9f44',
-                fontSize: 30,
-                fontWeight: 'bold',
-                marginTop: -33,
-                marginLeft: -17,
-                position: 'relative',
-              }}>
-              -{this.state.value}
             </Text>
-          </View>
+            <View>
+              <Image
+                style={{
+                  width: 50,
+                  height: 50,
+                  resizeMode: 'contain',
+                }}
+                source={{
+                  uri:
+                  'https://media.discordapp.net/attachments/690844505821151263/690972885275115641/Paper.png',
+                }}
+              />
+              <Text
+                style={{
+                  color: '#db9f44',
+                  fontSize: 30,
+                  fontWeight: 'bold',
+                  marginTop: -33,
+                  marginLeft: -17,
+                  position: 'relative',
+                }}>
+              -{this.state.value}
+              </Text>
+            </View>
 
-          <TouchableOpacity style={styles.button} onPress={this.componentHide}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>OKAY</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={this.componentHide}>
+              <Text style={{ fontWeight: 'bold', fontSize: 18 }}>OKAY</Text>
+            </TouchableOpacity>
           </View>
         </Modal>
         <Modal visible={Boolean(this.state.content == 2)}>
-        <View style={styles.popup} >
-          <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
+          <View style={styles.popup} >
+            <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
             GRATULATION!
-          </Text>
-          <View>
-            <Image
-              style={{
-                width: 50,
-                height: 50,
-                resizeMode: 'contain',
-              }}
-              source={{
-                uri:
+            </Text>
+            <View>
+              <Image
+                style={{
+                  width: 50,
+                  height: 50,
+                  resizeMode: 'contain',
+                }}
+                source={{
+                  uri:
                   'https://media.discordapp.net/attachments/690844505821151263/690972885275115641/Paper.png',
-              }}
-            />
-            <Text
-              style={{
-                color: '#db9f44',
-                fontSize: 30,
-                fontWeight: 'bold',
-                marginTop: -33,
-                marginLeft: -17,
-                position: 'relative',
-              }}>
+                }}
+              />
+              <Text
+                style={{
+                  color: '#db9f44',
+                  fontSize: 30,
+                  fontWeight: 'bold',
+                  marginTop: -33,
+                  marginLeft: -17,
+                  position: 'relative',
+                }}>
               +{this.state.value}
-            </Text>
-          </View>
+              </Text>
+            </View>
 
-          <TouchableOpacity style={styles.button} onPress={this.componentHide}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
+            <TouchableOpacity style={styles.button} onPress={this.componentHide}>
+              <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
               COLLECT IT!
-            </Text>
-          </TouchableOpacity>
+              </Text>
+            </TouchableOpacity>
           </View>
         </Modal>
         <Modal  visible={Boolean(this.state.content == 1)}>
-        <View style={styles.popup}>
-          <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
+          <View style={styles.popup}>
+            <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
             ATTACK A TEAM!
-          </Text>
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <Image
-              style={{
-                width: 35,
-                height: 35,
-                resizeMode: 'contain',
-              }}
-              source={{
-                uri:
-                  'https://media.discordapp.net/attachments/690844505821151263/691015836021948434/sanduhr.png',
-              }}
-            />
-            <Text style={{ color: 'white', fontSize: 18, marginTop: 4 }}>
-              300 Minutes
             </Text>
-          </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+              <Image
+                style={{
+                  width: 35,
+                  height: 35,
+                  resizeMode: 'contain',
+                }}
+                source={{
+                  uri:
+                  'https://media.discordapp.net/attachments/690844505821151263/691015836021948434/sanduhr.png',
+                }}
+              />
+              <Text style={{ color: 'white', fontSize: 18, marginTop: 4 }}>
+              300 Minutes
+              </Text>
+            </View>
 
-          <TouchableOpacity style={styles.button} onPress={this.componentHide}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LOOT THEM!</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={this.componentHide}>
+              <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LOOT THEM!</Text>
+            </TouchableOpacity>
           </View>
         </Modal>
       </View>

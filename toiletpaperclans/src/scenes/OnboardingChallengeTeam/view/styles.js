@@ -14,7 +14,7 @@ export default StyleSheet.create({
     fontSize: 32,
     fontWeight: '700',
     margin: 70,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   info: {
     fontSize: 26,

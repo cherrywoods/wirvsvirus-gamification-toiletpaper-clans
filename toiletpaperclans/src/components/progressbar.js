@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 class ProgressBar extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.animation = new Animated.Value(this.props.progress);
   }
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     fontFamily: 'Carista',
     fontSize: 22,
-  }
+  },
 });
 
 ProgressBar.defaultProps = {
