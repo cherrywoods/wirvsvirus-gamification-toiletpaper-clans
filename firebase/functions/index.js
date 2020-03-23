@@ -16,7 +16,7 @@ exports.onUserSignup = functions.auth.user().onCreate(async user => {
   const { uid } = user;
   const userRef = userCollectionRef.child(uid);
   const teamRef = await teamCollectionRef.push({
-    name: 'Team',
+    name: null,
     leader: uid,
     members: [uid],
     toiletpaper: 0,
@@ -56,17 +56,18 @@ exports.onUserTeamChange = functions.database.ref('/User/{uid}/team').onWrite(as
 });
 
 exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(context => {
-  const usersAtHome = admin.database().ref('User').orderByChild('atHomeTime').startAt(Date.now() - (30 * 60 * 1000));
+  const callDate = new Date(context.timestamp);
+  const usersAtHome = admin.database().ref('User').orderByChild('atHomeTime').startAt(callDate - (30 * 60 * 1000)).endAt(callDate - (1 * 60 * 1000));
   usersAtHome.once('value', async result => {
     const users = result.val();
     if (!users) {
       return;
     }
-    const teamUpdates = {};
+    const teamMembersHome = {};
     const updateObj = Object.keys(users).reduce(
       (obj, key) => {
         const user = users[key];
-        teamUpdates[user.team] = (teamUpdates[user.team] || 0) + 1;
+        teamMembersHome[user.team].push(key);
         return {
           ...obj,
           [`${key}/toiletpaper`]: users[key].toiletpaper+1
@@ -75,8 +76,17 @@ exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(co
       {}
     );
     await userCollectionRef.update(updateObj);
-    await Promise.all(Object.keys(teamUpdates).map(async key => {
-      return teamCollectionRef.child(`${key}/toiletpaper`).transaction(value => (value || 0) + teamUpdates[key]);
+    await Promise.all(Object.keys(teamMembersHome).map(async key => {
+      return teamCollectionRef.child(key).transaction(team => {
+        const membersHomeCount = teamMembersHome[key].length;
+        team.toiletpaper = (team.toiletpaper || 0) + membersHomeCount;
+        if (callDate.getMinutes() % 2 === 1 && membersHomeCount >= Object.keys(team.members).length) {
+          team.disinfectant = (team.disinfectant || 0) + 1;
+        } else {
+          team.disinfectant = (team.disinfectant || 0) - 1;
+        }
+        return team;
+      });
     }));
   });
   return null;

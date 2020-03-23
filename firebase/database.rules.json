@@ -3,14 +3,16 @@
     ".read": true,
     ".write": false,
     "Team": {
-      "name": {
-        ".write": "data.val().leader === auth.uid"
-      },
-      "members": {
-        ".write": "data.val().leader === auth.uid"
-      },
-      "added": {
-        ".write": "data.val().leader === auth.uid"
+      "$id": {
+        "name": {
+          ".write": "data.parent().child('leader').val() === auth.uid"
+        },
+        "members": {
+          ".write": "data.parent().child('leader').val() === auth.uid"
+        },
+        "added": {
+          ".write": "data.parent().child('leader').val() === auth.uid"
+        }
       }
     },
     "User": {

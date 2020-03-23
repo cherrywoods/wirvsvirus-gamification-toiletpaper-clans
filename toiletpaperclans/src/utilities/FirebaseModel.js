@@ -119,7 +119,7 @@ class FirebaseModel {
                     "teamId": teamKey,
                     "name": teams.child(teamKey + "/Name").val(),
                     "score": teams.child(teamKey + "/toiletpaper").val(),
-                    });
+                });
                 if (teamKey === this.teamId) {
                     ownTeamStats = teamStats[teamStats.length-1];
                 }
