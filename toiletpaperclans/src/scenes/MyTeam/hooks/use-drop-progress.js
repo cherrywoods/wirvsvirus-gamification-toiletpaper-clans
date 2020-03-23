@@ -40,8 +40,8 @@ export default () => {
       // console.log(typeof lastToiletpaperDrop, lastToiletpaperDrop);
       setToiletpaperProgress((curTime - lastToiletpaperDrop) / (upcomingToiletpaperDrop - lastToiletpaperDrop));
       setDisinfectantProgress((curTime - lastDisinfectantDrop) / (upcomingDisinfectantDrop - lastDisinfectantDrop));
-      setToiletpaperTime(secondsToHms((1 - toiletpaperProgress) * 300));
-      setDisinfectantTime(secondsToHms((1 - disinfectantProgress) * 600));
+      setToiletpaperTime(secondsToHms((upcomingToiletpaperDrop - curTime) / 1000));
+      setDisinfectantTime(secondsToHms((upcomingDisinfectantDrop - curTime) / 1000));
     }, 1000);
     return () => clearInterval(timerHandle);
   }, [lastToiletpaperDrop, lastDisinfectantDrop, upcomingToiletpaperDrop, upcomingDisinfectantDrop, toiletpaperProgress, disinfectantProgress]);
