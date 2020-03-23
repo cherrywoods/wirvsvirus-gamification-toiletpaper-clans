@@ -36,6 +36,9 @@ const SignUpScreen = ({ navigation }) => {
   return (
     <SignUpView
       isLoading={isLoading}
+      email={email}
+      password={password}
+      confirmPassword={confirmPassword}
       onChangeEmail={setEmail}
       onChangePassword={setPassword}
       onChangeConfirmPassword={setConfirmPassword}

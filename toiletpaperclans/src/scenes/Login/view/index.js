@@ -4,7 +4,7 @@ import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackgroun
 import styles from './styles';
 
 // NO Logic here!
-export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPressSignUp }) => (
+export default ({ isLoading, email, password, onChangeEmail, onChangePassword, onPressLogin, onPressSignUp }) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header} >
@@ -16,11 +16,13 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPr
       </View>
 
       {/* TODO: Remove!!! */}
+      {/* eslint-disable react-native/no-inline-styles */}
       <View>
         <Text style={{ color: 'green', fontSize: 30 }}>Dev credentials:</Text>
         <Text style={{ color: 'green', fontSize: 30 }}>Email: a@b.de</Text>
         <Text style={{ color: 'green', fontSize: 30 }}>Password: 123456789</Text>
       </View>
+      {/* eslint-enable react-native/no-inline-styles */}
       {/* End remove */}
 
       <View style={styles.textFieldWrapper}>
@@ -32,6 +34,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPr
           autoCapitalize="none"
           autoCompleteType="email"
           keyboardType="email-address"
+          value={email}
           onChangeText={onChangeEmail}
         />
         <TextInput
@@ -39,6 +42,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onPressLogin, onPr
           editable={!isLoading}
           placeholder="Password"
           secureTextEntry
+          value={password}
           onChangeText={onChangePassword}
         />
       </View>

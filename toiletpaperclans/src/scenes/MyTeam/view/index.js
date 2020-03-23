@@ -3,8 +3,8 @@ import { View, Text, SafeAreaView, Image, ImageBackground, TouchableOpacity } fr
 
 import Swiper from 'react-native-swiper';
 
-import MyTeamMembers from '_components/myteam-members';
-import ProgressBar from '_components/progressbar';
+import TeamMembers from '_components/TeamMembers';
+import ProgressBar from '_components/ProgressBar';
 import ScoreTable from '_components/ScoreTable';
 import ModalAddMember from '_components/ModalAddMember';
 import ModalLootOther from '_components/Looting/ModalLootOther';
@@ -14,10 +14,13 @@ import ModalLostPaper from '_components/Looting/ModalLostPaper';
 import styles from './styles';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton, isAddModalVisible, toggleAddModal }) => {
-
+export default ({
+  teamName, teamMembers, leaderboard,
+  toiletpaperScore, disinfectantScore,
+  toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime,
+  currentSlide, isAddModalVisible, onToggleAddModal, onPressLogout, onSelectSlide, onChangeCurrentSlide,
+}) => {
   const ref = useRef();
-
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
@@ -25,20 +28,20 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProg
         style={styles.imageBackground}
       >
         <View style={styles.upperMenu}>
-          <TouchableOpacity onPress={() => clickSliderButton(ref)}>
-            <Text style={[styles.menuText, { color: slide1 }]}>{teamName}</Text>
+          <TouchableOpacity onPress={() => onSelectSlide(0, ref)}>
+            <Text style={[styles.menuText, currentSlide === 0 && styles.selectedMenuText]}>{teamName}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => clickSliderButton(ref)}>
-            <Text style={[styles.menuText, { color: slide2 }]}>Score</Text>
+          <TouchableOpacity onPress={() => onSelectSlide(1, ref)}>
+            <Text style={[styles.menuText, currentSlide === 1 && styles.selectedMenuText]}>Score</Text>
           </TouchableOpacity>
         </View>
-        <ModalAddMember isVisibleState={isAddModalVisible} toggleModal={toggleAddModal} />
+        <ModalAddMember isVisibleState={isAddModalVisible} toggleModal={onToggleAddModal} />
         <ModalLostPaper value={3}/>
         <ModalGotPaper value={4}/>
         <ModalLootOther minutes={10}/>
-        <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
+        <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={onChangeCurrentSlide}>
           <View style={styles.slide1}>
-            <MyTeamMembers members={teamMembers} onPressAdd={toggleAddModal}/>
+            <TeamMembers members={teamMembers} onPressAdd={onToggleAddModal}/>
             <View style={styles.ressourcesContainer}>
               <View style={styles.ressource}>
                 <Image

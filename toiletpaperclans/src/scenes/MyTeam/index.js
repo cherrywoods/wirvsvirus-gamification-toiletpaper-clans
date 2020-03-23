@@ -14,31 +14,20 @@ const MyTeamScreen = ({ navigation }) => {
   const [disinfectantScore, setDisinfectantScore] = useState(firebaseData.teamDisinfectant);
   const [teamMembers, setTeamMembers] = useState(firebaseData.teamMembers);
   const [leaderboard, setLeaderboard] = useState(firebaseData.leaderboard);
-  const [slide1, setSlide1] = useState('#B40E22');
-  const [slide2, setSlide2] = useState('black');
-  const [isAddModalVisible, toggleAddModal] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
 
   const { toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime } = useDropProgress();
 
-  const clickSliderButton = (ref) => {
-    console.log(ref.current.state);
-    if (ref.current.state.index === 1) {
+  const onSelectSlide = (index, ref) => {
+    if (ref.current.state.index === 1 && index === 0) {
       ref.current.scrollBy(-1);
-      slideHasChanged(1);
-    } else if (ref.current.state.index === 0) {
+    } else if (ref.current.state.index === 0 && index === 1) {
       ref.current.scrollBy(1);
-      slideHasChanged(2);
+    } else {
+      return;
     }
-  };
-
-  const slideHasChanged = (index) => {
-    if (index === 0){
-      setSlide1('#B40E22');
-      setSlide2('black');
-    } else if (index === 1){
-      setSlide2('#B40E22');
-      setSlide1('black');
-    }
+    setCurrentSlide(index);
   };
 
   useEffect(() => {
@@ -73,13 +62,12 @@ const MyTeamScreen = ({ navigation }) => {
       disinfectantTime={disinfectantTime}
       teamMembers={teamMembers}
       leaderboard={leaderboard}
-      slide1={slide1}
-      slide2={slide2}
-      slideHasChanged={slideHasChanged}
-      clickSliderButton={clickSliderButton}
-      onPressLogout={doLogout}
+      currentSlide={currentSlide}
       isAddModalVisible={isAddModalVisible}
-      toggleAddModal={toggleAddModal}
+      onToggleAddModal={setIsAddModalVisible}
+      onSelectSlide={onSelectSlide}
+      onChangeCurrentSlide={setCurrentSlide}
+      onPressLogout={doLogout}
     />
   );
 };
