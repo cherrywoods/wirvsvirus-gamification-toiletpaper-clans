@@ -12,6 +12,9 @@ const { TIMESTAMP } = admin.database.ServerValue;
 const userCollectionRef = admin.database().ref('User')
 const teamCollectionRef = admin.database().ref('Team');
 
+const getAtHomeExpiry = date => (date || Date.now()) - 30 * 60 * 1000;
+const getMinAtHomeLimit = date => (date || Date.now()) - 1 * 60 * 1000;
+
 exports.onUserSignup = functions.auth.user().onCreate(async user => {
   const { uid } = user;
   const userRef = userCollectionRef.child(uid);
@@ -30,7 +33,9 @@ exports.onUserSignup = functions.auth.user().onCreate(async user => {
     username: null,
     team: teamRef.key,
     toiletpaper: 1,
-    atHomeTime: TIMESTAMP,
+    lastAtHomeTime: TIMESTAMP,
+    lastOutsideTime: 0,
+    lastStatus: TIMESTAMP,
     new: true
   });
 });
@@ -57,7 +62,7 @@ exports.onUserTeamChange = functions.database.ref('/User/{uid}/team').onWrite(as
 
 exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(context => {
   const callDate = new Date(context.timestamp);
-  const usersAtHome = admin.database().ref('User').orderByChild('atHomeTime').startAt(callDate - (30 * 60 * 1000)).endAt(callDate - (1 * 60 * 1000));
+  const usersAtHome = admin.database().ref('User').orderByChild('lastAtHomeTime').startAt(getAtHomeExpiry(callDate));
   usersAtHome.once('value', async result => {
     const users = result.val();
     if (!users) {
@@ -67,6 +72,12 @@ exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(co
     const updateObj = Object.keys(users).reduce(
       (obj, key) => {
         const user = users[key];
+        
+        // Users have to be at home for at least 1 minute to be able to receive loot
+        if (user.lastOutsideTime >= getMinAtHomeLimit(callDate)) {
+          return obj;
+        }
+
         teamMembersHome[user.team].push(key);
         return {
           ...obj,
@@ -98,11 +109,21 @@ exports.updateHomeStatus = functions.https.onCall(async ({ home }, context) => {
   }
 
   const userRef = admin.database().ref('User').child(context.auth.uid);
-  const updateDoc = {
-    lastStatus: TIMESTAMP
-  };
-  if (home) {
-    updateDoc.atHomeTime = TIMESTAMP;
-  }
-  return userRef.update(updateDoc);
+  // const updateDoc = {
+  //   lastStatus: TIMESTAMP,
+  // };
+  // if (home) {
+  //   updateDoc.lastAtHomeTime = TIMESTAMP;
+  //   if ()
+  // }
+  return userRef.transaction(user => {
+    user.lastStatus = TIMESTAMP;
+    if (home) {
+      if (user.lastAtHomeTime < getAtHomeExpiry()) {
+        user.lastOutsideTime = TIMESTAMP-1;
+      }
+      user.lastAtHomeTime = TIMESTAMP;
+    }
+    return user;
+  });
 });
