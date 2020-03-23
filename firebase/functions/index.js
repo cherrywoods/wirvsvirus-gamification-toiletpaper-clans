@@ -60,47 +60,64 @@ exports.onUserTeamChange = functions.database.ref('/User/{uid}/team').onWrite(as
   return Promise.all(promises);
 });
 
-exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(context => {
+exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(async context => {
   const callDate = new Date(context.timestamp);
-  const usersAtHome = admin.database().ref('User').orderByChild('lastAtHomeTime').startAt(getAtHomeExpiry(callDate));
-  usersAtHome.once('value', async result => {
-    const users = result.val();
-    if (!users) {
-      return;
-    }
-    const teamMembersHome = {};
-    const updateObj = Object.keys(users).reduce(
-      (obj, key) => {
-        const user = users[key];
-        
-        // Users have to be at home for at least 1 minute to be able to receive loot
-        if (user.lastOutsideTime >= getMinAtHomeLimit(callDate)) {
-          return obj;
-        }
 
+  const usersAtHome = admin.database().ref('User').orderByChild('lastAtHomeTime').startAt(getAtHomeExpiry(callDate));
+  const result = await usersAtHome.once('value');
+  const users = result.val();
+
+  if (!users) {
+    return;
+  }
+
+  const teamMembersHome = {};
+  const updateObj = Object.keys(users).reduce(
+    (obj, key) => {
+      const user = users[key];
+      
+      // Users have to be at home for at least 1 minute to be able to receive loot
+      if (user.lastOutsideTime >= getMinAtHomeLimit(callDate)) {
+        return obj;
+      }
+
+      if (!teamMembersHome[user.team]) {
+        teamMembersHome[user.team] = [key];
+      } else {
         teamMembersHome[user.team].push(key);
-        return {
-          ...obj,
-          [`${key}/toiletpaper`]: users[key].toiletpaper+1
-        };
-      },
-      {}
-    );
-    await userCollectionRef.update(updateObj);
-    await Promise.all(Object.keys(teamMembersHome).map(async key => {
+      }
+      return {
+        ...obj,
+        [`${key}/toiletpaper`]: users[key].toiletpaper+1
+      };
+    },
+    {}
+  );
+
+  await Promise.all([
+    userCollectionRef.update(updateObj),
+    ...Object.keys(teamMembersHome).map(async key => {
       return teamCollectionRef.child(key).transaction(team => {
+        if (!team) {
+          return 0;
+        }
         const membersHomeCount = teamMembersHome[key].length;
         team.toiletpaper = (team.toiletpaper || 0) + membersHomeCount;
-        if (callDate.getMinutes() % 2 === 1 && membersHomeCount >= Object.keys(team.members).length) {
-          team.disinfectant = (team.disinfectant || 0) + 1;
+        if (membersHomeCount >= Object.keys(team.members).length) {
+          if (callDate.getMinutes() % 2 === 1) {
+            // only increase every 10 minutes
+            team.disinfectant = (team.disinfectant || 0) + 1;
+          }
         } else {
           team.disinfectant = (team.disinfectant || 0) - 1;
         }
         return team;
-      });
-    }));
-  });
-  return null;
+      }, () => {}, true)
+      // For some reason this is necessary to fix a Maximum call stack exception:
+        .then(() => true)
+        .catch(() => true);
+    })
+  ]);
 });
 
 exports.updateHomeStatus = functions.https.onCall(async ({ home }, context) => {
@@ -116,14 +133,22 @@ exports.updateHomeStatus = functions.https.onCall(async ({ home }, context) => {
   //   updateDoc.lastAtHomeTime = TIMESTAMP;
   //   if ()
   // }
+  console.log(context.auth.uid);
   return userRef.transaction(user => {
-    user.lastStatus = TIMESTAMP;
+    if (!user) {
+      return 0;
+    }
+    const currentTime = Date.now();
+    user.lastStatus = currentTime;
     if (home) {
       if (user.lastAtHomeTime < getAtHomeExpiry()) {
-        user.lastOutsideTime = TIMESTAMP-1;
+        user.lastOutsideTime = currentTime - 1;
       }
-      user.lastAtHomeTime = TIMESTAMP;
+      user.lastAtHomeTime = currentTime;
     }
     return user;
-  });
+  }, () => {}, true)
+  // For some reason this is necessary to fix a Maximum call stack exception:
+    .then(() => console.log('resolve'))
+    .catch(() => console.log('reject'));
 });
