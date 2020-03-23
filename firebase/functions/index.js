@@ -9,11 +9,27 @@ admin.initializeApp();
 
 const { TIMESTAMP } = admin.database.ServerValue;
 
-const userCollectionRef = admin.database().ref('User')
+const userCollectionRef = admin.database().ref('User');
 const teamCollectionRef = admin.database().ref('Team');
+const metaCollectionRef = admin.database().ref('Meta');
 
-const getAtHomeExpiry = date => (date || Date.now()) - 30 * 60 * 1000;
-const getMinAtHomeLimit = date => (date || Date.now()) - 1 * 60 * 1000;
+const metaDropTimestampsRef = metaCollectionRef.child('dropTimestamps');
+
+const getAtHomeExpiry = timestamp => (timestamp || Date.now()) - 30 * 60 * 1000;
+const getMinAtHomeLimit = timestamp => (timestamp || Date.now()) - 1 * 60 * 1000;
+
+const handleObjectRefTransaction = (ref, handler) => {
+  return ref.transaction(obj => {
+    if (!obj) {
+      // causes transaction to be called again when value is available
+      return 0;
+    }
+    return handler(obj);
+  }, () => {}, true)
+  // For some reason this is necessary to fix a Maximum call stack exception:
+    .then(() => true)
+    .catch(() => false);
+};
 
 exports.onUserSignup = functions.auth.user().onCreate(async user => {
   const { uid } = user;
@@ -62,8 +78,9 @@ exports.onUserTeamChange = functions.database.ref('/User/{uid}/team').onWrite(as
 
 exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(async context => {
   const callDate = new Date(context.timestamp);
+  const callTimestamp = callDate.getTime();
 
-  const usersAtHome = admin.database().ref('User').orderByChild('lastAtHomeTime').startAt(getAtHomeExpiry(callDate));
+  const usersAtHome = admin.database().ref('User').orderByChild('lastAtHomeTime').startAt(getAtHomeExpiry(callTimestamp));
   const result = await usersAtHome.once('value');
   const users = result.val();
 
@@ -76,8 +93,8 @@ exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(as
     (obj, key) => {
       const user = users[key];
       
-      // Users have to be at home for at least 1 minute to be able to receive loot
-      if (user.lastOutsideTime >= getMinAtHomeLimit(callDate)) {
+      // Users have to be at home for at least 1 minute to be able to receive drops
+      if (user.lastOutsideTime >= getMinAtHomeLimit(callTimestamp)) {
         return obj;
       }
 
@@ -93,30 +110,41 @@ exports.onCronUserUpdate = functions.pubsub.schedule('every 5 minutes').onRun(as
     },
     {}
   );
+  
+  const dropDisinfectant = callDate.getMinutes() % 2 === 1;
 
   await Promise.all([
+    handleObjectRefTransaction(
+      metaDropTimestampsRef,
+      timestamps => {
+        timestamps.lastToiletpaperDrop = callTimestamp;
+        timestamps.upcomingToiletpaperDrop = callTimestamp + 5 * 60 * 1000;
+        if (dropDisinfectant) {
+          timestamps.lastDisinfectantDrop = callTimestamp;
+          timestamps.upcomingDisinfectantDrop = callTimestamp + 10 * 60 * 1000;
+        }
+        return timestamps;
+      }
+    ),
     userCollectionRef.update(updateObj),
-    ...Object.keys(teamMembersHome).map(async key => {
-      return teamCollectionRef.child(key).transaction(team => {
-        if (!team) {
-          return 0;
-        }
-        const membersHomeCount = teamMembersHome[key].length;
-        team.toiletpaper = (team.toiletpaper || 0) + membersHomeCount;
-        if (membersHomeCount >= Object.keys(team.members).length) {
-          if (callDate.getMinutes() % 2 === 1) {
-            // only increase every 10 minutes
-            team.disinfectant = (team.disinfectant || 0) + 1;
+    ...Object.keys(teamMembersHome).map(
+      async key => handleObjectRefTransaction(
+        teamCollectionRef.child(key),
+        team => {
+          const membersHomeCount = teamMembersHome[key].length;
+          team.toiletpaper = (team.toiletpaper || 0) + membersHomeCount;
+          if (membersHomeCount >= Object.keys(team.members).length) {
+            if (dropDisinfectant) {
+              // only increase every 10 minutes
+              team.disinfectant = (team.disinfectant || 0) + 1;
+            }
+          } else {
+            team.disinfectant = (team.disinfectant || 0) - 1;
           }
-        } else {
-          team.disinfectant = (team.disinfectant || 0) - 1;
+          return team;
         }
-        return team;
-      }, () => {}, true)
-      // For some reason this is necessary to fix a Maximum call stack exception:
-        .then(() => true)
-        .catch(() => true);
-    })
+      )
+    )
   ]);
 });
 
@@ -126,29 +154,19 @@ exports.updateHomeStatus = functions.https.onCall(async ({ home }, context) => {
   }
 
   const userRef = admin.database().ref('User').child(context.auth.uid);
-  // const updateDoc = {
-  //   lastStatus: TIMESTAMP,
-  // };
-  // if (home) {
-  //   updateDoc.lastAtHomeTime = TIMESTAMP;
-  //   if ()
-  // }
   console.log(context.auth.uid);
-  return userRef.transaction(user => {
-    if (!user) {
-      return 0;
-    }
-    const currentTime = Date.now();
-    user.lastStatus = currentTime;
-    if (home) {
-      if (user.lastAtHomeTime < getAtHomeExpiry()) {
-        user.lastOutsideTime = currentTime - 1;
+  return handleObjectRefTransaction(
+    userRef,
+    user => {
+      const currentTime = Date.now();
+      user.lastStatus = currentTime;
+      if (home) {
+        if (user.lastAtHomeTime < getAtHomeExpiry()) {
+          user.lastOutsideTime = currentTime - 1;
+        }
+        user.lastAtHomeTime = currentTime;
       }
-      user.lastAtHomeTime = currentTime;
+      return user;
     }
-    return user;
-  }, () => {}, true)
-  // For some reason this is necessary to fix a Maximum call stack exception:
-    .then(() => console.log('resolve'))
-    .catch(() => console.log('reject'));
+  );
 });
