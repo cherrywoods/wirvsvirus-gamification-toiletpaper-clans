@@ -11,7 +11,7 @@ import OnboardingSlide4 from './OnboardingSlide4';
 const OnboardingScreen = ({ navigation }) => (
     <SafeAreaView style={styles.container}>
         <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={{width: '100%', height: '100%', alignItems: 'center'}}>
-            <Swiper style={styles.wrapper} loop={false} showsPagination={false}>
+            <Swiper style={styles.wrapper} loop={false}>
                 <View style={styles.slide}>
                     <OnboardingSlide1 />
                 </View>
