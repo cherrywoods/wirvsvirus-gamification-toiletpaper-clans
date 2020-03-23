@@ -42,7 +42,6 @@ const SignUpScreen = ({ navigation }) => {
       onPressHome={() => navigation.navigate('Home')}
       onPressSignUp={doSignup}
       onPressLogin={() => navigation.navigate('Login')}
-      onPressCancel={() => navigation.navigate('Login')}
     />
   );
 };

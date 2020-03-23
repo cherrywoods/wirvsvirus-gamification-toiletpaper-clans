@@ -51,11 +51,6 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPas
         <TouchableHighlight disabled={isLoading} onPress={onPressCancel}>
           <Text style={styles.smallText}>Cancel</Text>
         </TouchableHighlight>
-        { /* dont display this text on sign up screen
-        <TouchableHighlight disabled={isLoading} onPress={onPressLogin}>
-          <Text style={styles.smallText}>Dont have an Account? Sign Up!</Text>
-        </TouchableHighlight>
-          */ }
       </View>
     </ImageBackground>
   </SafeAreaView>
