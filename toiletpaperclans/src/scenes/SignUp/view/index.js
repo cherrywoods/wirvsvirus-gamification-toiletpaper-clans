@@ -49,7 +49,7 @@ export default ({ isLoading, onChangeEmail, onChangePassword, onChangeConfirmPas
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableHighlight>
         <TouchableHighlight disabled={isLoading} onPress={onPressCancel}>
-          <Text style={styles.smallText}>Cancel</Text>
+          <Text style={styles.smallText}>Already have an account?</Text>
         </TouchableHighlight>
       </View>
     </ImageBackground>
