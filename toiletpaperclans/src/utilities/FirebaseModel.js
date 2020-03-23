@@ -47,6 +47,7 @@ class FirebaseModel {
          *   ownTeamRank:,
          * }
          */
+        this.leaderboardTopTen = null;
         this.leaderboard = null;
 
         // MARK: listeners
@@ -56,7 +57,10 @@ class FirebaseModel {
         this.listers.set('lastToiletpaperDrop', [newTimestamp => { this.lastToiletpaperDrop = newTimestamp; }]);
         this.listers.set('lastDisinfectantDrop', [newTimestamp => { this.lastDisinfectantDrop = newTimestamp; }]);
 
-        this.listers.set('userId', [(newUserId) => { this.userId = newUserId; }]);
+        this.listers.set('userId', [
+            (newUserId) => { this.userId = newUserId; },
+            () => this.setupLeaderboard(),
+        ]);
         this.listers.set('userName', [(newUserName) => { this.userName = newUserName; }]);
         this.listers.set('userAtHome', [(newValue) => { this.userAtHome = newValue; }]);
         this.listers.set('teamId', [
@@ -65,12 +69,18 @@ class FirebaseModel {
         ]);
         this.listers.set('teamName', [(newTeamName) => {this.teamName = newTeamName; }]);
         this.listers.set('teamAllAtHome', [(newValue) => { this.teamAllAtHome = newValue; }]);
-        this.listers.set('teamToiletpaper', [(newValue) => { this.teamToiletpaper = newValue; }]);
-        this.listers.set('teamDisinfectant', [(newValue) => { this.teamDisinfectant = newValue; }]);
-        this.listers.set('teamMembers', [
-            (newValue) => { this.teamMembers = newValue; },
+        this.listers.set('teamToiletpaper', [
+            (newValue) => { this.teamToiletpaper = newValue; },
+            () => this.setupLeaderboard(),
         ]);
-        this.listers.set('leaderboard', [(newValue) => { this.leaderboard = newValue }]);
+        this.listers.set('teamDisinfectant', [(newValue) => { this.teamDisinfectant = newValue; }]);
+        this.listers.set('teamMembers', [(newValue) => { this.teamMembers = newValue; }]);
+
+        this.listers.set('leaderboardTopTen', [
+            (newValue) => { this.leaderboardTopTen = newValue; },
+            () => this.setupLeaderboard(),
+        ]);
+        this.listers.set('leaderboard', [(newValue) => { this.leaderboard = newValue; }]);
     }
 
     /// register a new listener. you can register listeners for all properties by their textual names
@@ -110,36 +120,68 @@ class FirebaseModel {
             this.trigger('userAtHome', snapshot.val());
         });
 
-        // TODO: optimally request index of own team and get only the first 10
-        database().ref('Team').orderByChild('toiletpaper').on('value', (teams) => {
-            var teamStats = [];
-            var ownTeamStats = null;
-            teams.forEach( (team) => {
-                const teamKey = team.key;
-                teamStats.push({
-                    "teamId": teamKey,
-                    "name": teams.child(teamKey + "/name").val(),
-                    "score": teams.child(teamKey + "/toiletpaper").val(),
-                });
-                if (teamKey === this.teamId) {
-                    ownTeamStats = teamStats[teamStats.length-1];
-                }
-            });
-            // firebase returns ordered in ascending oder
-            teamStats.reverse();
-            const topTen = teamStats.slice(0, Math.min(10, teamStats.length));
-            const ownTeamRank = teamStats.indexOf(ownTeamStats) + 1;
-            this.trigger("leaderboard", {
-                "leaderboard": topTen,
-                "ownTeamRank": ownTeamRank,
-            });
-        });
-
         database().ref('User/' + userId + '/team').on('value', (snapshot) => {
                 this.trigger('teamId', snapshot.val());
         });
 
+        // TODO: optimally request index of own team and get only the first 10
+        database().ref('Team').orderByChild('toiletpaper').limitToLast(10).on('value', (teams) => {
+            const teamsArray = [];
+            teams.forEach(teamSnapshot => {
+                const team = teamSnapshot.val();
+                teamsArray.push({
+                    key: teamSnapshot.key,
+                    name: team.name,
+                    toiletpaper: team.toiletpaper,
+                });
+            });
+            this.trigger('leaderboardTopTen', teamsArray);
+        });
+
         this.registerMetaListeners();
+    }
+
+    async setupLeaderboard() {
+        if (!this.leaderboardTopTen) {
+            return;
+        }
+        const board = [...this.leaderboardTopTen];
+        let ownTeamIndex;
+        const ownTeamLeaderboardIndex = board.findIndex(team => team.key === this.teamId);
+        const ownScoreLeaderboardIndex = board.findIndex(team => team.toiletpaper === this.teamToiletpaper);
+        if (ownTeamLeaderboardIndex !== -1) {
+            console.log('id');
+            // board is reversed, therefore 9 - index will be correct index in the end
+            ownTeamIndex = 9 - ownTeamLeaderboardIndex;
+        } else if (ownScoreLeaderboardIndex !== -1) {
+            console.log('score');
+            board.splice(ownScoreLeaderboardIndex + 1, 0, { key: this.teamId });
+            board.shift();
+
+            // board is reversed, therefore 9 - index will be correct index in the end
+            ownTeamIndex = 9 - ownScoreLeaderboardIndex;
+        } else if (this.teamToiletpaper) {
+            console.log('loading');
+            const snapshot = await database().ref('Team').orderByChild('toiletpaper').startAt(this.teamToiletpaper).once('value');
+            ownTeamIndex = snapshot.numChildren();
+            let previousVal = this.teamToiletpaper;
+            snapshot.forEach(teamSnapshot => {
+                const curVal = teamSnapshot.val().toiletpaper;
+                if (curVal === previousVal) {
+                    ownTeamIndex--;
+                } else {
+                    previousVal = curVal;
+                }
+            });
+        }
+
+        this.trigger(
+            'leaderboard',
+            {
+                topTen: board.reverse(),
+                ownTeamIndex,
+            }
+        );
     }
 
     logout() {
