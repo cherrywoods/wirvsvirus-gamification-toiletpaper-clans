@@ -1,61 +1,34 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import ScoreTableRow from '_ScoreTable/ScoreTableRow.js';
 import ScoreTableHeading from '_ScoreTable/ScoreTableHeading.js';
 import ScoreTableYour from '_ScoreTable/ScoreTableYour';
 
-export default class ScoreTable extends Component {
-  render() {
-    if (!this.props.leaderboard) {
-      return <Text>Error</Text>;
-    }
-
-    const leaderboard = this.props.leaderboard.leaderboard;
-    const ownTeamRank = this.props.leaderboard.ownTeamRank;
-    const teamName = this.props.teamName;
-    const teamScore = this.props.toiletpaperScore;
-
-    var tableEntries = [];
-    for (var i = 0; i < leaderboard.length; i += 1) {
-      if (ownTeamRank === i) {
-        tableEntries.push(
-          <ScoreTableYour 
-            key={i}
-            index={i + 1} 
-            score={leaderboard[i].score} 
-            teamname={leaderboard[i].name}>
-          </ScoreTableYour>
-        );
-      } else {
-        tableEntries.push(
-          <ScoreTableRow 
-            key={i}
-            index={i + 1} 
-            score={leaderboard[i].score} 
-            teamname={leaderboard[i].name}>
-          </ScoreTableRow>
-        );
-      }
-    }
-    if (ownTeamRank > leaderboard.length) {
-      tableEntries.push(
-        <ScoreTableYour 
-          key={leaderboard.length+1}
-          index={ownTeamRank} 
-          score={teamScore} 
-          teamname={teamName}>
-        </ScoreTableYour>
-      );
-    }
-
-    return (
-        <View style={styles.horizontal}>
-        <ScoreTableHeading></ScoreTableHeading>
-            {tableEntries}
-      </View>
-    );
-  }
-}
+export default ({ ownTeamName, ownTeamScore, leaderboard }) => {
+  const { topTen, ownTeamIndex } = leaderboard || {};
+  return (
+    <View style={styles.horizontal}>
+      <ScoreTableHeading />
+      {topTen && topTen.map((team, index) => (
+        <ScoreTableRow
+          key={team.key}
+          rank={index + 1}
+          score={ownTeamIndex === index ? ownTeamScore : team.toiletpaper}
+          teamName={ownTeamIndex === index ? ownTeamName : team.name}
+          isOwnTeam={ownTeamIndex === index}
+        />
+      ))}
+      {ownTeamIndex && ownTeamIndex > 9 && (
+        <ScoreTableRow
+          rank={ownTeamIndex + 1}
+          score={ownTeamScore}
+          teamName={ownTeamName}
+          isOwnTeam
+        />
+      )}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   horizontal: {
@@ -63,6 +36,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     padding: 10,
+    marginVertical: 40,
     width: '90%',
+    borderRadius: 10,
+    backgroundColor: 'white',
   },
 });

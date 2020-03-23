@@ -1,38 +1,23 @@
 import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
-const ScoreTableHeading = ({}) => (
+const ScoreTableHeading = () => (
     <View style={styles.row}>
-        <View style={[styles.row1Element, styles.row1ElementTop]}>
+        <View style={[styles.column, styles.column1]}>
             <Image
-                style={{
-                    width: 50,
-                    height: 50,
-                    resizeMode: 'contain',
-                    marginTop: 20,
-                }}
+                style={styles.icon}
                 source={require('_assets/icons/Pokal.png')}
             />
         </View>
-        <View style={styles.row2Element}>
+        <View style={[styles.column, styles.column2]}>
             <Image
-                style={{
-                    width: 50,
-                    height: 50,
-                    resizeMode: 'contain',
-                    marginTop: 20,
-                }}
+                style={styles.icon}
                 source={require('_assets/icons/Paper.png')}
             />
         </View>
-        <View style={[styles.row3Element, styles.row3ElementTop]}>
+        <View style={[styles.column, styles.column3]}>
             <Image
-                style={{
-                    width: 50,
-                    height: 50,
-                    resizeMode: 'contain',
-                    marginTop: 20,
-                }}
+                style={styles.icon}
                 source={require('_assets/icons/group.png')}
             />
         </View>
@@ -43,32 +28,26 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        marginHorizontal: 7,
     },
-    row1Element: {
+    column: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        // backgroundColor: 'white',
+    },
+    column1: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        marginRight: 7,
     },
-    row1ElementTop: {
-        borderTopLeftRadius: 10,
-    },
-    row2Element: {
+    column2: {
         flex: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
     },
-    row3Element: {
+    column3: {
         flex: 3,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        marginLeft: 7,
     },
-    row3ElementTop: {
-      borderTopRightRadius: 10,
+    icon: {
+        width: 50,
+        height: 50,
+        resizeMode: 'contain',
     },
 });
 

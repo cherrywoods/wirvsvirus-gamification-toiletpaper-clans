@@ -66,7 +66,7 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProg
           </View>
         </View>
         <View style={styles.slide2}>
-          <ScoreTable teamName={teamName} toiletpaperScore={toiletpaperScore} leaderboard={leaderboard}/>
+          <ScoreTable ownTeamName={teamName} ownTeamScore={toiletpaperScore} leaderboard={leaderboard} />
         </View>
       </Swiper>
       <View style={styles.footer}>
