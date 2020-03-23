@@ -150,17 +150,15 @@ class FirebaseModel {
 
     setupTeam(teamId) {
         if (!teamId) {
-            [
-                'teamName',
-                'teamDisinfectant',
-                'teamAllAtHome',
-                'teamToiletpaper',
-                'teamMembers',
-            ].map(key => this.trigger(key, null));
+            this.teamName = null;
+            this.teamDisinfectant = null;
+            this.teamAllAtHome = null;
+            this.teamToiletpaper = null;
+            this.teamMembers = new Map();
             return;
         }
 
-        database().ref('Team/' + teamId + '/Name').on('value', (snapshot) => {
+        database().ref('Team/' + teamId + '/name').on('value', (snapshot) => {
             this.trigger('teamName', snapshot.val());
         });
 
@@ -172,12 +170,12 @@ class FirebaseModel {
             this.trigger('teamAllAtHome', snapshot.val());
         });
 
-        database().ref("Team/"+teamId+"/toiletpaper").on('value', (snapshot) => {
+        database().ref("Team/"+teamId+"/teamToiletpaper").on('value', (snapshot) => {
             this.trigger("teamToiletpaper", snapshot.val());
         });
 
-        database().ref("Team/"+teamId+"/Member").on('value', (snapshot) => {
-            const memberIds = snapshot.val().split(",");
+        database().ref("Team/"+teamId+"/members").on('value', (snapshot) => {
+            const memberIds = snapshot.val();
             const oldMemberIds = Array.from(this.teamMembers.keys());
 
             const memberCallback = (_snapshot) => {
