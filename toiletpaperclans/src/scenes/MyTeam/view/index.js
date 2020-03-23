@@ -49,7 +49,20 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
             </View>
           </View>
           <View style={styles.progressContainer}>
-            <ProgressBar row progress={0.8} duration={500} height={20} borderRadius={50} />
+            <View style={styles.progressPaper}>
+              <ProgressBar row progress={0.4} duration={'4:49'} height={25} borderRadius={50} />
+              <Image
+                style={styles.progressPaperIcon}
+                source={require('_assets/icons/Paper.png')}
+              />
+            </View>
+            <View style={styles.progressDesinfection}>
+              <ProgressBar row progress={0.8} duration={'3:20'} height={25} borderRadius={50} />
+              <Image
+                style={styles.progressDesinfectionIcon}
+                source={require('_assets/icons/desinfection_one.png')}
+              />
+            </View>
           </View>
         </View>
         <View style={styles.slide2}>

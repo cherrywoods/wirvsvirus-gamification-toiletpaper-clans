@@ -8,7 +8,6 @@ const OnboardingSlide3 = () => (
           <Text style={styles.title}>Your Protection</Text>
           <Image source={require('_assets/icons/Desinfection.png')} style={{width: 300, height: 300, resizeMode: 'contain', marginBottom: 70}} />
           <Text style={styles.info} >generate disinfectants to protect yourself and your Friends...</Text>
-          <Text style={styles.footer}>Swipe > </Text>
       </View>
   </ImageBackground>
 </SafeAreaView>

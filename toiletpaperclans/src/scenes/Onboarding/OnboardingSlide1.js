@@ -9,7 +9,6 @@ const OnboardingSlide1 = () => (
             <Image source={require('_assets/icons/group.png')} style={{width: 300, height: 300, aspectRatio: 1, marginBottom: 70}} />
             <Text style={styles.info} >Times are tough but together you are strong!</Text>
             <Text style={styles.info}>Establish your clan... </Text>
-            <Text sytle={styles.footer}>Swipe > </Text>
         </View>
     </ImageBackground>
     </SafeAreaView>

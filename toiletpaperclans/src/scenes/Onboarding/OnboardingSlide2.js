@@ -9,7 +9,6 @@ const OnboardingSlide2 = () => (
           <Image source={require('_assets/icons/your_toiletpaper.png')} style={{width: 300, height: 300, resizeMode: 'contain', marginBottom: 70}} />
           <Text style={styles.info} >and fight for the most</Text>
           <Text style={styles.info}>valuable good for this time</Text>
-          <Text sytle={styles.footer}>Swipe > </Text>
       </View>
   </ImageBackground>
 </SafeAreaView>

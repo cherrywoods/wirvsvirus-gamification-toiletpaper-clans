@@ -58,12 +58,30 @@ export default StyleSheet.create({
   },
   progressContainer: {
     alignItems: 'center',
-    flexDirection: 'row',
-    width: '90%',
+    flexDirection: 'column',
+    width: '80%',
   },
-  progressbarIcon: {
-    height: 70,
-    width: 70,
+  progressPaper: {
+    width: '100%',
+    marginBottom: 25,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  progressPaperIcon: {
+    position: 'absolute',
+    right: -18,
+    width: 35,
+    resizeMode: 'contain',
+  },
+  progressDesinfection: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  progressDesinfectionIcon: {
+    position: 'absolute',
+    right: -10,
+    width: 17,
     resizeMode: 'contain',
   },
   popup: {
