@@ -32,6 +32,9 @@ export default StyleSheet.create({
     color: BLACK,
     fontSize: 50,
   },
+  selectedMenuText: {
+    color: '#B40E22',
+  },
   ressourcesContainer: {
     width: '90%',
     marginTop: 50,

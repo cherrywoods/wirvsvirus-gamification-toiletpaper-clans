@@ -13,10 +13,13 @@ import LootingPopup from '_components/LootingPopup';
 import styles from './styles';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton, isAddModalVisible, toggleAddModal }) => {
-
+export default ({
+  teamName, teamMembers, leaderboard,
+  toiletpaperScore, disinfectantScore,
+  toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime,
+  currentSlide, isAddModalVisible, onToggleAddModal, onPressLogout, onSelectSlide, onChangeCurrentSlide,
+}) => {
   const ref = useRef();
-
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
@@ -24,17 +27,17 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProg
         style={styles.imageBackground}
       >
         <View style={styles.upperMenu}>
-          <TouchableOpacity onPress={() => clickSliderButton(ref)}>
-            <Text style={[styles.menuText, { color: slide1 }]}>{teamName}</Text>
+          <TouchableOpacity onPress={() => onSelectSlide(0, ref)}>
+            <Text style={[styles.menuText, currentSlide === 0 && styles.selectedMenuText]}>{teamName}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => clickSliderButton(ref)}>
-            <Text style={[styles.menuText, { color: slide2 }]}>Score</Text>
+          <TouchableOpacity onPress={() => onSelectSlide(1, ref)}>
+            <Text style={[styles.menuText, currentSlide === 1 && styles.selectedMenuText]}>Score</Text>
           </TouchableOpacity>
         </View>
-        <ModalAddMember isVisibleState={isAddModalVisible} toggleModal={toggleAddModal} />
-        <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
+        <ModalAddMember isVisibleState={isAddModalVisible} toggleModal={onToggleAddModal} />
+        <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={onChangeCurrentSlide}>
           <View style={styles.slide1}>
-            <TeamMembers members={teamMembers} onPressAdd={toggleAddModal}/>
+            <TeamMembers members={teamMembers} onPressAdd={onToggleAddModal}/>
             <View style={styles.ressourcesContainer}>
               <View style={styles.ressource}>
                 <Image
