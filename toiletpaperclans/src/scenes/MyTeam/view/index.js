@@ -6,12 +6,14 @@ import Swiper from 'react-native-swiper';
 import MyTeamMembers from '_components/myteam-members';
 import ProgressBar from '_components/progressbar';
 import ScoreTable from '_components/ScoreTable';
+import ModalAddMember from '_components/ModalAddMember';
 import LootingPopup from '_components/LootingPopup';
+
 
 import styles from './styles';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProgress, disinfectantProgress, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton }) => {
+export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton, isAddModalVisible, toggleAddModal }) => {
 
   const ref = useRef();
 
@@ -29,9 +31,10 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProg
           <Text style={[styles.menuText, { color: slide2 }]}>Score</Text>
         </TouchableOpacity>
       </View>
+      <ModalAddMember isVisibleState={isAddModalVisible} toggleModal={toggleAddModal} />
       <Swiper ref={ref} style={styles.wrapper} loop={false} showsPagination={false} onIndexChanged={(index)=>slideHasChanged(index)}>
         <View style={styles.slide1}>
-          <MyTeamMembers members={teamMembers}/>
+          <MyTeamMembers members={teamMembers} onPressAdd={toggleAddModal}/>
           <View style={styles.ressourcesContainer}>
             <View style={styles.ressource}>
               <Image
@@ -50,14 +53,14 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProg
           </View>
           <View style={styles.progressContainer}>
             <View style={styles.progressPaper}>
-              <ProgressBar row progress={toiletpaperProgress} duration={'4:49'} height={25} borderRadius={50} />
+              <ProgressBar row progress={toiletpaperProgress} duration={toiletpaperTime} height={25} borderRadius={50} />
               <Image
                 style={styles.progressPaperIcon}
                 source={require('_assets/icons/Paper.png')}
               />
             </View>
             <View style={styles.progressDesinfection}>
-              <ProgressBar row progress={disinfectantProgress} duration={'3:20'} height={25} borderRadius={50} />
+              <ProgressBar row progress={disinfectantProgress} duration={disinfectantTime} height={25} borderRadius={50} />
               <Image
                 style={styles.progressDesinfectionIcon}
                 source={require('_assets/icons/desinfection_one.png')}
