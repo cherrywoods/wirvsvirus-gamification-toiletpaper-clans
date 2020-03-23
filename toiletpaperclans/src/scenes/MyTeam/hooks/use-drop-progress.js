@@ -37,7 +37,7 @@ export default () => {
   useEffect(() => {
     const timerHandle = setInterval(() => {
       const curTime = Date.now();
-      // console.log(typeof lastToiletpaperDrop, lastToiletpaperDrop);
+      // Console.log(typeof lastToiletpaperDrop, lastToiletpaperDrop);
       setToiletpaperProgress((curTime - lastToiletpaperDrop) / (upcomingToiletpaperDrop - lastToiletpaperDrop));
       setDisinfectantProgress((curTime - lastDisinfectantDrop) / (upcomingDisinfectantDrop - lastDisinfectantDrop));
       setToiletpaperTime(secondsToHms((upcomingToiletpaperDrop - curTime) / 1000));

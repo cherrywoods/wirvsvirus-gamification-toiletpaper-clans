@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 class ProgressBar extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.animation = new Animated.Value(this.props.progress);
   }
 
@@ -42,8 +42,8 @@ class ProgressBar extends Component {
           <Icon name="timer" size={15} color="black" style={{ position: 'absolute', zIndex: 1, left: 10 }} />
           <Text style={styles.timer}>{ this.props.duration }</Text>
         </View>
-        <View style={[{flexDirection: 'row', height }, row ? { flex: 1} : undefined ]}>
-          <View style={{ flex: 1, borderColor, borderWidth, borderRadius}}>
+        <View style={[{ flexDirection: 'row', height }, row ? { flex: 1 } : undefined ]}>
+          <View style={{ flex: 1, borderColor, borderWidth, borderRadius }}>
             <View
               style={[StyleSheet.absoluteFill, { backgroundColor: fillColor }]}
             />
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     fontFamily: 'Carista',
     fontSize: 22,
-  }
+  },
 });
 
 ProgressBar.defaultProps = {

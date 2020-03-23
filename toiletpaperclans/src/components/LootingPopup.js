@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   View,
   Text,
-  Button,
   Image,
   TouchableOpacity,
   Modal,
@@ -26,103 +24,75 @@ export default class LootingPopup extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Modal visible={Boolean(this.state.content == 3)}>
-        <View style={styles.popup}>
-          <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
+        <Modal visible={this.state.content === 3}>
+          <View style={styles.popup}>
+            <Text style={styles.header}>
             THINGS MISSED UP!
-          </Text>
-          <View>
-            <Image
-              style={{
-                width: 50,
-                height: 50,
-                resizeMode: 'contain',
-              }}
-              source={{
-                uri:
-                  'https://media.discordapp.net/attachments/690844505821151263/690972885275115641/Paper.png',
-              }}
-            />
-            <Text
-              style={{
-                color: '#db9f44',
-                fontSize: 30,
-                fontWeight: 'bold',
-                marginTop: -33,
-                marginLeft: -17,
-                position: 'relative',
-              }}>
-              -{this.state.value}
             </Text>
-          </View>
+            <View>
+              <Image
+                style={styles.imagePaper}
+                source={{
+                  uri:
+                  'https://media.discordapp.net/attachments/690844505821151263/690972885275115641/Paper.png',
+                }}
+              />
+              <Text style={styles.value}>
+                -{this.state.value}
+              </Text>
+            </View>
 
-          <TouchableOpacity style={styles.button} onPress={this.componentHide}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>OKAY</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={this.componentHide}>
+              <Text style={styles.buttonText}>OKAY</Text>
+            </TouchableOpacity>
           </View>
         </Modal>
-        <Modal visible={Boolean(this.state.content == 2)}>
-        <View style={styles.popup} >
-          <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
+        <Modal visible={this.state.content === 2}>
+          <View style={styles.popup} >
+            <Text style={styles.heading}>
             GRATULATION!
-          </Text>
-          <View>
-            <Image
-              style={{
-                width: 50,
-                height: 50,
-                resizeMode: 'contain',
-              }}
-              source={{
-                uri:
-                  'https://media.discordapp.net/attachments/690844505821151263/690972885275115641/Paper.png',
-              }}
-            />
-            <Text
-              style={{
-                color: '#db9f44',
-                fontSize: 30,
-                fontWeight: 'bold',
-                marginTop: -33,
-                marginLeft: -17,
-                position: 'relative',
-              }}>
+            </Text>
+            <View>
+              <Image
+                style={styles.imagePaper}
+                source={{
+                  uri: 'https://media.discordapp.net/attachments/690844505821151263/690972885275115641/Paper.png',
+                }}
+              />
+              <Text
+                style={styles.value}>
               +{this.state.value}
-            </Text>
-          </View>
+              </Text>
+            </View>
 
-          <TouchableOpacity style={styles.button} onPress={this.componentHide}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
+            <TouchableOpacity style={styles.button} onPress={this.componentHide}>
+              <Text style={styles.heading}>
               COLLECT IT!
-            </Text>
-          </TouchableOpacity>
+              </Text>
+            </TouchableOpacity>
           </View>
         </Modal>
-        <Modal  visible={Boolean(this.state.content == 1)}>
-        <View style={styles.popup}>
-          <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>
+        <Modal visible={this.state.content === 1}>
+          <View style={styles.popup}>
+            <Text style={styles.heading}>
             ATTACK A TEAM!
-          </Text>
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <Image
-              style={{
-                width: 35,
-                height: 35,
-                resizeMode: 'contain',
-              }}
-              source={{
-                uri:
-                  'https://media.discordapp.net/attachments/690844505821151263/691015836021948434/sanduhr.png',
-              }}
-            />
-            <Text style={{ color: 'white', fontSize: 18, marginTop: 4 }}>
-              300 Minutes
             </Text>
-          </View>
+            <View style={styles.modalContainer}>
+              <Image
+                style={styles.imageWatch}
+                source={{
+                  uri:
+                  'https://media.discordapp.net/attachments/690844505821151263/691015836021948434/sanduhr.png',
+                }}
+              />
+              <Text style={styles.timeText}>
+              300 Minutes
+              </Text>
+            </View>
 
-          <TouchableOpacity style={styles.button} onPress={this.componentHide}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LOOT THEM!</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={this.componentHide}>
+              <Text style={styles.buttonText}>LOOT THEM!</Text>
+            </TouchableOpacity>
           </View>
         </Modal>
       </View>
@@ -140,6 +110,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexDirection: 'column',
   },
+  header: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'white',
+  },
+  heading: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'white',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -147,11 +127,41 @@ const styles = StyleSheet.create({
     width: '90%',
     marginLeft: '5%',
   },
+  modalContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  imagePaper: {
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+  },
+  imageWatch: {
+    width: 35,
+    height: 35,
+    resizeMode: 'contain',
+  },
+  value: {
+    color: '#db9f44',
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: -33,
+    marginLeft: -17,
+    position: 'relative',
+  },
+  timeText: {
+    color: 'white',
+    fontSize: 18,
+    marginTop: 4,
+  },
   button: {
     alignItems: 'center',
     backgroundColor: '#ffffff',
     padding: 10,
     borderRadius: 10,
   },
+  buttonText: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
 });
-

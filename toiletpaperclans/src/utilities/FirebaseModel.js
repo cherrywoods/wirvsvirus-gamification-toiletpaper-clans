@@ -8,272 +8,272 @@ import functions from '@react-native-firebase/functions';
  */
 class FirebaseModel {
 
-    // MARK: singleton
-    static instance() {
-        if (!FirebaseModel._isInstantiated) {
-            FirebaseModel._inst = new FirebaseModel();
-            FirebaseModel._isInstantiated = true;
-        }
-        return FirebaseModel._inst;
+  // MARK: singleton
+  static instance() {
+    if (!FirebaseModel._isInstantiated) {
+      FirebaseModel._inst = new FirebaseModel();
+      FirebaseModel._isInstantiated = true;
     }
+    return FirebaseModel._inst;
+  }
 
-    constructor() {
-        this.metaDropTimestampKeys = [
-            'lastToiletpaperDrop',
-            'lastDisinfectantDrop',
-            'upcomingToiletpaperDrop',
-            'upcomingDisinfectantDrop',
-        ];
+  constructor() {
+    this.metaDropTimestampKeys = [
+      'lastToiletpaperDrop',
+      'lastDisinfectantDrop',
+      'upcomingToiletpaperDrop',
+      'upcomingDisinfectantDrop',
+    ];
 
-        // MARK: simple properties
-        this.lastToiletpaperDrop = null;
-        this.lastDisinfectantDrop = null;
-        this.upcomingToiletpaperDrop = null;
-        this.upcomingDisinfectantDrop = null;
+    // MARK: simple properties
+    this.lastToiletpaperDrop = null;
+    this.lastDisinfectantDrop = null;
+    this.upcomingToiletpaperDrop = null;
+    this.upcomingDisinfectantDrop = null;
 
-        this.userId = null;
-        this.userName = null;
-        this.userAtHome = null;
-        this.teamId = null;
-        this.teamName = null;
-        this.teamAllAtHome = null;
-        this.teamToiletpaper = null;
-        this.teamDisinfectant = null;
-        // map of members by userIds
-        this.teamMembers = new Map();
-        /**
+    this.userId = null;
+    this.userName = null;
+    this.userAtHome = null;
+    this.teamId = null;
+    this.teamName = null;
+    this.teamAllAtHome = null;
+    this.teamToiletpaper = null;
+    this.teamDisinfectant = null;
+    // Map of members by userIds
+    this.teamMembers = new Map();
+    /**
          * {
          *   leaderboard: array of {name:, score:},
          *   ownTeamRank:,
          * }
          */
-        this.leaderboardTopTen = null;
-        this.leaderboard = null;
+    this.leaderboardTopTen = null;
+    this.leaderboard = null;
 
-        // MARK: listeners
-        this.listers = new Map();
-        this.listers.set('upcomingToiletpaperDrop', [newTimestamp => { this.upcomingToiletpaperDrop = newTimestamp; }]);
-        this.listers.set('upcomingDisinfectantDrop', [newTimestamp => { this.upcomingDisinfectantDrop = newTimestamp; }]);
-        this.listers.set('lastToiletpaperDrop', [newTimestamp => { this.lastToiletpaperDrop = newTimestamp; }]);
-        this.listers.set('lastDisinfectantDrop', [newTimestamp => { this.lastDisinfectantDrop = newTimestamp; }]);
+    // MARK: listeners
+    this.listers = new Map();
+    this.listers.set('upcomingToiletpaperDrop', [newTimestamp => { this.upcomingToiletpaperDrop = newTimestamp; }]);
+    this.listers.set('upcomingDisinfectantDrop', [newTimestamp => { this.upcomingDisinfectantDrop = newTimestamp; }]);
+    this.listers.set('lastToiletpaperDrop', [newTimestamp => { this.lastToiletpaperDrop = newTimestamp; }]);
+    this.listers.set('lastDisinfectantDrop', [newTimestamp => { this.lastDisinfectantDrop = newTimestamp; }]);
 
-        this.listers.set('userId', [
-            (newUserId) => { this.userId = newUserId; },
-            () => this.setupLeaderboard(),
-        ]);
-        this.listers.set('userName', [(newUserName) => { this.userName = newUserName; }]);
-        this.listers.set('userAtHome', [(newValue) => { this.userAtHome = newValue; }]);
-        this.listers.set('teamId', [
-            (newTeamId) => { this.teamId = newTeamId; },
-            (newTeamId) => {this.setupTeam(newTeamId); },
-        ]);
-        this.listers.set('teamName', [(newTeamName) => {this.teamName = newTeamName; }]);
-        this.listers.set('teamAllAtHome', [(newValue) => { this.teamAllAtHome = newValue; }]);
-        this.listers.set('teamToiletpaper', [
-            (newValue) => { this.teamToiletpaper = newValue; },
-            () => this.setupLeaderboard(),
-        ]);
-        this.listers.set('teamDisinfectant', [(newValue) => { this.teamDisinfectant = newValue; }]);
-        this.listers.set('teamMembers', [(newValue) => { this.teamMembers = newValue; }]);
+    this.listers.set('userId', [
+      (newUserId) => { this.userId = newUserId; },
+      () => this.setupLeaderboard(),
+    ]);
+    this.listers.set('userName', [(newUserName) => { this.userName = newUserName; }]);
+    this.listers.set('userAtHome', [(newValue) => { this.userAtHome = newValue; }]);
+    this.listers.set('teamId', [
+      (newTeamId) => { this.teamId = newTeamId; },
+      (newTeamId) => {this.setupTeam(newTeamId); },
+    ]);
+    this.listers.set('teamName', [(newTeamName) => {this.teamName = newTeamName; }]);
+    this.listers.set('teamAllAtHome', [(newValue) => { this.teamAllAtHome = newValue; }]);
+    this.listers.set('teamToiletpaper', [
+      (newValue) => { this.teamToiletpaper = newValue; },
+      () => this.setupLeaderboard(),
+    ]);
+    this.listers.set('teamDisinfectant', [(newValue) => { this.teamDisinfectant = newValue; }]);
+    this.listers.set('teamMembers', [(newValue) => { this.teamMembers = newValue; }]);
 
-        this.listers.set('leaderboardTopTen', [
-            (newValue) => { this.leaderboardTopTen = newValue; },
-            () => this.setupLeaderboard(),
-        ]);
-        this.listers.set('leaderboard', [(newValue) => { this.leaderboard = newValue; }]);
+    this.listers.set('leaderboardTopTen', [
+      (newValue) => { this.leaderboardTopTen = newValue; },
+      () => this.setupLeaderboard(),
+    ]);
+    this.listers.set('leaderboard', [(newValue) => { this.leaderboard = newValue; }]);
+  }
+
+  /// register a new listener. you can register listeners for all properties by their textual names
+  on(eventKey, listener) {
+    var ls = this.listers.get(eventKey);
+    if (!ls) {
+      throw 'invalid key to register listener on FirebaseModel';
     }
+    ls.push(listener);
+    this.listers.set(eventKey, ls);
+  }
 
-    /// register a new listener. you can register listeners for all properties by their textual names
-    on(eventKey, listener) {
-        var ls = this.listers.get(eventKey);
-        if (!ls) {
-            throw 'invalid key to register listener on FirebaseModel';
+  // Remove a registered listener
+  off(eventKey, listener) {
+    var ls = this.listers.get(eventKey);
+    if (!ls) {
+      throw 'invalid key to remove listener on FirebaseModel';
+    }
+    let i = ls.indexOf(listener);
+    ls.splice(i, Math.max(i, 0));
+    this.listers.set(eventKey, ls);
+  }
+
+  trigger(eventKey, newValue) {
+    this.listers.get(eventKey).forEach(listener => listener(newValue));
+  }
+
+  /// login with the given user id
+  loginAsUser(userId) {
+    this.trigger('userId', userId);
+    this.updateHomeStatus();
+
+    database().ref('User/' + userId + '/name').on('value', (snapshot) => {
+      this.trigger('userName', snapshot.val());
+    });
+    database().ref('User/' + userId + '/lastAtHomeTime').on('value', (snapshot) => {
+      this.trigger('userAtHome', snapshot.val());
+    });
+
+    database().ref('User/' + userId + '/team').on('value', (snapshot) => {
+      this.trigger('teamId', snapshot.val());
+    });
+
+    // TODO: optimally request index of own team and get only the first 10
+    database().ref('Team').orderByChild('toiletpaper').limitToLast(10).on('value', (teams) => {
+      const teamsArray = [];
+      teams.forEach(teamSnapshot => {
+        const team = teamSnapshot.val();
+        teamsArray.push({
+          key: teamSnapshot.key,
+          name: team.name,
+          toiletpaper: team.toiletpaper,
+        });
+      });
+      this.trigger('leaderboardTopTen', teamsArray);
+    });
+
+    this.registerMetaListeners();
+  }
+
+  async setupLeaderboard() {
+    if (!this.leaderboardTopTen) {
+      return;
+    }
+    const board = [...this.leaderboardTopTen];
+    let ownTeamIndex;
+    const ownTeamLeaderboardIndex = board.findIndex(team => team.key === this.teamId);
+    const ownScoreLeaderboardIndex = board.findIndex(team => team.toiletpaper === this.teamToiletpaper);
+    if (ownTeamLeaderboardIndex !== -1) {
+      console.log('id');
+      // Board is reversed, therefore 9 - index will be correct index in the end
+      ownTeamIndex = 9 - ownTeamLeaderboardIndex;
+    } else if (ownScoreLeaderboardIndex !== -1) {
+      console.log('score');
+      board.splice(ownScoreLeaderboardIndex + 1, 0, { key: this.teamId });
+      board.shift();
+
+      // Board is reversed, therefore 9 - index will be correct index in the end
+      ownTeamIndex = 9 - ownScoreLeaderboardIndex;
+    } else if (this.teamToiletpaper) {
+      console.log('loading');
+      const snapshot = await database().ref('Team').orderByChild('toiletpaper').startAt(this.teamToiletpaper).once('value');
+      ownTeamIndex = snapshot.numChildren();
+      let previousVal = this.teamToiletpaper;
+      snapshot.forEach(teamSnapshot => {
+        const curVal = teamSnapshot.val().toiletpaper;
+        if (curVal === previousVal) {
+          ownTeamIndex--;
+        } else {
+          previousVal = curVal;
         }
-        ls.push(listener);
-        this.listers.set(eventKey, ls);
+      });
     }
 
-    // remove a registered listener
-    off(eventKey, listener) {
-        var ls = this.listers.get(eventKey);
-        if (!ls) {
-            throw 'invalid key to remove listener on FirebaseModel';
-        }
-        let i = ls.indexOf(listener);
-        ls.splice(i, Math.max(i, 0));
-        this.listers.set(eventKey, ls);
+    this.trigger(
+      'leaderboard',
+      {
+        topTen: board.reverse(),
+        ownTeamIndex,
+      }
+    );
+  }
+
+  logout() {
+    if (!this.userId) {
+      return;
+    }
+    [
+      'userId',
+      'userName',
+      'userAtHome',
+      'teamId',
+    ].map(key => this.trigger(key, null));
+
+    const userId = this.userId;
+    database().ref('User/' + userId + '/name').off('value');
+    database().ref('User/' + userId + '/lastAtHomeTime').off('value');
+    database().ref('User/' + userId + '/team').off('value');
+
+    database().ref('Team').orderByChild('toiletpaper').off('value');
+
+    this.unregisterMetaListeners();
+  }
+
+  setupTeam(teamId) {
+    if (!teamId) {
+      this.teamName = null;
+      this.teamDisinfectant = null;
+      this.teamAllAtHome = null;
+      this.teamToiletpaper = null;
+      this.teamMembers = new Map();
+      return;
     }
 
-    trigger(eventKey, newValue) {
-        this.listers.get(eventKey).forEach(listener => listener(newValue));
+    database().ref('Team/' + teamId + '/name').on('value', (snapshot) => {
+      this.trigger('teamName', snapshot.val());
+    });
+
+    database().ref('Team/' + teamId + '/disinfectant').on('value', (snapshot) => {
+      this.trigger('teamDisinfectant', snapshot.val());
+    });
+
+    database().ref('Team/' + teamId + '/allathome').on('value', (snapshot) => {
+      this.trigger('teamAllAtHome', snapshot.val());
+    });
+
+    database().ref('Team/' + teamId + '/toiletpaper').on('value', (snapshot) => {
+      this.trigger('teamToiletpaper', snapshot.val());
+    });
+
+    database().ref('Team/' + teamId + '/members').on('value', (snapshot) => {
+      const memberIds = snapshot.val();
+      const oldMemberIds = Array.from(this.teamMembers.keys());
+
+      const memberCallback = (_snapshot) => {
+        const value = _snapshot.val();
+        const newMembers = new Map(this.teamMembers);
+        newMembers.set(_snapshot.key, value);
+        this.trigger('teamMembers', newMembers);
+      };
+
+      // Turn listening off of removed members and remove from teamMembers
+      const newMembers = new Map(this.teamMembers);
+      for (const oldMemberId of oldMemberIds) {
+        database().ref('User/' + oldMemberId).off('value', memberCallback);
+        newMembers.delete(oldMemberId);
+      }
+      this.trigger('teamMembers', newMembers);
+
+      // Call of memberCallback following to on will setup the new members
+      for (const memberId of memberIds) {
+        database().ref('User/' + memberId).on('value', memberCallback);
+      }
+
+    });
+  }
+
+  updateHomeStatus() {
+    if (!this.userId) {
+      return;
     }
+    functions().httpsCallable('updateHomeStatus')({
+      home: true,
+    });
+  }
 
-    /// login with the given user id
-    loginAsUser(userId) {
-        this.trigger('userId', userId);
-        this.updateHomeStatus();
-
-        database().ref('User/' + userId + '/name').on('value', (snapshot) => {
-            this.trigger('userName', snapshot.val());
-        });
-        database().ref('User/' + userId + '/lastAtHomeTime').on('value', (snapshot) => {
-            this.trigger('userAtHome', snapshot.val());
-        });
-
-        database().ref('User/' + userId + '/team').on('value', (snapshot) => {
-                this.trigger('teamId', snapshot.val());
-        });
-
-        // TODO: optimally request index of own team and get only the first 10
-        database().ref('Team').orderByChild('toiletpaper').limitToLast(10).on('value', (teams) => {
-            const teamsArray = [];
-            teams.forEach(teamSnapshot => {
-                const team = teamSnapshot.val();
-                teamsArray.push({
-                    key: teamSnapshot.key,
-                    name: team.name,
-                    toiletpaper: team.toiletpaper,
-                });
-            });
-            this.trigger('leaderboardTopTen', teamsArray);
-        });
-
-        this.registerMetaListeners();
-    }
-
-    async setupLeaderboard() {
-        if (!this.leaderboardTopTen) {
-            return;
-        }
-        const board = [...this.leaderboardTopTen];
-        let ownTeamIndex;
-        const ownTeamLeaderboardIndex = board.findIndex(team => team.key === this.teamId);
-        const ownScoreLeaderboardIndex = board.findIndex(team => team.toiletpaper === this.teamToiletpaper);
-        if (ownTeamLeaderboardIndex !== -1) {
-            console.log('id');
-            // board is reversed, therefore 9 - index will be correct index in the end
-            ownTeamIndex = 9 - ownTeamLeaderboardIndex;
-        } else if (ownScoreLeaderboardIndex !== -1) {
-            console.log('score');
-            board.splice(ownScoreLeaderboardIndex + 1, 0, { key: this.teamId });
-            board.shift();
-
-            // board is reversed, therefore 9 - index will be correct index in the end
-            ownTeamIndex = 9 - ownScoreLeaderboardIndex;
-        } else if (this.teamToiletpaper) {
-            console.log('loading');
-            const snapshot = await database().ref('Team').orderByChild('toiletpaper').startAt(this.teamToiletpaper).once('value');
-            ownTeamIndex = snapshot.numChildren();
-            let previousVal = this.teamToiletpaper;
-            snapshot.forEach(teamSnapshot => {
-                const curVal = teamSnapshot.val().toiletpaper;
-                if (curVal === previousVal) {
-                    ownTeamIndex--;
-                } else {
-                    previousVal = curVal;
-                }
-            });
-        }
-
-        this.trigger(
-            'leaderboard',
-            {
-                topTen: board.reverse(),
-                ownTeamIndex,
-            }
-        );
-    }
-
-    logout() {
-        if (!this.userId) {
-            return;
-        }
-        [
-            'userId',
-            'userName',
-            'userAtHome',
-            'teamId',
-        ].map(key => this.trigger(key, null));
-
-        const userId = this.userId;
-        database().ref('User/' + userId + '/name').off('value');
-        database().ref('User/' + userId + '/lastAtHomeTime').off('value');
-        database().ref('User/' + userId + '/team').off('value');
-
-        database().ref('Team').orderByChild('toiletpaper').off('value');
-
-        this.unregisterMetaListeners();
-    }
-
-    setupTeam(teamId) {
-        if (!teamId) {
-            this.teamName = null;
-            this.teamDisinfectant = null;
-            this.teamAllAtHome = null;
-            this.teamToiletpaper = null;
-            this.teamMembers = new Map();
-            return;
-        }
-
-        database().ref('Team/' + teamId + '/name').on('value', (snapshot) => {
-            this.trigger('teamName', snapshot.val());
-        });
-
-        database().ref('Team/' + teamId + '/disinfectant').on('value', (snapshot) => {
-            this.trigger('teamDisinfectant', snapshot.val());
-        });
-
-        database().ref('Team/' + teamId + '/allathome').on('value', (snapshot) => {
-            this.trigger('teamAllAtHome', snapshot.val());
-        });
-
-        database().ref("Team/"+teamId+"/toiletpaper").on('value', (snapshot) => {
-            this.trigger("teamToiletpaper", snapshot.val());
-        });
-
-        database().ref("Team/"+teamId+"/members").on('value', (snapshot) => {
-            const memberIds = snapshot.val();
-            const oldMemberIds = Array.from(this.teamMembers.keys());
-
-            const memberCallback = (_snapshot) => {
-                const value = _snapshot.val();
-                const newMembers = new Map(this.teamMembers);
-                newMembers.set(_snapshot.key, value);
-                this.trigger('teamMembers', newMembers);
-            };
-
-            // turn listening off of removed members and remove from teamMembers
-            const newMembers = new Map(this.teamMembers);
-            for (const oldMemberId of oldMemberIds) {
-                database().ref('User/' + oldMemberId).off('value', memberCallback);
-                newMembers.delete(oldMemberId);
-            }
-            this.trigger('teamMembers', newMembers);
-
-            // call of memberCallback following to on will setup the new members
-            for (const memberId of memberIds) {
-                database().ref('User/' + memberId).on('value', memberCallback);
-            }
-
-        });
-    }
-
-    updateHomeStatus() {
-        if (!this.userId) {
-            return;
-        }
-        functions().httpsCallable('updateHomeStatus')({
-            home: true,
-        });
-    }
-
-    registerMetaListeners() {
-        this.metaDropTimestampKeys.forEach(
-            key => database().ref('Meta/dropTimestamps').child(key).on('value', (snapshot) => {
-                this.trigger(key, snapshot.val());
-            })
-        );
-    }
+  registerMetaListeners() {
+    this.metaDropTimestampKeys.forEach(
+      key => database().ref('Meta/dropTimestamps').child(key).on('value', (snapshot) => {
+        this.trigger(key, snapshot.val());
+      })
+    );
+  }
 
 }
 
