@@ -13,7 +13,7 @@ import LootingPopup from '_components/LootingPopup';
 import styles from './styles';
 
 // NO Logic here!
-export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton, isAddModalVisible, toggleAddModal }) => {
+export default ({ teamName, toiletpaperScore, disinfectantScore, toiletpaperProgress, disinfectantProgress, teamMembers, leaderboard, onPressLogout, slide1, slide2, slideHasChanged, clickSliderButton, isAddModalVisible, toggleAddModal }) => {
 
   const ref = useRef();
 
@@ -53,14 +53,14 @@ export default ({ teamName, toiletpaperScore, disinfectantScore, teamMembers, le
           </View>
           <View style={styles.progressContainer}>
             <View style={styles.progressPaper}>
-              <ProgressBar row progress={0.4} duration={'4:49'} height={25} borderRadius={50} />
+              <ProgressBar row progress={toiletpaperProgress} duration={'4:49'} height={25} borderRadius={50} />
               <Image
                 style={styles.progressPaperIcon}
                 source={require('_assets/icons/Paper.png')}
               />
             </View>
             <View style={styles.progressDesinfection}>
-              <ProgressBar row progress={0.8} duration={'3:20'} height={25} borderRadius={50} />
+              <ProgressBar row progress={disinfectantProgress} duration={'3:20'} height={25} borderRadius={50} />
               <Image
                 style={styles.progressDesinfectionIcon}
                 source={require('_assets/icons/desinfection_one.png')}

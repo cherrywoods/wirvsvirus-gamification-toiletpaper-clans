@@ -18,22 +18,18 @@ class FirebaseModel {
     }
 
     constructor() {
-        // const firebaseConfig = {
-        //     apiKey: 'AIzaSyADJaKzQkiHVAlJsjEVijQA7vU81ltyxTs',
-        //     authDomain: 'wirvsvirus-toiletpaper.firebaseapp.com',
-        //     databaseURL: 'https://wirvsvirus-toiletpaper.firebaseio.com/',
-        //     projectId: 'wirvsvirus-toiletpaper',
-        //     storageBucket: 'wirvsvirus-toiletpaper.appspot.com',
-        //     messagingSenderId: '922995692187',
-        //     appId: '1:922995692187:web:f98db1f5db979682e5ec3e',
-        //     measurementId: 'G-SCVEE4EEG5',
-        // };
-
-        // if (!firebase.apps.length) {
-        //     firebase.initializeApp(firebaseConfig);
-        // }
+        this.metaDropTimestampKeys = [
+            'lastToiletpaperDrop',
+            'lastDisinfectantDrop',
+            'upcomingToiletpaperDrop',
+            'upcomingDisinfectantDrop',
+        ];
 
         // MARK: simple properties
+        this.lastToiletpaperDrop = null;
+        this.lastDisinfectantDrop = null;
+        this.upcomingToiletpaperDrop = null;
+        this.upcomingDisinfectantDrop = null;
 
         this.userId = null;
         this.userName = null;
@@ -55,6 +51,11 @@ class FirebaseModel {
 
         // MARK: listeners
         this.listers = new Map();
+        this.listers.set('upcomingToiletpaperDrop', [newTimestamp => { this.upcomingToiletpaperDrop = newTimestamp; }]);
+        this.listers.set('upcomingDisinfectantDrop', [newTimestamp => { this.upcomingDisinfectantDrop = newTimestamp; }]);
+        this.listers.set('lastToiletpaperDrop', [newTimestamp => { this.lastToiletpaperDrop = newTimestamp; }]);
+        this.listers.set('lastDisinfectantDrop', [newTimestamp => { this.lastDisinfectantDrop = newTimestamp; }]);
+
         this.listers.set('userId', [(newUserId) => { this.userId = newUserId; }]);
         this.listers.set('userName', [(newUserName) => { this.userName = newUserName; }]);
         this.listers.set('userAtHome', [(newValue) => { this.userAtHome = newValue; }]);
@@ -105,19 +106,19 @@ class FirebaseModel {
         database().ref('User/' + userId + '/name').on('value', (snapshot) => {
             this.trigger('userName', snapshot.val());
         });
-        database().ref('User/' + userId + '/athome').on('value', (snapshot) => {
+        database().ref('User/' + userId + '/lastAtHomeTime').on('value', (snapshot) => {
             this.trigger('userAtHome', snapshot.val());
         });
 
         // TODO: optimally request index of own team and get only the first 10
-        database().ref("Team/").orderByChild('toiletpaper').on('value', (teams) => {
+        database().ref('Team').orderByChild('toiletpaper').on('value', (teams) => {
             var teamStats = [];
             var ownTeamStats = null;
             teams.forEach( (team) => {
                 const teamKey = team.key;
                 teamStats.push({
                     "teamId": teamKey,
-                    "name": teams.child(teamKey + "/Name").val(),
+                    "name": teams.child(teamKey + "/name").val(),
                     "score": teams.child(teamKey + "/toiletpaper").val(),
                 });
                 if (teamKey === this.teamId) {
@@ -137,15 +138,29 @@ class FirebaseModel {
         database().ref('User/' + userId + '/team').on('value', (snapshot) => {
                 this.trigger('teamId', snapshot.val());
         });
+
+        this.registerMetaListeners();
     }
 
     logout() {
+        if (!this.userId) {
+            return;
+        }
         [
             'userId',
             'userName',
             'userAtHome',
             'teamId',
         ].map(key => this.trigger(key, null));
+
+        const userId = this.userId;
+        database().ref('User/' + userId + '/name').off('value');
+        database().ref('User/' + userId + '/lastAtHomeTime').off('value');
+        database().ref('User/' + userId + '/team').off('value');
+
+        database().ref('Team').orderByChild('toiletpaper').off('value');
+
+        this.unregisterMetaListeners();
     }
 
     setupTeam(teamId) {
@@ -208,6 +223,14 @@ class FirebaseModel {
         functions().httpsCallable('updateHomeStatus')({
             home: true,
         });
+    }
+
+    registerMetaListeners() {
+        this.metaDropTimestampKeys.forEach(
+            key => database().ref('Meta/dropTimestamps').child(key).on('value', (snapshot) => {
+                this.trigger(key, snapshot.val());
+            })
+        );
     }
 
 }

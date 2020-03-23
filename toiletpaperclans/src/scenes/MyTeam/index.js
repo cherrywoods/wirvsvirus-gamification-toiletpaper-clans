@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import useDropProgress from './hooks/use-drop-progress.js';
 import FirebaseModel from '_utilities/FirebaseModel';
 
 import MyTeamView from './view';
@@ -16,6 +17,8 @@ const MyTeamScreen = ({ navigation }) => {
   const [slide1, setSlide1] = useState('#B40E22');
   const [slide2, setSlide2] = useState('black');
   const [isAddModalVisible, toggleAddModal] = useState(false);
+
+  const { toiletpaperProgress, disinfectantProgress } = useDropProgress();
 
   const clickSliderButton = (ref) => {
     console.log(ref.current.state);
@@ -64,6 +67,8 @@ const MyTeamScreen = ({ navigation }) => {
       teamName={teamName}
       toiletpaperScore={toiletpaperScore}
       disinfectantScore={disinfectantScore}
+      toiletpaperProgress={toiletpaperProgress}
+      disinfectantProgress={disinfectantProgress}
       teamMembers={teamMembers}
       leaderboard={leaderboard}
       slide1={slide1}
