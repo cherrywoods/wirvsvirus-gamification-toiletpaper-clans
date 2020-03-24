@@ -39,7 +39,11 @@ class FirebaseModel {
     this.teamAllAtHome = null;
     this.teamToiletpaper = null;
     this.teamDisinfectant = null;
-    // Map of members by userIds
+    /**
+     * Map of members by userIds
+     * additionally to the firebase values stored the entries also contain a atHome value 
+     * beeing true if the users is currently at home
+     */
     this.teamMembers = new Map();
     /**
       * {
