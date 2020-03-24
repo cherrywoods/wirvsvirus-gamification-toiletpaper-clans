@@ -236,7 +236,9 @@ class FirebaseModel {
       const oldMemberIds = Array.from(this.teamMembers.keys());
 
       const memberCallback = (_snapshot) => {
-        const value = _snapshot.val();
+        var value = _snapshot.val();
+        console.log('lastStatus', value.lastStatus, 'lastAtHomeTime', value.lastAtHomeTime);
+        value.atHome = value.lastStatus === value.lastAtHomeTime;
         const newMembers = new Map(this.teamMembers);
         newMembers.set(_snapshot.key, value);
         this.trigger('teamMembers', newMembers);

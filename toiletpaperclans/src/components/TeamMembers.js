@@ -8,7 +8,7 @@ const TeamMembers = ({ members, onPressAdd }) => {
   return (
     <View style={styles.container}>
       {membersObject && Object.keys(membersObject).map(key => (
-        <ProfilePicture key={key} />
+        <ProfilePicture key={key} atHome={members.get(key).atHome} />
       ))}
       <AddButton onPress={onPressAdd} />
     </View>
