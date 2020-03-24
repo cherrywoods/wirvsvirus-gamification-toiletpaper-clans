@@ -25,8 +25,8 @@ const SignUpScreen = ({ navigation }) => {
           navigation.navigate('Onboarding');
         }
       })
-      .catch(() => {
-        console.log('error');
+      .catch((error) => {
+        console.log('error', error);
       })
       .finally(() => {
         setIsLoading(false);
