@@ -9,6 +9,7 @@ import functions from '@react-native-firebase/functions';
 class FirebaseModel {
 
   // MARK: singleton
+
   static instance() {
     if (!FirebaseModel._isInstantiated) {
       FirebaseModel._inst = new FirebaseModel();
@@ -16,6 +17,8 @@ class FirebaseModel {
     }
     return FirebaseModel._inst;
   }
+
+  // MARK: construction
 
   constructor() {
     this.metaDropTimestampKeys = [
@@ -83,6 +86,8 @@ class FirebaseModel {
     this.listers.set('leaderboard', [(newValue) => { this.leaderboard = newValue; }]);
   }
 
+  // MARK: events/listeners
+
   /// Register a new listener. you can register listeners for all properties by their textual names
   on(eventKey, listener) {
     var ls = this.listers.get(eventKey);
@@ -104,9 +109,12 @@ class FirebaseModel {
     this.listers.set(eventKey, ls);
   }
 
+  // Notify listeners of eventKey that a value has changed
   trigger(eventKey, newValue) {
     this.listers.get(eventKey).forEach(listener => listener(newValue));
   }
+
+  // MARK: functionality
 
   /// Login with the given user id
   loginAsUser(userId) {
@@ -272,6 +280,12 @@ class FirebaseModel {
       key => database().ref('Meta/dropTimestamps').child(key).on('value', (snapshot) => {
         this.trigger(key, snapshot.val());
       })
+    );
+  }
+
+  unregisterMetaListeners() {
+    this.metaDropTimestampKeys.forEach(
+      key => database().ref('Meta/dropTimestamps').child(key).off('value')
     );
   }
 
