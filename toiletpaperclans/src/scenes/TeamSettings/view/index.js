@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInvitePlayer, onPressChangeTeamname,  onPressInvitePlayer, onPressCreateTeam}) => (
+export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInvitePlayer, onPressChangeTeamname,  onPressInvitePlayer, onPressCreateTeam, onPressBack}) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
         <View style={styles.header}>
@@ -36,7 +36,7 @@ export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInv
         <Text style={styles.smallText}>Dabei verlässt du dein Team</Text>
 
         <View style={styles.footer}>
-            <TouchableHighlight >
+            <TouchableHighlight onPress={onPressBack} >
                 <Text style={styles.smallText}>Zurück</Text>
             </TouchableHighlight>
         </View>

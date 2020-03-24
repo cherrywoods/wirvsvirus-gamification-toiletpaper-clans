@@ -49,6 +49,7 @@ const TeamSettingsScreen = ({ navigation }) => {
         onPressChangeTeamname={changeTeamname}
         onPressInvitePlayer={invitePlayer}
         onPressCreateTeam={createTeam}
+        onPressBack={() => navigation.navigate('App')}
     />
   );
 };
