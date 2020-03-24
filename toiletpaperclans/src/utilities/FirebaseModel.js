@@ -42,11 +42,11 @@ class FirebaseModel {
     // Map of members by userIds
     this.teamMembers = new Map();
     /**
-         * {
-         *   leaderboard: array of {name:, score:},
-         *   ownTeamRank:,
-         * }
-         */
+      * {
+      *   leaderboard: array of {name:, score:},
+      *   ownTeamRank:,
+      * }
+      */
     this.leaderboardTopTen = null;
     this.leaderboard = null;
 
@@ -83,7 +83,7 @@ class FirebaseModel {
     this.listers.set('leaderboard', [(newValue) => { this.leaderboard = newValue; }]);
   }
 
-  /// register a new listener. you can register listeners for all properties by their textual names
+  /// Register a new listener. you can register listeners for all properties by their textual names
   on(eventKey, listener) {
     var ls = this.listers.get(eventKey);
     if (!ls) {
@@ -108,7 +108,7 @@ class FirebaseModel {
     this.listers.get(eventKey).forEach(listener => listener(newValue));
   }
 
-  /// login with the given user id
+  /// Login with the given user id
   loginAsUser(userId) {
     this.trigger('userId', userId);
     this.updateHomeStatus();
