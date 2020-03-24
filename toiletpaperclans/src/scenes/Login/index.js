@@ -20,8 +20,8 @@ const LoginScreen = ({ navigation }) => {
           navigation.navigate('App');
         }
       })
-      .catch(() => {
-        console.log('error');
+      .catch((error) => {
+        console.log('error', error);
       })
       .finally(() => {
         setIsLoading(false);
