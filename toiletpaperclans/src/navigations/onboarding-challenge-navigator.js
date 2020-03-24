@@ -8,7 +8,7 @@ export default createStackNavigator({
   OnboardingChallengeTeam: OnboardingChallengeTeamScreen,
 }, {
   initialRouteName: 'OnboardingChallengeUsername',
-  header: null,
+  headerShown: false,
   headerMode: 'none',
   navigationOptions: {
     gesturesEnabled: false,

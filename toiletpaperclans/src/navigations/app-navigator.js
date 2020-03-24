@@ -7,12 +7,12 @@ const AppNavigator = createStackNavigator({
     screen: MyTeamScreen,
     navigationOptions: {
       title: 'My Team',
-      header: null,
+      headerShown: false,
     },
   },
 }, {
   initialRouteName: 'MyTeam',
-  header: null,
+  headerShown: false,
   headerMode: 'none',
 });
 

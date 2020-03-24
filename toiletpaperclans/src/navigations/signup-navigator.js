@@ -10,6 +10,6 @@ export default createStackNavigator({
   Onboarding: OnboardingScreen,
   OnboardingChallenge: OnboardingChallengeNavigator,
 }, {
-  header: null,
+  headerShown: false,
   headerMode: 'none',
 });

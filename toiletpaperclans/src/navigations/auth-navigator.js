@@ -9,7 +9,7 @@ const AuthNavigator = createAnimatedSwitchNavigator({
   SignUp: SignUpNavigator,
 }, {
   initialRouteName: 'Login',
-  header: null,
+  headerShown: false,
   headerMode: 'none',
 });
 
