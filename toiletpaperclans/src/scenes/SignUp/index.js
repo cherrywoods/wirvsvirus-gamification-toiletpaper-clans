@@ -44,7 +44,7 @@ const SignUpScreen = ({ navigation }) => {
       onChangeConfirmPassword={setConfirmPassword}
       onPressHome={() => navigation.navigate('Home')}
       onPressSignUp={doSignup}
-      onPressLogin={() => navigation.navigate('Login')}
+      onPressCancel={() => navigation.navigate('Login')}
     />
   );
 };

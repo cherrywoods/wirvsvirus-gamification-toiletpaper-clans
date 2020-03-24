@@ -11,6 +11,6 @@ export default createStackNavigator({
   headerShown: false,
   headerMode: 'none',
   navigationOptions: {
-    gesturesEnabled: false,
+    gestureEnabled: false,
   },
 });
