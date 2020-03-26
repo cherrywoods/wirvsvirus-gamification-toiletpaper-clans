@@ -96,7 +96,8 @@ export default StyleSheet.create({
   },
   footer: {
     width: '100%',
-    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
   smallText: {
     color: '#B40E22',
@@ -104,4 +105,10 @@ export default StyleSheet.create({
     margin: 20,
     padding: 10,
   },
+  icon: {
+    width: 40,
+    height: 40,
+    color: '#B40E22',
+    margin: 20,
+  }
 });

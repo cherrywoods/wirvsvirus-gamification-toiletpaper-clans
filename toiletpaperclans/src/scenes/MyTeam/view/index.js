@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { View, Text, SafeAreaView, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Swiper from 'react-native-swiper';
 
 import TeamMembers from '_components/TeamMembers';
@@ -18,7 +19,7 @@ export default ({
   teamName, teamMembers, leaderboard,
   toiletpaperScore, disinfectantScore,
   toiletpaperProgress, disinfectantProgress, toiletpaperTime, disinfectantTime,
-  currentSlide, isAddModalVisible, onToggleAddModal, onPressLogout, onSelectSlide, onChangeCurrentSlide,
+  currentSlide, isAddModalVisible, onToggleAddModal, onPressLogout, onSelectSlide, onChangeCurrentSlide, onPressSettings,
 }) => {
   const ref = useRef();
   return (
@@ -80,6 +81,9 @@ export default ({
           </View>
         </Swiper>
         <View style={styles.footer}>
+          <TouchableOpacity onPress={onPressSettings} >
+            <Icon name="settings" style={styles.icon} size={40}/>
+          </TouchableOpacity>
           <TouchableOpacity onPress={onPressLogout}>
             <Text style={styles.smallText}>Log out</Text>
           </TouchableOpacity>

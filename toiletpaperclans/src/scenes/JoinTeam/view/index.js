@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackground } from 'react-native';
 
-export default ({ onPressHome }) => (
+export default ({ onPressHome, teamname }) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <View style={styles.header}>
@@ -17,6 +17,8 @@ export default ({ onPressHome }) => (
         <TextInput
           style={styles.textField}
           placeholder="Cl4n%"
+          value={teamname}
+          onChange={onChangeTeamname}
         />
       </View>
 

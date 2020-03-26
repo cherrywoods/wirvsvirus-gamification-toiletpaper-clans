@@ -1,6 +1,9 @@
 import React from 'react';
+import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackground } from 'react-native';
 
-export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInvitePlayer, onPressChangeTeamname,  onPressInvitePlayer, onPressCreateTeam, onPressBack}) => (
+import styles from './styles';
+
+export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInvitePlayer, onPressChangeTeamname,  onPressInvitePlayer, onPressCreateTeam, onPressBack, onPressLeaveTeam}) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
         <View style={styles.header}>
@@ -25,6 +28,10 @@ export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInv
             />
             <TouchableHighlight style={styles.button} onPress={onPressInvitePlayer}>
                 <Text style={styles.buttonText}>Einladen</Text>
+            </TouchableHighlight>
+            
+            <TouchableHighlight style={styles.button} onPress={onPressLeaveTeam}>
+                <Text style={styles.buttonText}>Team verlassen</Text>
             </TouchableHighlight>
 
             <TouchableHighlight style={styles.button} onPress={onPressCreateTeam}>

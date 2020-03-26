@@ -48,4 +48,11 @@ export default StyleSheet.create({
     fontSize: 28,
     fontWeight: '500',
   },
+  smallText: {
+    color: '#B40E22',
+    fontSize: 24,
+    fontWeight: '500',
+    margin: 30,
+    textAlign: 'center',
+  },
 });

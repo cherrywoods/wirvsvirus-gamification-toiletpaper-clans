@@ -6,6 +6,8 @@ import FirebaseModel from '_utilities/FirebaseModel';
 import MyTeamView from './view';
 
 import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
+
 
 const firebaseData = FirebaseModel.instance();
 const MyTeamScreen = ({ navigation }) => {
@@ -51,6 +53,19 @@ const MyTeamScreen = ({ navigation }) => {
     navigation.navigate('Auth');
   };
 
+  const doNavigation = () => {
+    const { uid } = auth().currentUser
+    database().ref('/User/' + uid + '/').once('value').then(snapshot => {
+      const teamId = (snapshot.val() && snapshot.val().team)
+      if (teamId === '') {
+        navigation.navigate('JoinTeam')
+      } else {
+        navigation.navigate('TeamSettings')
+      }
+    })
+    
+  }
+
   return (
     <MyTeamView
       teamName={teamName}
@@ -68,6 +83,7 @@ const MyTeamScreen = ({ navigation }) => {
       onSelectSlide={onSelectSlide}
       onChangeCurrentSlide={setCurrentSlide}
       onPressLogout={doLogout}
+      onPressSettings={doNavigation}
     />
   );
 };

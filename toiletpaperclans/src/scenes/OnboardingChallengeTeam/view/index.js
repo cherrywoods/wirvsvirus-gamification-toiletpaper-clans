@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, KeyboardAvoidingView, ImageBackground, TextIn
 
 import styles from './styles';
 
-export default ({ name, isLoading, isUsernameValid, onChangeName, onPressContinue }) => (
+export default ({ name, isLoading, isUsernameValid, onChangeName, onPressContinue, onPressJoin, onPressSingle }) => (
   <SafeAreaView style={styles.container}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
       <KeyboardAvoidingView enabled behavior="padding" style={styles.content}>
@@ -21,6 +21,12 @@ export default ({ name, isLoading, isUsernameValid, onChangeName, onPressContinu
         />
         <TouchableHighlight style={styles.button} disabled={isLoading} onPress={onPressContinue}>
           <Text style={styles.buttonText}>Let's hunt!</Text>
+        </TouchableHighlight>
+        <TouchableHighlight  disabled={isLoading} onPress={onPressJoin}>
+          <Text style={styles.smallText}>Join Team</Text>
+        </TouchableHighlight>
+        <TouchableHighlight  disabled={isLoading} onPress={onPressSingle}>
+          <Text style={styles.smallText}>Stay Single</Text>
         </TouchableHighlight>
       </KeyboardAvoidingView>
     </ImageBackground>
