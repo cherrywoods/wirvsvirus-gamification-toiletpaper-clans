@@ -21,9 +21,9 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-
-    - name: ESLint checker
-      uses: ninosaurus/eslint-check@v5.3.1
+      
+    - name: Run ESLint
+      uses: stefanoeb/eslint-action@1.0.2
       with:
-        custom-directory: toiletpaperclans
-        eslint-config-path: toiletpaperclans/.eslintrc.js
+        # Blob of files to lint
+        files: .
