@@ -5,6 +5,9 @@ import functions from '@react-native-firebase/functions';
  * Mirrors the firebase data model.
  * Properties are updated when data in the firebase changes.
  * change listeners to properties can be registered using on()
+ *
+ * This class is ment as single interface to firebase across the whole app
+ * to avoid code duplication and centralize firebase logic in one place.
  */
 class FirebaseModel {
 
