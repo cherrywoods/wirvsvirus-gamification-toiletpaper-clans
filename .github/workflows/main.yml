@@ -21,9 +21,10 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-      
-    - name: Run ESLint
-      uses: stefanoeb/eslint-action@1.0.2
+    - uses: actions/setup-node@v1.1.0
       with:
-        # Blob of files to lint
-        files: .
+        # Version Spec of the version to use.  Examples: 10.x, 10.15.1, >=10.15.0, lts
+        version: lts
+    - run: | 
+        cd toiletpaperclans
+        yarn lint
