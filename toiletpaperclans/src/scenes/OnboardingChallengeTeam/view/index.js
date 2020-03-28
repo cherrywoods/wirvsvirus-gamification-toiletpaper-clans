@@ -22,12 +22,7 @@ export default ({ name, isLoading, isUsernameValid, onChangeName, onPressContinu
         <TouchableHighlight style={styles.button} disabled={isLoading} onPress={onPressContinue}>
           <Text style={styles.buttonText}>Let's hunt!</Text>
         </TouchableHighlight>
-        <TouchableHighlight  disabled={isLoading} onPress={onPressJoin}>
-          <Text style={styles.smallText}>Join Team</Text>
-        </TouchableHighlight>
-        <TouchableHighlight  disabled={isLoading} onPress={onPressSingle}>
-          <Text style={styles.smallText}>Stay Single</Text>
-        </TouchableHighlight>
+        
       </KeyboardAvoidingView>
     </ImageBackground>
   </SafeAreaView>

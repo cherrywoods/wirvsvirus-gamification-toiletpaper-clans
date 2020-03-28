@@ -22,37 +22,17 @@ const OnboardingChallengeTeamScreen = ({ navigation, ...params }) => {
       ),
     ])
       .then(() => navigation.navigate('App'))
-      .catch(() => console.log('error'))
+      .catch((error) => console.log('error', error))
       .finally(() => setIsLoading(false));
   };
 
-  // TODO Fix 
-  const setTeamNull = () => {
-    const emptyName = ''
-    const { uid } = auth().currentUser;
-    const userRef = database().ref('User').child(uid);
-    Promise.all([
-      userRef.child('team').once('value').then(
-        team => database().ref('Team').child(team.val()).update({ emptyName })
-      ),
-    ])
-
-  }
-
+  
   return (
     <OnboardingChallengeTeamView
       name={name}
       isLoading={isLoading}
       onChangeName={setName}
       onPressContinue={doContinue}
-      onPressJoin={() => {
-        setTeamNull()
-        navigation.navigate('JoinTeam')}
-      }
-      onPressSingle={() => {
-        setTeamNull()
-        navigation.navigate('App')}
-      }
     />
   );
 };

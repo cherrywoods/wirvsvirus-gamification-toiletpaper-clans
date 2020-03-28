@@ -283,6 +283,17 @@ class FirebaseModel {
     });
   }
 
+  // MARK: TODO
+  removeFromTeam(uid) {
+    let newMembers = []
+    this.teamMembers.forEach(id => {
+      if (id !== uid) {
+        newMember.push(id)
+      }
+    })
+    this.trigger('teamMembers', newMembers);
+  }
+
   updateHomeStatus() {
     if (!this.userId) {
       return;

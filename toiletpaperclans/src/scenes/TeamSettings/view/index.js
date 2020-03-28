@@ -3,7 +3,7 @@ import { SafeAreaView, Text, TouchableHighlight, View, TextInput, ImageBackgroun
 
 import styles from './styles';
 
-export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInvitePlayer, onPressChangeTeamname,  onPressInvitePlayer, onPressCreateTeam, onPressBack, onPressLeaveTeam}) => (
+export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInvitePlayer, onPressChangeTeamname,  onPressInvitePlayer, onPressCreateTeam, onPressBack, onPressLeaveTeam, isLoading}) => (
   <SafeAreaView style={styles.view}>
     <ImageBackground source={require('_assets/img/toiletpaper.jpg')} style={styles.imageBackground}>
         <View style={styles.header}>
@@ -16,6 +16,7 @@ export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInv
             placeholder="Neuer Teamname"
             onChangeText={onChangeTeamname}
             value={newTeamnname}
+            editable={!isLoading}
             />
             <TouchableHighlight style={styles.button} onPress={onPressChangeTeamname}>
                 <Text style={styles.buttonText}>Ändern!</Text>
@@ -25,16 +26,17 @@ export default ({teamname, newTeamnname, playerID, onChangeTeamname, onChangeInv
             placeholder="Spieler ID" 
             onChangeText={onChangeInvitePlayer}
             value={playerID}
+            editable={!isLoading}
             />
-            <TouchableHighlight style={styles.button} onPress={onPressInvitePlayer}>
+            <TouchableHighlight style={styles.button} onPress={onPressInvitePlayer} disabled={isLoading}>
                 <Text style={styles.buttonText}>Einladen</Text>
             </TouchableHighlight>
             
-            <TouchableHighlight style={styles.button} onPress={onPressLeaveTeam}>
+            <TouchableHighlight style={styles.button} onPress={onPressLeaveTeam} disabled={isLoading}>
                 <Text style={styles.buttonText}>Team verlassen</Text>
             </TouchableHighlight>
 
-            <TouchableHighlight style={styles.button} onPress={onPressCreateTeam}>
+            <TouchableHighlight style={styles.button} onPress={onPressCreateTeam} disabled={isLoading}>
                 <Text style={styles.buttonText}>Neues Team erstellen</Text>
             </TouchableHighlight>
 
