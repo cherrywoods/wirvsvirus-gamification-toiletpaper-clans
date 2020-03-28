@@ -39,6 +39,7 @@ class FirebaseModel {
     this.userAtHome = null;
     this.teamId = null;
     this.teamName = null;
+    this.isUserTeamLeader = null;
     this.teamAllAtHome = null;
     this.teamToiletpaper = null;
     this.teamDisinfectant = null;
@@ -75,6 +76,7 @@ class FirebaseModel {
       (newTeamId) => {this.setupTeam(newTeamId); },
     ]);
     this.listers.set('teamName', [(newTeamName) => {this.teamName = newTeamName; }]);
+    this.listers.set('isUserTeamLeader', [(newValue) => {this.isUserTeamLeader = newValue; }]);
     this.listers.set('teamAllAtHome', [(newValue) => { this.teamAllAtHome = newValue; }]);
     this.listers.set('teamToiletpaper', [
       (newValue) => { this.teamToiletpaper = newValue; },
@@ -229,6 +231,13 @@ class FirebaseModel {
 
     database().ref('Team/' + teamId + '/name').on('value', (snapshot) => {
       this.trigger('teamName', snapshot.val());
+    });
+
+    database().ref('Team/' + teamId + '/leader').on('value', (snapshot) => {
+      const newIsUnserTeamLeader = snapshot.val() === this.userId;
+      if (this.isUserTeamLeader !== newIsUnserTeamLeader) {
+        this.trigger('isUserTeamLeader', newIsUnserTeamLeader);
+      }
     });
 
     database().ref('Team/' + teamId + '/disinfectant').on('value', (snapshot) => {
